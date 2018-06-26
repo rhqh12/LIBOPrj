@@ -4,10 +4,13 @@ import java.util.List;
 
 public class PlaceFavService {
 	
-	public List<PlaceFav> getPlaceFavList() {
+	public List<PlaceFav> getPlaceFavList(String memberId) {
+		String sortKey = "desc";		
+		getPlaceFavList(memberId, sortKey);
 		return null;
 	}
-	public List<PlaceFav> getPlaceFavList(String sortKey) {
+	
+	public List<PlaceFav> getPlaceFavList(String memberId, String sortKey) {
 		return null;
 	}
 	public int getPlaceFavCount() {

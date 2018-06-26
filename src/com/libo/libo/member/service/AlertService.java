@@ -4,12 +4,12 @@ import com.libo.libo.member.Alert;
 
 public class AlertService {	
 	//보기
-	public Alert getAlert() {
+	public Alert getAlert(long id) {
 		return null;
 	}
 	
 	//목록
-	public  List<Alert> getAlertList() {
+	public  List<Alert> getAlertList(String memberId) {
 		return null;
 	}
 	

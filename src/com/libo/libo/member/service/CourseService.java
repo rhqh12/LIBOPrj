@@ -4,11 +4,11 @@ import java.util.List;
 
 public class CourseService {
 	
-	public Course getCourse() {
+	public Course getCourse(long id) {
 		return null;
 	}
 	
-	public List<Course> getCourseList() {
+	public List<Course> getCourseList(String memberId) {
 		return null;
 	}
 	
