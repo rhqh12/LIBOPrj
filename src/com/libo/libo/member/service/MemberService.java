@@ -18,7 +18,7 @@ public class MemberService {
 	}
 	
 	//로그아웃
-	public boolean loginoutMember(Member member) {
-		return false;
+	public void loginoutMember(Member member) {
+		
 	}
 }
