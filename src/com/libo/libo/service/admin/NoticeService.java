@@ -2,11 +2,8 @@ package com.libo.libo.service.admin;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.util.Scanner;
-
 import com.libo.libo.admin.Notice;
 import com.libo.libo.util.DBConn;
-import com.sun.java.swing.plaf.windows.WindowsInternalFrameTitlePane.ScalableIconUIResource;
 
 public class NoticeService {
 
