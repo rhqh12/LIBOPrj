@@ -15,6 +15,9 @@ public class Course {
 	private String writerId;
 	private String dueDate;
 
+	public Course() {
+	}
+
 	public Course(int id, String startingTime, String startingAlarm, String workplace, String workplaceAddress,
 			String endingTime, String endingAlarm, String home, String homeAddress, String week, String writerId,
 			String dueDate) {
