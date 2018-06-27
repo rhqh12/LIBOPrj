@@ -3,7 +3,7 @@ package com.libo.libo.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class DBconn {
+public class DBConn {
 	//http://racoonlotty.tistory.com/41 참고
 	//null reset
 	private static Connection dbConn;	
