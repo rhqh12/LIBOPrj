@@ -60,27 +60,27 @@ public class Alert {
 		this.time = time;
 	}
 
-	public String getSpecific_date() {
+	public String getSpecificDate() {
 		return specificDate;
 	}
 
-	public void setSpecific_date(String specificDate) {
+	public void setSpecificDate(String specificDate) {
 		this.specificDate = specificDate;
 	}
 
-	public String getDue_date() {
+	public String getDueDate() {
 		return dueDate;
 	}
 
-	public void setDue_date(String dueDate) {
+	public void setDueDate(String dueDate) {
 		this.dueDate = dueDate;
 	}
 
-	public String getWriter_id() {
+	public String getWriterId() {
 		return writerId;
 	}
 
-	public void setWriter_id(String writerId) {
+	public void setWriterId(String writerId) {
 		this.writerId = writerId;
 	}
 
