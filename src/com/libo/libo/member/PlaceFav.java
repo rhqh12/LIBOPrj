@@ -8,6 +8,10 @@ public class PlaceFav {
 	private String address;
 	private String dueDate;
 
+	public PlaceFav() {
+		
+	}
+	
 	public PlaceFav(int id, String writerId, String location, String address, String dueDate) {
 		this.id = id;
 		this.writerId = writerId;
@@ -15,6 +19,7 @@ public class PlaceFav {
 		this.address = address;
 		this.dueDate = dueDate;
 	}
+
 
 	public int getId() {
 		return id;
