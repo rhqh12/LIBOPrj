@@ -1,4 +1,4 @@
-package com.libo.libo.member.service;
+package com.libo.libo.service.member;
 
 import java.util.List;
 

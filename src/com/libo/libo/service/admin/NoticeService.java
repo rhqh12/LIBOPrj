@@ -1,4 +1,4 @@
-package com.libo.libo.admin.service;
+package com.libo.libo.service.admin;
 
 import com.libo.libo.admin.Notice;
 
