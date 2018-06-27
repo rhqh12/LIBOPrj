@@ -3,22 +3,22 @@ import com.libo.libo.member.Member;
 
 public class MemberService {
 	//회원가입
-	public Member join() {
+	public Member join(Member member) {
 		return null;
 	}	
 	
 	//회원정보 수정
-	public void update(Member member) {
+	public void updateMember(Member member) {
 		
 	}
 	
 	//로그인
-	public boolean login(Member member) {
+	public boolean loginMember(Member member) {
 		return false;		
 	}
 	
 	//로그아웃
-	public void logout(Member member) {
+	public void logoutMember(Member member) {
 		
 	}
 }
