@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class DBConn {
-	//http://racoonlotty.tistory.com/41 참고
 	//null reset
 	public static Connection getConnection() {
 		Connection dbConn = null;
