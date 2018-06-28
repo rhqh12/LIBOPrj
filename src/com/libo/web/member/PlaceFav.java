@@ -8,8 +8,7 @@ public class PlaceFav {
 	private String address;
 	private String dueDate;
 
-	public PlaceFav() {
-		
+	public PlaceFav() {		
 	}
 
 	public PlaceFav(String location, String address, String dueDate) {
@@ -73,5 +72,6 @@ public class PlaceFav {
 		return "PlaceFav [id=" + id + ", writerId=" + writerId + ", location=" + location + ", address=" + address
 				+ ", dueDate=" + dueDate + "]";
 	}
+	
 
-	}
+}
