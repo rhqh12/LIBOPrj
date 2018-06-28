@@ -6,17 +6,17 @@ public class Notice {
 	private String subject;
 	private String constant;
 	private String writerId;
-	private String duteDate;
+	private String dueDate;
 	
 	public Notice() {
 	}
 
-	public Notice(int id, String subject, String constant, String writerId, String duteDate) {
+	public Notice(int id, String subject, String constant, String writerId, String dueDate) {
 		this.id = id;
 		this.subject = subject;
 		this.constant = constant;
 		this.writerId = writerId;
-		this.duteDate = duteDate;
+		this.dueDate = dueDate;
 	}
 
 	public int getId() {
@@ -51,17 +51,17 @@ public class Notice {
 		this.writerId = writerId;
 	}
 
-	public String getDuteDate() {
-		return duteDate;
+	public String getDueDate() {
+		return dueDate;
 	}
 
-	public void getDuteDate(String duteDate) {
-		this.duteDate = duteDate;
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
 	}
 
 	@Override
 	public String toString() {
 		return "Notice [id=" + id + ", subject=" + subject + ", constant=" + constant + ", writerId=" + writerId
-				+ ", duteDate=" + duteDate + "]";
+				+ ", dueDate=" + dueDate + "]";
 	}
 }
