@@ -35,10 +35,12 @@ public class PlaceFavService {
 			rs = ps.executeQuery(sql);
 
 			while (rs.next()) {
-				PlaceFav placeFav = new PlaceFav();				 
-				placeFav.setLocation(rs.getString("LOCATION"));
-				placeFav.setAddress(rs.getString("ADDRESS"));
-				placeFav.setDueDate(rs.getString("DUE_DATE"));				 
+				PlaceFav placeFav = new PlaceFav();
+				placeFav = new PlaceFav(
+							rs.getString("LOCATION"),
+							rs.getString("ADDRESS"),
+							rs.getString("DUE_DATE")
+						);
 				list.add(placeFav);				 
 			}			
 		} catch (Exception e) {

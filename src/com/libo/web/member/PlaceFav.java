@@ -10,7 +10,14 @@ public class PlaceFav {
 
 	public PlaceFav() {
 		
+	
+
+	public PlaceFav(String location, String address, String dueDate) {
+		this.location = location;
+		this.address = address;
+		this.dueDate = dueDate;
 	}
+	
 	
 	public PlaceFav(int id, String writerId, String location, String address, String dueDate) {
 		this.id = id;
