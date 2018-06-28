@@ -94,13 +94,15 @@ public class AlertService {
 			ps = conn.prepareStatement(sql);
 			ps.setLong(1, alertId); // 매개변수 (순번, 넣을 값)
 			rs = ps.executeQuery();
-			if (rs.next()) {
-				alert.setId(rs.getInt("ID"));
-				alert.setDueDate(rs.getString("DUE_DATE"));
-				alert.setSpecificDate(rs.getString("SPECIFIC_DATE"));
-				alert.setTime(rs.getString("TIME"));
-				alert.setWeek(rs.getString("WEEK"));
-				alert.setWriterId(rs.getString("WRITER_ID"));
+			if (rs.next()) {				
+				alert = new Alert(
+						  rs.getInt("ID"),
+						  rs.getString("WEEK"),
+						  rs.getString("TIME"),
+						  rs.getString("SPECIFIC_DATE"),
+						  rs.getString("DUE_DATE"),
+						  rs.getString("WRITER_ID")
+						);				
 			}
 			System.out.println(alert.toString());
 		} catch (SQLException e) {
