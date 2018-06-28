@@ -1,4 +1,4 @@
-package com.libo.libo.member;
+package com.libo.web.member;
 
 public class Course {
 

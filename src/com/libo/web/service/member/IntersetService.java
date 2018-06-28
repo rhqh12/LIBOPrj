@@ -1,11 +1,11 @@
-package com.libo.libo.service.member;
+package com.libo.web.service.member;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.List;
 
-import com.libo.libo.member.Interset;
-import com.libo.libo.util.DBConn;
+import com.libo.web.member.Interset;
+import com.libo.web.util.DBConn;
 
 public class IntersetService {
 

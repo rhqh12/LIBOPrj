@@ -1,4 +1,4 @@
-package com.libo.libo.service.member;
+package com.libo.web.service.member;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.libo.libo.member.Course;
-import com.libo.libo.util.DBConn;
+import com.libo.web.member.Course;
+import com.libo.web.util.DBConn;
 
 public class CourseService {
 	public static void main(String[] args) {

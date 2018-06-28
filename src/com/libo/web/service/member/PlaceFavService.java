@@ -1,6 +1,6 @@
-package com.libo.libo.service.member;
-import com.libo.libo.member.PlaceFav;
-import com.libo.libo.util.DBConn;
+package com.libo.web.service.member;
+import com.libo.web.member.PlaceFav;
+import com.libo.web.util.DBConn;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

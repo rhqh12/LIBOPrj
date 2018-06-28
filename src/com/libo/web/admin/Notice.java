@@ -1,4 +1,4 @@
-package com.libo.libo.admin;
+package com.libo.web.admin;
 
 public class Notice {
 

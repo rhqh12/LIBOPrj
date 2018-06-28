@@ -1,16 +1,18 @@
-package com.libo.libo.member;
+package com.libo.web.admin;
 
-public class Member {
+public class Admin {
 	private String id;
 	private String password;
 	private String nickname;
 	private String birthday;
 	private String gender;
-
-	public Member() {
+	
+	public Admin() {
+		
 	}
-
-	public Member(String id, String password, String nickname, String birthday, String gender) {
+	
+	public Admin(String id, String password, String nickname, String birthday, String gender) {
+		super();
 		this.id = id;
 		this.password = password;
 		this.nickname = nickname;
@@ -60,8 +62,8 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [id=" + id + ", password=" + password + ", nickname=" + nickname + ", birthday=" + birthday
+		return "Admin [id=" + id + ", password=" + password + ", nickname=" + nickname + ", birthday=" + birthday
 				+ ", gender=" + gender + "]";
 	}
-
+	
 }

@@ -1,9 +1,10 @@
-package com.libo.libo.service.admin;
+package com.libo.web.service.admin;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import com.libo.libo.admin.Notice;
-import com.libo.libo.util.DBConn;
+
+import com.libo.web.admin.Notice;
+import com.libo.web.util.DBConn;
 
 public class NoticeService {
 

@@ -1,10 +1,10 @@
-package com.libo.libo.service.member;
+package com.libo.web.service.member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import com.libo.libo.member.Member;
-import com.libo.libo.util.DBConn;
+import com.libo.web.member.Member;
+import com.libo.web.util.DBConn;
 
 public class MemberService {
 	//회원가입

@@ -1,4 +1,4 @@
-package com.libo.libo.util;
+package com.libo.web.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
