@@ -10,7 +10,7 @@ public class PlaceFav {
 
 	public PlaceFav() {
 		
-	
+	}
 
 	public PlaceFav(String location, String address, String dueDate) {
 		this.location = location;
@@ -74,4 +74,4 @@ public class PlaceFav {
 				+ ", dueDate=" + dueDate + "]";
 	}
 
-}
+	}
