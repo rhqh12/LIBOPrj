@@ -26,11 +26,13 @@ public class NoticeService {
 			ps.setLong(1, id);
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				notice.setId(rs.getInt("ID"));
-				notice.setSubject(rs.getString("SUBJECT"));
-				notice.setConstant(rs.getString("CONSTANT"));
-				notice.setWriterID(rs.getString("WRITER_ID"));
-				notice.setDate(rs.getString("DUE_DATE"));
+				notice = new Notice(
+								rs.getInt("ID"),
+								rs.getString("SUBJECT"),
+								rs.getString("CONSTANT"),
+								rs.getString("WRITER_ID"),
+								rs.getString("DUE_DATE")
+							);
 			}
 		
 			System.out.println(notice.toString());
@@ -56,12 +58,14 @@ public class NoticeService {
 
 			while (rs.next()) {
 				Notice notice = new Notice();				 
-				notice.setId(rs.getInt("ID"));
-				notice.setSubject(rs.getString("SUBJECT"));
-				notice.setConstant(rs.getString("CONSTANT"));
-				notice.setWriterID(rs.getString("WRITER_ID"));
-				notice.setDate(rs.getString("DUE_DATE"));		 
-				list.add(notice);				 
+				notice = new Notice(
+						rs.getInt("ID"),
+						rs.getString("SUBJECT"),
+						rs.getString("CONSTANT"),
+						rs.getString("WRITER_ID"),
+						rs.getString("DUE_DATE")
+					);	 
+				list.add(notice);			 
 			}			
 		} catch (Exception e) {
 			System.out.println(e.toString());
