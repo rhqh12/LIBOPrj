@@ -48,18 +48,20 @@ public class CourseService {
 			ps.setLong(1, courseId); // 매개변수 (순번, 넣을 값)
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				course.setId(rs.getInt("ID")); // 매개변수 (순번, 넣을 값)
-				course.setStartingTime(rs.getString("STARTING_TIME"));
-				course.setStartingAlarm(rs.getString("STARTING_ALARM"));
-				course.setWorkplace(rs.getString("WORKPLACE"));
-				course.setWorkplaceAddress(rs.getString("WORKPLACE_ADDRESS"));
-				course.setEndingTime(rs.getString("ENDING_TIME"));
-				course.setEndingAlarm(rs.getString("ENDING_ALARM"));
-				course.setHome(rs.getString("HOME"));
-				course.setHomeAddress(rs.getString("HOME_ADDRESS"));
-				course.setWeek(rs.getString("WEEK"));
-				course.setWriterId(rs.getString("WRITER_ID"));
-				course.setDueDate(rs.getString("DUE_DATE"));
+				course = new Course(
+							rs.getInt("ID"),
+							rs.getString("STARTING_TIME"),
+							rs.getString("STARTING_ALARM"),
+							rs.getString("WORKPLACE"),
+							rs.getString("WORKPLACE_ADDRESS"),
+							rs.getString("ENDING_TIME"),
+							rs.getString("ENDING_ALARM"),
+							rs.getString("HOME"),
+							rs.getString("HOME_ADDRESS"),
+							rs.getString("WEEK"),
+							rs.getString("WRITER_ID"),
+							rs.getString("DUE_DATE")
+						);
 			}
 			// 데이터테스트
 			System.out.println(course.toString());
@@ -85,18 +87,20 @@ public class CourseService {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				Course course = new Course();
-				course.setId(rs.getInt("ID")); // 매개변수 (순번, 넣을 값)
-				course.setStartingTime(rs.getString("STARTING_TIME"));
-				course.setStartingAlarm(rs.getString("STARTING_ALARM"));
-				course.setWorkplace(rs.getString("WORKPLACE"));
-				course.setWorkplaceAddress(rs.getString("WORKPLACE_ADDRESS"));
-				course.setEndingTime(rs.getString("ENDING_TIME"));
-				course.setEndingAlarm(rs.getString("ENDING_ALARM"));
-				course.setHome(rs.getString("HOME"));
-				course.setHomeAddress(rs.getString("HOME_ADDRESS"));
-				course.setWeek(rs.getString("WEEK"));
-				course.setWriterId(rs.getString("WRITER_ID"));
-				course.setDueDate(rs.getString("DUE_DATE"));
+				course = new Course(
+						rs.getInt("ID"),
+						rs.getString("STARTING_TIME"),
+						rs.getString("STARTING_ALARM"),
+						rs.getString("WORKPLACE"),
+						rs.getString("WORKPLACE_ADDRESS"),
+						rs.getString("ENDING_TIME"),
+						rs.getString("ENDING_ALARM"),
+						rs.getString("HOME"),
+						rs.getString("HOME_ADDRESS"),
+						rs.getString("WEEK"),
+						rs.getString("WRITER_ID"),
+						rs.getString("DUE_DATE")
+					);
 				list.add(course);
 			}
 			// 데이터테스트
