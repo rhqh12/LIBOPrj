@@ -59,12 +59,14 @@ public class AlertService {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				Alert alert = new Alert();
-				alert.setId(rs.getInt("ID"));
-				alert.setDueDate(rs.getString("DUE_DATE"));
-				alert.setSpecificDate(rs.getString("SPECIFIC_DATE"));
-				alert.setTime(rs.getString("TIME"));
-				alert.setWeek(rs.getString("WEEK"));
-				alert.setWriterId(rs.getString("WRITER_ID"));
+				alert = new Alert(
+						  rs.getInt("ID"),
+						  rs.getString("WEEK"),
+						  rs.getString("TIME"),
+						  rs.getString("SPECIFIC_DATE"),
+						  rs.getString("DUE_DATE"),
+						  rs.getString("WRITER_ID")
+						);
 				list.add(alert);
 			}
 			// 데이터테스트
