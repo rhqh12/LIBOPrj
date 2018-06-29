@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.List;
 
-import com.libo.web.member.Interset;
+import com.libo.web.entity.Interset;
 import com.libo.web.util.DBConn;
 
 public class IntersetService {

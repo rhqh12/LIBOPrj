@@ -1,4 +1,4 @@
-package com.libo.web.member;
+package com.libo.web.entity;
 
 public class Alert {
 	private int id;

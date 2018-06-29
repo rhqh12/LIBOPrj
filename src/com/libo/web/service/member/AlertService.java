@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.libo.web.member.Alert;
+import com.libo.web.entity.Alert;
 import com.libo.web.util.DBConn;
 
 public class AlertService {
@@ -58,7 +58,7 @@ public class AlertService {
 			ps.setString(1, memberId); // 매개변수 (순번, 넣을 값)
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				Alert alert = new Alert();
+				Alert alert = new Alert();				
 				alert = new Alert(
 						  rs.getInt("ID"),
 						  rs.getString("WEEK"),

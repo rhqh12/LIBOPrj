@@ -1,5 +1,5 @@
 package com.libo.web.service.member;
-import com.libo.web.member.PlaceFav;
+import com.libo.web.entity.PlaceFav;
 import com.libo.web.util.DBConn;
 
 import java.sql.Connection;

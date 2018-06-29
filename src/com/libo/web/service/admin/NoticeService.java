@@ -3,7 +3,7 @@ package com.libo.web.service.admin;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import com.libo.web.admin.Notice;
+import com.libo.web.entity.Notice;
 import com.libo.web.util.DBConn;
 
 public class NoticeService {
@@ -19,7 +19,7 @@ public class NoticeService {
 		notice.setSubject("공지사항");
 		notice.setConstant("관리자입니다.");
 		notice.setWriterID("admin");
-		notice.setDate("18/06/27");
+		notice.setDueDate("18/06/27");
 
 		noticeService.insertNotice(notice);
 
@@ -38,7 +38,7 @@ public class NoticeService {
 			ps.setString(2, notice.getSubject());
 			ps.setString(3, notice.getConstant());
 			ps.setString(4, notice.getWriterId());
-			ps.setString(5, notice.getDate());
+			ps.setString(5, notice.getDueDate());
 			int cnt = ps.executeUpdate();
 
 			if (cnt == 1)

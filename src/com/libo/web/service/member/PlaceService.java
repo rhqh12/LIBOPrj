@@ -1,7 +1,7 @@
 package com.libo.web.service.member;
 import java.util.List;
 
-import com.libo.web.member.Place;
+import com.libo.web.entity.Place;
 
 
 public class PlaceService {

@@ -1,4 +1,4 @@
-package com.libo.web.admin;
+package com.libo.web.entity;
 
 public class Admin {
 	private String id;

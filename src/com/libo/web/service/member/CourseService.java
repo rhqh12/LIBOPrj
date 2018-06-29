@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.libo.web.member.Course;
+import com.libo.web.entity.Course;
 import com.libo.web.util.DBConn;
 
 public class CourseService {
