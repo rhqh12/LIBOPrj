@@ -5,12 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="./css/libostyle.css"type="text/css"rel="stylesheet"/>
 </head>
 <body>
-<ul>
-	<li><a href="./member">회원</a></li>
-	<li><a href="./admin">관리자</a></li>
-</ul>
-<h1>메인페이지</h1>
+<div id="body" class="vertical-container">
+<p id="greeting"> 안녕하세요? 당신과 함께하는 리보입니다.</p></div>
 </body>
 </html>
