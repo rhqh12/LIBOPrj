@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>리보</title>
 <link href="./css/libostyle.css"type="text/css"rel="stylesheet"/>
 </head>
 <body>
