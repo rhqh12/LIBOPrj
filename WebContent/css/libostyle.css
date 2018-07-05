@@ -1,0 +1,29 @@
+@charset "UTF-8";
+/*-------------------reset-----------*/
+body{
+	margin: 0px;
+	background: #4F97D5;
+	font-family: "돋움";
+}
+h1{
+	matrgin: 0px;
+}
+/*-------styling----*/
+
+#body{
+	background: #4F97D5;
+	
+}
+#greeting{
+	color: #ffffff;
+	position: absolute;
+}
+.vertical-container {
+  height: 300px;
+  display: -webkit-flex;
+  display:         flex;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
