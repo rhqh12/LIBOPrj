@@ -43,28 +43,26 @@ public class NoticeService {
 	}
 	return notice;
 }
-	public List<Notice> getNoticeList() {
+	public List<Notice> getNoticeList(int page) {
 		List<Notice> list = new ArrayList<Notice>();
 		
 		Connection conn = null;
 		PreparedStatement ps =null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT * FROM NOTICE_BOARD";
+		String sql = "select * from \n" + "(select rownum num, n.* from \n"+
+		"(select * from notice_board order by due_date desc) n) \n"+"where num between ? and ?";
+		System.out.println(sql);
 		try {
+			
 			conn = DBConn.getConnection();			
 			ps = conn.prepareStatement(sql);
-			rs = ps.executeQuery(sql);
+			ps.setInt(1, (page-1)*10+1);
+			ps.setInt(2, page*10);
+			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				Notice notice = new Notice();				 
-				notice = new Notice(
-						rs.getInt("ID"),
-						rs.getString("SUBJECT"),
-						rs.getString("CONSTANT"),
-						rs.getString("WRITER_ID"),
-						rs.getString("DUE_DATE")
-					);	 
+				Notice notice = new Notice(rs.getInt("ID"), rs.getString("SUBJECT"), rs.getString("CONSTANT"),rs.getString("WRITER_ID"),rs.getString("DUE_DATE"));				 
 				list.add(notice);			 
 			}			
 		} catch (Exception e) {
