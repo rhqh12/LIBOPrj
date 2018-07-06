@@ -6,27 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <title>회원 메인 페이지</title>
+<link href="../css/style.css" type="text/css" rel="stylesheet"/>
 <style>
-.hide{display:none}
-body {
-	margin:0px;
-}
-ul {margin:0px; padding:0px;}
-li {list-style: none;}
-h1, p, figure {margin:0px;}
-#body{
-    overflow-y: auto;
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	background:url(../images/bg-1.jpg) no-repeat;
-	background-size:cover;	
-}
-	.full-container{
-		width:90%;
-		margin:0px auto;
-		padding-bottom:60px;
-	}
 	#info-weather{
 		position:relative;
 		margin-top:10px;
@@ -122,11 +103,7 @@ h1, p, figure {margin:0px;}
 </style>
 </head>
 <body>	
-<div id="body">
-	<header>
-		<h1>&lt; 경로 목록</h1>
-		<span>삭제 버튼</span>
-	</header>	
+<div id="body" class="full-screen">	
 	<div class="full-container">
 		<h1 class="hide">리보 회원 메인 페이지</h1>
 		<aside id="info-weather">
