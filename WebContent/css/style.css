@@ -20,51 +20,51 @@ h1, p, figure {margin:0px;}
 	background:url(../images/bg-1.jpg) no-repeat;
 	background-size:cover;	     
 }
-	.full-container{
-		width:90%;
-		margin:0px auto;
-	}
+.full-container{
+	width:90%;
+	margin:0px auto;
+}
 
-	#bottom-menu {
+#bottom-menu {
+	width:100%;
+	height:45px;
+	position:fixed;
+	bottom:0px;
+	left:0px;
+	border-top:1px solid #101010;
+	background:rgba(255,255,255,0.8);
+}
+	#bottom-menu ul {
+		display: -webkit-flex;
+  		display: flex;
+	    -webkit-align-items: center;
+		-ms-flex-align: center;
+		align-items: center;
 		width:100%;
-		height:45px;
-		position:fixed;
-		bottom:0px;
-		left:0px;
-		border-top:1px solid #101010;
-		background:rgba(255,255,255,0.8);
+		height:inherit;
 	}
-		#bottom-menu ul {
-			display: -webkit-flex;
-	  		display: flex;
-		    -webkit-align-items: center;
-			-ms-flex-align: center;
-			align-items: center;
-			width:100%;
+		#bottom-menu li {
+			width:25%;
+			text-align:center;
 			height:inherit;
+			background:no-repeat 50%;
+			background-size:30px;
 		}
-			#bottom-menu li {
-				width:25%;
-				text-align:center;
+		#bottom-menu li:nth-child(1) {
+			background-image:url("../images/icon-home.png");		
+		}
+		#bottom-menu li:nth-child(2) {
+			background-image:url("../images/icon-local.png");
+		}
+		#bottom-menu li:nth-child(3) {
+			background-image:url("../images/icon-watch.png");
+		}		
+		#bottom-menu li:nth-child(4) {
+			background-image:url("../images/icon-set.jpg");
+		}	
+			#bottom-menu li a {
+				display: block;
+				width:initial;
 				height:inherit;
-				background:no-repeat 50%;
-				background-size:30px;
+				text-indent:-9999px;
 			}
-			#bottom-menu li:nth-child(1) {
-				background-image:url("../images/icon-home.png");		
-			}
-			#bottom-menu li:nth-child(2) {
-				background-image:url("../images/icon-local.png");
-			}
-			#bottom-menu li:nth-child(3) {
-				background-image:url("../images/icon-watch.png");
-			}		
-			#bottom-menu li:nth-child(4) {
-				background-image:url("../images/icon-set.jpg");
-			}	
-				#bottom-menu li a {
-					display: block;
-					width:initial;
-					height:inherit;
-					text-indent:-9999px;
-				}
