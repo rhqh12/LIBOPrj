@@ -6,28 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <title>회원 메인 페이지</title>
-<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link href="../css/style.css" type="text/css" rel="stylesheet"/>
 <style>
-.hide{display:none}
-body {
-	margin:0px;
-}
-ul {margin:0px; padding:0px;}
-li {list-style: none;}
-h1, p, figure {margin:0px;}
-#body{
-    overflow-y: auto;
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	background:url(../images/bg-1.jpg) no-repeat;
-	background-size:cover;	
-}
-	.full-container{
-		width:90%;
-		margin:0px auto;
-		padding-bottom:60px;
-	}
 	#info-weather{
 		position:relative;
 		margin-top:10px;
@@ -95,14 +75,35 @@ h1, p, figure {margin:0px;}
 		font-weight:bold;
 		font-size:0.8em;
 	}
+	#bottom-menu {
+		width:100%;
+		height:45px;
+		position:fixed;
+		bottom:0px;
+		left:0px;
+		border-top:1px solid #101010;
+		background:rgba(255,255,255,0.8);
+	}
+		#bottom-menu ul {
+			display: -webkit-flex;
+	  		display: flex;
+		    -webkit-align-items: center;
+			-ms-flex-align: center;
+			align-items: center;
+			width:100%;
+			height:inherit;
+		}
+			#bottom-menu li {
+				width:25%;
+				text-align:center;
+				height:inherit;
+				background:no-repeat 50%;
+				background-size:30px;
+			}	
 </style>
 </head>
 <body>	
-<div id="body">
-	<header>
-		<h1>&lt; 경로 목록</h1>
-		<span>삭제 버튼</span>
-	</header>	
+<div id="body" class="full-screen">	
 	<div class="full-container">
 		<h1 class="hide">리보 회원 메인 페이지</h1>
 		<aside id="info-weather">

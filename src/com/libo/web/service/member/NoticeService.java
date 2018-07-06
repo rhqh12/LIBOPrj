@@ -13,7 +13,6 @@ import java.util.List;
 
 public class NoticeService {
 	public Notice getNotice(long id) {
-		NoticeService noticeService = new NoticeService();
 		Notice notice = new Notice();
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -34,8 +33,6 @@ public class NoticeService {
 								rs.getString("DUE_DATE")
 							);
 			}
-		
-			System.out.println(notice.toString());
 	}catch(SQLException e) {
 			e.printStackTrace();
 	}finally {
