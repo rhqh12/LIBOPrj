@@ -6,15 +6,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <title>회원 메인 페이지</title>
-<link rel="stylesheet" type="text/css" href="../css/common.css">
 <style>
 .hide{display:none}
-body {
-	margin:0px;
-}
+body {margin:0px;}
 ul {margin:0px; padding:0px;}
 li {list-style: none;}
-h1, p, figure {margin:0px;}
 #body{
     overflow-y: auto;
 	position: fixed;
@@ -26,75 +22,51 @@ h1, p, figure {margin:0px;}
 	.full-container{
 		width:90%;
 		margin:0px auto;
-		padding-bottom:60px;
 	}
-	#info-weather{
-		position:relative;
-		margin-top:10px;
-		padding:10px;
-		background:rgba(41, 128, 185,0.7);
-		line-height:17px;
-	}
-		#info-weather img {width:20px; vertical-align:top;}
-		#info-weather span{
-			font-size:13px;			
-		}
-		#info-weather .weather {
-			position: absolute;
-			top:10px;
-			right:10px;
-		}
-	#info-transport, #main{
-		margin-top:10px;
-		padding:10px;
-		border:1px solid #ccc;
-		background:rgba(255,255,255,0.7);
-	}
-	#list-article .wrapper {
-		position: relative;
-	}
-		#list-article .wrapper figure{
-			position: absolute;
-			top:0px;
-			left:0px;			
-		}
-		#list-article .wrapper article{
-			margin:15px 0px;
-			padding-left:80px;
-			min-height:67px;
-		}
-			#list-article article a {
-				color:#000;
-				text-decoration:none;
-			}
-			#list-article article a:hover{
-				color:#2449b5;
-			}
-				#list-article article h1 {
-					font-size:1em;
-				}
-				#list-article article p {
-					margin-top:5px;
-					font-size:0.8em;
-				}
-	#list-article li .thumb {
-		width:50px;
-		height:50px;
-	}
-	#list-article li .thumb ~ span{
-		display: block;
+
+	#bottom-menu {
 		width:100%;
+		height:45px;
+		position:fixed;
+		bottom:0px;
+		left:0px;
+		border-top:1px solid #101010;
+		background:rgba(255,255,255,0.8);
 	}
-	#today-letter h1{
-		display:inline-block;
-		font-weight:normal;
-		font-size:0.9em;
-	}
-	#today-letter span {
-		display:inline-block;
-		font-weight:bold;
-		font-size:0.8em;
-	}
+		#bottom-menu ul {
+			display: -webkit-flex;
+	  		display: flex;
+		    -webkit-align-items: center;
+			-ms-flex-align: center;
+			align-items: center;
+			width:100%;
+			height:inherit;
+		}
+			#bottom-menu li {
+				width:25%;
+				text-align:center;
+				height:inherit;
+				background:no-repeat 50%;
+				background-size:30px;
+			}
+			#bottom-menu li:nth-child(1) {
+				background-image:url("../images/icon-home.png");		
+			}
+			#bottom-menu li:nth-child(2) {
+				background-image:url("../images/icon-local.png");
+			}
+			#bottom-menu li:nth-child(3) {
+				background-image:url("../images/icon-watch.png");
+			}		
+			#bottom-menu li:nth-child(4) {
+				background-image:url("../images/icon-set.jpg");
+			}	
+				#bottom-menu li a {
+					display: block;
+					width:initial;
+					height:inherit;
+					text-indent:-9999px;
+				}
 </style>
 </head>
 <body>	
