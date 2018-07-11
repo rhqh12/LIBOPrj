@@ -1,93 +1,38 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.libo.web.service.member.CourseService"%>
+<%@page import="com.libo.web.entity.Course"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%
+	String writeId = "test"; // 초기값
+	String writeId_ = request.getParameter("writeId");
+	
+	if(writeId_ != null && !writeId_.equals("")){
+		writeId = writeId_;
+	}
+	
+	CourseService courseService = new CourseService();
+	List<Course> list = courseService.getCourseList(writeId);
+		
+%>
+	
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Course List</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-<style type="text/css"> 
-body {
-	margin: 0px;
-	font-size: 0.8em; 
-	background: url("../../images/bg.jpg") no-repeat center;
-}
+<title>회원 메인 페이지</title>
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<style>
 
-h1 {
-	margin: 0px;
-}
- 
-/* styling-------------------------------------- */
-.content-container {
-	height: 100%;
-	margin-left: auto;
-	margin-right: auto;
-}
+body {margin:0px;}
+ul {margin:0px; padding:0px;}
+li {list-style: none;}
+h1, p, figure{margin:0px;}
 
-.clearfix::after{
-	content: "."; 
-	height:0px;
-	display: block;
-	clear: left;
-	overflow: hidden; /*박스 범위를 넘어선 요소들에 대한 설정*/
-}
-
-
-#header {
-	height: 60px; 
-	box-sizing: content-box;
-	background: #dddddf; 
-}
-#back{
-	float: left;
-	padding: 15px;  
-}
-#menu{
-	float: right; 
-	padding: 15px; 
-}
-
-#body{
-	 min-height: 100%;
-	 overflow: auto;  
-	 background: #ffffff; 
-	 background: rgba(255, 255, 255, 0.5);
-}  
-   
-#body h1{
-	display: none;
-}
- 
-#body table thead td{ 
- 	border-top: 1px solid gray; 
-	border-bottom: 1px solid gray;
-	padding: 0px; 
-}   
-  
-#body table tbody td{
-	height: 6em; 
-}
-
-#body table{
-	text-align: center;
-	border-spacing: 0px;  
-	width: 100%;
-}     
-
-footer li{ 
-	display: inline-block; 
-} 
-
-footer {
-    position:fixed;
-    bottom:0;
-    width:100%;
-    height:70px;   
-    background:#ccc;
-}
-
-
-/* 스위치 */
+/* ---------------------- reset --------------------*/
 
 .switch {
   position: relative;
@@ -145,98 +90,174 @@ input:checked + .slider:before {
   border-radius: 50%;
 } 
 
-#menu div{  
-	width : 25px; 
-	height : 25px;
-	background: url("../../images/menu.png") no-repeat center;
-	background-size: cover; 
+/* ----------------- 토글 스위치  ----------------- */
+
+.hide{display:none}
+
+.content-container {
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}  
+
+.full-container{
+	width:100%;
+	margin:0px auto;
+	padding-bottom:60px;
 }
+
+#body{
+    overflow-y: auto;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background:url(../../images/bg.jpg) no-repeat;
+	background-size:cover;	
+}
+
+	#header {
+		height: 60px; 
+		box-sizing: content-box; 
+		background: #dddddf;  
+		font-size: 0.9em;
+	}
+
+		#header .content-container {
+			display: flex;
+		}  
+	
+			#header section:nth-child(1){
+				width : 95%;
+				padding: 15px;  
+			}
+			#header section:nth-child(2){
+				padding: 15px;   
+			}
+	
+				#header section:nth-child(2) div{  
+					width : 29px; 
+					height : 29px;
+					background: url("../../images/menu.png") no-repeat center;
+					background-size: cover; 
+				}
+	
+	#main{
+		border:1px solid #ccc; 
+		background:rgba(255,255,255,0.6);
+	}
+	 
+		#list-article .wrapper {
+			position: relative;
+		}
+
+		#list-article table{
+			text-align: center;
+			border-spacing: 0px;  
+			width: 100%;
+		}
+
+			#list-article table thead{
+				font-weight: bold;
+			}
+	
+			#body table thead td{ 
+			 	border-top: 1px solid gray; 
+				border-bottom: 1px solid gray;
+				padding: 7px 0px 7px 0px; 
+			}
+		
+			#body table tbody td{
+				height: 6em;
+				font-size: 0.9em; 
+			}
+	
+				#body table tbody td span{
+					font-weight: bold;
+				}
+			
+#plus{
+	margin-left : auto;  
+	width : 60px; 
+	height : 60px; 
+	background: url("../../images/plus.png") no-repeat center;
+	background-size: cover;
+}
+
 
 </style>
 </head>
-<body>
+<body>	
+<div id="body">
 	<!-- header 영역 -->
 	<header id="header">
 		<div class="content-container clearfix">
-			<section id="back">
+			<section>
 				<h1>&lt; 경로 목록</h1>
 			</section>
-			<section id="menu">
+			<section>
 				<div></div>
 			</section>
 		</div>
-	</header>
-
-	<!-- main 영역 -->
-	<div id="body">
-		<div class="content-container">
-			<main>
-				<section>
-					<h1>경로 목록 표</h1>
-					<table>
-						<thead>
-							<tr>
-								<td>출발</td>
-								<td>도착</td>
-								<td>요일</td>
-								<td>알림설정</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>신도림<br />오전 08:00</td>
-								<td>쌍용강북<br /> 오후 18:00</td>
-								<td>일 월 화 수 목 금 토</td>
-								<td>
-									<label class="switch">
-									  <input type="checkbox" checked>
-									  <span class="slider round"></span>
-									</label>
-								</td>
-							</tr>
-							<tr>
-								<td>가산디지털<br /> 오전 09:00</td>
-								<td>쌍용강북<br /> 오후 18:00</td>
-								<td>일 월 화 수 목 금 토</td>
-								<td>
-									<label class="switch">
-									  <input type="checkbox" checked>
-									  <span class="slider round"></span>
-									</label>
-								</td>
-							</tr>
-							
-							<tr>
-								<td>가산디지털<br /> 오전 09:00</td>
-								<td>쌍용강북<br /> 오후 18:00</td>
-								<td>일 월 화 수 목 금 토</td>
-								<td>
-									<label class="switch">
-									  <input type="checkbox" checked>
-									  <span class="slider round"></span>
-									</label>
-								</td>
-						
-						</tbody>
-					</table>
-				</section>
-				<!-- 하단 영역 -->
-			</main>
-		</div>
-	</div>
+	</header>	
 	
-	<footer>
-		<div class="content-container">
-			<aside>
-				<h1>하단 메뉴</h1>
-				<ul>
-					<li><a href="../">홈</a></li>
-					<li><a href="../place/">위치</a></li>
-					<li><a href="../alert/list.html">알람</a></li>
-					<li><a href="../menu/set/list.html">설정</a></li>
-				</ul>
-			</aside>
-		</div>
-	</footer>
+	<div class="full-container">
+		<main id="main">
+			<h1 class="hide">경로</h1>
+			<aside id="list-article">
+				<h1 class="hide">경로 목록</h1>
+				<div class="wrapper">
+					<section>
+						<h1 class="hide">경로 목록 표</h1>
+						<table>
+							<thead>
+								<tr>
+									<td>출발</td>
+									<td>도착</td>
+									<td>요일</td>
+									<td>알림설정</td>
+								</tr>
+							</thead>
+							<tbody>
+								<%for(Course course : list ){ %>
+								<tr>
+									<td><span><%=course.getHome() %></span><br /><%=course.getStartingTime() %></td>
+									<td><span><%=course.getWorkplace() %></span><br /><%=course.getEndingTime() %></td>
+									<td><%=course.getWeek() %></td>
+									<td>
+										<label class="switch">
+										<%if(course.getStartingAlarm().equals("Y") ||
+												course.getEndingAlarm().equals("Y")
+											){  
+										%>
+										  <input type="checkbox" checked>
+										  <%} else{ %>
+										  <input type="checkbox" >
+										  <%} %>
+										  <span class="slider round"></span>
+										</label>
+									</td>
+								</tr>
+								<%} %>
+							</tbody>
+						</table>
+						<br />
+						<br />
+						<br />
+						<div id="plus"></div>
+					</section>				
+				</div>	
+			</aside> 
+		</main>	
+		<aside id="bottom-menu">
+			<h1 class="hide">하단 메뉴</h1>
+			<ul>
+				<li><a href="1">홈</a></li>
+				<li><a href="2">위치</a></li>
+				<li><a href="3">알람</a></li>
+				<li><a href="4">설정</a></li>
+			</ul>
+		</aside>
+	</div>
+</div>
 </body>
 </html>

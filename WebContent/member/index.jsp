@@ -172,7 +172,7 @@
 				</div>																			
 			</aside>
 		</main>	
-		<aside id="bottom-menu">
+		<nav id="bottom-menu">
 			<h1 class="hide">하단 메뉴</h1>
 			<ul>
 				<li><a href="1">홈</a></li>
@@ -180,7 +180,7 @@
 				<li><a href="3">알람</a></li>
 				<li><a href="4">설정</a></li>
 			</ul>
-		</aside>
+		</nav>
 	</div>
 </div>
 </body>

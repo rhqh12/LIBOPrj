@@ -41,7 +41,12 @@ public class CourseService {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		Course course = new Course();
-		String sql = "select * from course where id = ? order by id";
+		String sql = "select\r\n" + 
+				"ID, to_char(STARTING_TIME, 'HH24:MI') STARTING_TIME, STARTING_ALARM, WORKPLACE, \r\n" + 
+				"WORKPLACE_ADDRESS, to_char(ENDING_TIME, 'HH24:MI') ENDING_TIME, ENDING_ALARM, HOME, \r\n" + 
+				"HOME_ADDRESS, WEEK, WRITER_ID, DUE_DATE\r\n" + 
+				"from course\r\n" + 
+				"where id = ?";
 		try {
 			conn = DBConn.getConnection();
 			ps = conn.prepareStatement(sql);
@@ -79,7 +84,9 @@ public class CourseService {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Course> list = new ArrayList<Course>();
-		String sql = "select * from course where writer_id = ? order by id";
+		String sql = "select ID,  to_char(STARTING_TIME, 'HH24:MI') STARTING_TIME, STARTING_ALARM, WORKPLACE, WORKPLACE_ADDRESS, to_char(ENDING_TIME, 'HH24:MI') ENDING_TIME,\r\n" + 
+				"ENDING_ALARM, HOME, HOME_ADDRESS, WEEK, WRITER_ID, DUE_DATE \r\n" + 
+				"from course where WRITER_ID = ? order by id";
 		try {
 			conn = DBConn.getConnection();
 			ps = conn.prepareStatement(sql);
