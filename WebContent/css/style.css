@@ -23,8 +23,8 @@ h1, p, figure {margin:0px;}
 	background-size:cover;	     
 }
 .full-container {
-	height: calc(100% - 60px);	
 	background:rgba(255,255,255,0.7);
+	height: calc(100% - 60px);	
 }
 .container {
 	padding:10px;
