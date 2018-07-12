@@ -22,7 +22,7 @@ h1, p, figure {margin:0px;}
 	background:url(../images/bg-1.jpg) no-repeat;
 	background-size:cover;	     
 }
-.full-container{
+.full-container {
 	height: calc(100% - 60px);	
 	background:rgba(255,255,255,0.7);
 }
