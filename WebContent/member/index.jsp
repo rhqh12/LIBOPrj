@@ -1,5 +1,37 @@
+<%@page import="javax.xml.xpath.XPath"%>
+<%@page import="javax.xml.xpath.XPathFactory"%>
+<%@page import="com.libo.web.api.APIExamSearchNews"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+APIExamSearchNews api = new APIExamSearchNews();
+
+StringBuffer list = new StringBuffer();
+list = api.getNews("자바");
+
+XPath xpath = XPathFactory.newInstance().newXPath();
+		
+/* for(Object list: arr){
+    if ( o instanceof JSONObject ) {
+        parse((JSONObject)o);
+    }
+} */
+/* import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+String jsonStr = "{"
+			+ "		code:'1000',"
+			+ "		name:'포도'"
+			+ "}"
+			;
+
+JSONParser parser = new JSONParser();
+Object obj = parser.parse( jsonStr );
+JSONObject jsonObj = (JSONObject) obj;
+
+String code = (String) jsonJob.get("code");
+String name = (String) jsonJob.get("code"); */
+%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -128,6 +160,7 @@
 				<div class="wrapper">
 					<figure><img src="../images/main-article-thumb.jpg"></figure>
 					<article>
+						<%=list %>
 						<a href="">
 							<h1>귀는 생의 찬미를 듣는다</h1>
 							<p>구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는 이구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는 이</p>
