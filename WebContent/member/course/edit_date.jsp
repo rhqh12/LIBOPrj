@@ -22,139 +22,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <title>출/퇴근 알림 설정</title>
-<link rel="stylesheet" type="text/css" href="../../css/style.css"">
-<style>
+<link rel="stylesheet" type="text/css" href="../../css/style.css">
+<style> 
 
-body {margin:0px;}
-ul {margin:0px; padding:0px;}
-li {list-style: none;}
-h1, p, figure{margin:0px;}
-
-/* ---------------------- reset --------------------*/
-
-/* ---------------------- reset --------------------*/
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px; 
-}
-
-.switch input {display:none;}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-} 
-
-/* ----------------- 토글 스위치  ----------------- */
-
-.hide{display:none}
-
-.content-container {
-	height: 100%;
-	margin-left: auto;
-	margin-right: auto;
-}  
-
-.full-container{
-	width:100%;
-	margin:0px auto;
-	padding-bottom:60px;
-}
-
-#body{
-    overflow-y: auto;
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	background:url(../../images/bg.jpg) no-repeat;
-	background-size:cover;	
-}
-
-	#header {
-		height: 60px; 
-		box-sizing: content-box; 
-		background:rgba(255,255,255,0.6);
-		font-size: 0.9em;
-	}
-
-		#header .content-container {
-			display: flex;
-		}  
-	
-			#header section:nth-child(1){
-				width : 95%;
-				padding: 15px;  
-			}
-			#header section:nth-child(2){
-				padding: 15px;    
-			}
-			
-			#header section:nth-child(2) input{
-				border: none;
-				width: 50px; 
-				height: 30px;
-				background: #e0e0e0;
-				border-radius: 10px;
-			}
-		
 		#alert-setting{
-			height: 200px;		
+			height: 200px;
 		}
 		
 		#time-setting{
 			height: 450px;
 		}
 		  
-		.setting-box{
+		.setting-box{ 
 			box-sizing: border-box;
-			margin-top : 20px; 
-			background:rgba(255,255,255,0.6);
-		}
+			padding: 20px 10px;  
+		}  
 		
 			.setting-box > div{
    				border-top: 1px solid gray;
@@ -162,12 +44,18 @@ input:checked + .slider:before {
    				height: 42px;
    				display: flex; 
    				align-items:center;
-   				padding: 15px 15px 15px 20px;	
+   				padding: 30px 15px 30px 20px;	
 				font-size: 0.8em;   
-			}
+			} 
 			 
 			.setting-box > div:nth-child(2){
-				height: 25px;
+				background : rgba(211,211,224, 0.9);
+			}
+			
+			.setting-box > div:nth-child(2) > h1{
+				font-size: 1.4em; 
+				height: 15px;
+    
 			}  
 			
 			.setting-box div:nth-child(3)>div:first-child, 
@@ -193,15 +81,16 @@ input:checked + .slider:before {
 				font-weight: bold;
 			}
 					
-	#button-box{
-		background: none;  
-		border: none;
-		width: 300px; 
-		margin: 0 auto;
-		text-align: center; 
-		margin-top : 80px;
-		display: block; 
-	} 
+#button-box{
+	background: none;  
+	border: none;
+	width: 300px; 
+	margin: 0 auto;
+	text-align: center; 
+	margin-top : 80px;
+	display: block; 
+	box-sizing: content-box;
+} 
 	 
 	#button-box input{  
 		width: 100px;    
@@ -212,15 +101,14 @@ input:checked + .slider:before {
 		border-radius: 15px;
 		font-size: 1.6em;
 	} 
-			
 
 </style>
 </head>
 <body>	
-<div id="body">
+<div id="body" class="full-screen">
 	<!-- header 영역 -->
 	<header id="header">
-		<div class="content-container clearfix">
+		<div class="content-container">
 			<section>
 				<h1>&lt; 출/퇴근 알림 설정</h1>
 			</section>
@@ -285,18 +173,9 @@ input:checked + .slider:before {
 					<input type="button" value="저장" />
 				</div>
 			</section>
-		</main>	
-		
-		<aside id="bottom-menu">
-			<h1 class="hide">하단 메뉴</h1>
-			<ul>
-				<li><a href="1">홈</a></li>
-				<li><a href="2">위치</a></li>
-				<li><a href="3">알람</a></li>
-				<li><a href="4">설정</a></li>
-			</ul>
-		</aside>
 	</div>
+	<!-- menu -->
+	<jsp:include page="../../inc/bottom_menu.jsp" />
 </div>
 </body>
 </html>
