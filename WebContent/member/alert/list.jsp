@@ -17,6 +17,9 @@ List<Alert> list = service.getAlertList("test");
 <title>알람</title>
 <link href="../../css/style.css" type="text/css" rel="stylesheet"/>
 <style>
+#alert-list{
+	overflow-y:auto;
+}
 #alert-list h1 {
 	display:none;
 }
@@ -42,7 +45,7 @@ List<Alert> list = service.getAlertList("test");
 </style>
 </head>
 <body>
-<div id="body" class="full-screen">	
+<div id="body" class="full-screen bg-morning">	
 	<!-- header 영역11 -->
 	<header id="header">
 		<div class="content-container clearfix">
@@ -55,7 +58,7 @@ List<Alert> list = service.getAlertList("test");
 		</div>
 	</header>		
 	<!-- main 영역 -->
-	<main id="main" class="full-container">
+	<main id="main" class="full-container bg-white">
 		<section id="alert-list">
 			<h1>알람 표</h1>
 			<table>
