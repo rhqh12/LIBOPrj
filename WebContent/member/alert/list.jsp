@@ -43,7 +43,7 @@ List<Alert> list = service.getAlertList("test");
 </head>
 <body>
 <div id="body" class="full-screen">	
-	<!-- header 영역 -->
+	<!-- header 영역11 -->
 	<header id="header">
 		<div class="content-container clearfix">
 			<section>
