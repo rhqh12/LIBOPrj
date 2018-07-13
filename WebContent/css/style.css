@@ -1,9 +1,28 @@
 @charset "UTF-8";
 * {box-sizing: border-box;}
-ul {margin:0px; padding:0px;}
+html, body, ul, h1, p, figure {margin:0px; padding:0px;}
 li {display: block;}
-h1, p, figure {margin:0px;}
 .hide{display:none}
+
+/* ---------- bg ---------------*/
+.bg-white {
+	background:rgba(255,255,255,0.7);
+}
+.bg-black {
+	background:rgba(0,0,0,0.7)
+}
+.bg-morning{
+	background:url(../images/bg-morning.jpg) no-repeat;
+	background-size:cover;
+}
+.bg-after{
+	background:url(../images/bg-after.jpg) no-repeat;
+	background-size:cover;	
+}
+.bg-night{
+	background:url(../images/bg-night.jpg) no-repeat;
+	background-size:cover;	
+}
 
 /* ---------- layout -----------*/
 .full-screen {
@@ -19,19 +38,22 @@ h1, p, figure {margin:0px;}
     overflow-x:hidden;
     overflow-y:auto;
     padding-bottom:60px;
-	background:url(../images/bg-1.jpg) no-repeat;
-	background-size:cover;	     
 }
 .full-container {
-	background:rgba(255,255,255,0.7);
 	height: calc(100% - 60px);	
 }
+
 .container {
 	padding:10px;
 	margin:10px 10px 0px;
 	border:1px solid #ccc;
-	background:rgba(255,255,255,0.7)
 }
+
+.cont-scroll {
+	overflow-y:scroll;
+	height: calc(100% - 100px);	
+}
+
 /* ------------------ header ----------------- */
 #header {
 	height: 60px; 
