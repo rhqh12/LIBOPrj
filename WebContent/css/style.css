@@ -4,7 +4,7 @@ html, body, ul, h1, p, figure {margin:0px; padding:0px;}
 li {display: block;}
 .hide{display:none}
 
-/* ---------- bg ---------------*/
+/* ---------- bg style ---------------*/
 .bg-white {
 	background:rgba(255,255,255,0.7);
 }
