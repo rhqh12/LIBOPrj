@@ -40,11 +40,8 @@ String name = (String) jsonJob.get("code"); */
 <title>회원 메인 페이지</title>
 <link href="../css/style.css" type="text/css" rel="stylesheet"/>
 <style>
-.container {
-	padding:10px;
-	margin:10px 10px 0px;
-	border:1px solid #ccc;
-	background:rgba(255,255,255,0.7)
+#main {
+	height: calc(100% - 115px)
 }
 #info-weather{
 	position:relative;
@@ -113,7 +110,7 @@ String name = (String) jsonJob.get("code"); */
 </style>
 </head>
 <body>	
-<div id="body" class="full-screen">
+<div id="body" class="full-screen bg-morning">
 	<aside id="info-weather" class="container">
 		<h1 class="hide">날씨 안내</h1>
 		<img src="../images/icon-face.png" alt="웃는 아이콘 "/>
@@ -125,7 +122,7 @@ String name = (String) jsonJob.get("code"); */
 		<span>버스 이미지</span>
 		<span>버스 도착 </span>
 	</aside>
-	<main id="main" class="container">
+	<main id="main" class="container cont-scroll">
 		<h1 class="hide">리보 회원 메인 페이지</h1>
 		<aside id="today-letter">
 			<h1>오늘의 영어</h1>
@@ -169,6 +166,24 @@ String name = (String) jsonJob.get("code"); */
 					</a>
 				</article>
 			</div>
+			<div class="wrapper">
+				<figure><img src="../images/main-article-thumb.jpg"></figure>
+				<article>
+					<a href="">
+						<h1>귀는 생의 찬미를 듣는다</h1>
+						<p>구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는 이구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는 이</p>
+					</a>
+				</article>
+			</div>
+			<div class="wrapper">
+				<figure><img src="../images/main-article-thumb.jpg"></figure>
+				<article>
+					<a href="">
+						<h1>귀는 생의 찬미를 듣는다</h1>
+						<p>구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는 이구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는 이</p>
+					</a>
+				</article>
+			</div>						
 			<div class="wrapper">
 				<figure><img src="../images/main-article-thumb.jpg"></figure>
 				<article>
