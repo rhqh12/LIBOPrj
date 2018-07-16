@@ -51,6 +51,35 @@ li {display: block;}
 	overflow-y:auto;
 	height: 100%;	
 }
+/*------- list -------------------------------*/
+.list {
+	margin:0px 10px;
+}
+	.list li {
+		display:flex;
+	}
+	.list .col-au{
+		flex-grow: 1;
+	}
+	.list .col-sm{
+		width:100px;
+	}
+	.list .col-xs{
+		width:70px;
+	}
+	.list.set .switch {
+		vertical-align: middle;
+	}
+	.list.set li {
+		height:50px;
+		line-height:50px;
+		vertical-align: middle;
+	}
+		.list.set .col-week {
+			padding-right:10px;
+			text-align:right;
+		}
+
 /*------- flex -------------------------------*/
 .flex-container {
     display: -webkit-flex;

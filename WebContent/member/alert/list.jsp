@@ -17,31 +17,9 @@ List<Alert> list = service.getAlertList("test");
 <title>알람</title>
 <link href="../../css/style.css" type="text/css" rel="stylesheet"/>
 <style>
-#alert-list{
-	overflow-y:auto;
-}
 #alert-list h1 {
 	display:none;
 }
-#alert-list thead{
-	display:none;
-}
-#alert-list table {
-	width:100%;
-	table-layout: fixed;
-}
-#alert-list .time {
-	width:100px;
-	text-align: center;
-}
-#alert-list .week {
-    width: calc(100% - 170px);
-}
-#alert-list .switch {
-	width:70px;
-	text-align: center;
-}
-
 </style>
 </head>
 <body>
@@ -59,26 +37,114 @@ List<Alert> list = service.getAlertList("test");
 	</header>		
 	<!-- main 영역 -->
 	<main id="main" class="full-container bg-white">
-		<section id="alert-list">
+		<section id="alert-list" class="cont-scroll">
 			<h1>알람 표</h1>
-			<table>
-				<thead>
-					<tr>
-						<td class="time">시간</td>
-						<td class="week">요일</td>
-						<td class="switch">알람 설정</td>
-					</tr>
-				</thead>
-				<tbody>
-					<% for(Alert alert : list) { %>
-					<tr>
-						<td class="time"><%=alert.getTime()%></td>
-						<td class="week"><%=alert.getWeek()%></td>
-						<td class="switch"><label class="switch"><input type="checkbox"><span class="slider round"></span></label></td>
-					</tr>
-					<% } %>
-				</tbody>
-			</table>
+			<ul class="list set">
+				<% for(Alert alert : list) { %>
+				<li>
+					<div class="col-sm">
+						오전 <span>6:30</span>
+					</div>
+					<div class="col-au col-week">
+						<%=alert.getWeek()%>
+					</div>
+					<div class="col-xs">
+						<label class="switch"><input type="checkbox"><span class="slider round"></span></label>
+					</div>
+				</li>
+				<% } %>
+				<% for(Alert alert : list) { %>
+				<li>
+					<div class="col-sm">
+						오전 <span>6:30</span>
+					</div>
+					<div class="col-au col-week">
+						<%=alert.getWeek()%>
+					</div>
+					<div class="col-xs">
+						<label class="switch"><input type="checkbox"><span class="slider round"></span></label>
+					</div>
+				</li>
+				<% } %>
+				<% for(Alert alert : list) { %>
+				<li>
+					<div class="col-sm">
+						오전 <span>6:30</span>
+					</div>
+					<div class="col-au col-week">
+						<%=alert.getWeek()%>
+					</div>
+					<div class="col-xs">
+						<label class="switch"><input type="checkbox"><span class="slider round"></span></label>
+					</div>
+				</li>
+				<% } %>
+				<% for(Alert alert : list) { %>
+				<li>
+					<div class="col-sm">
+						오전 <span>6:30</span>
+					</div>
+					<div class="col-au col-week">
+						<%=alert.getWeek()%>
+					</div>
+					<div class="col-xs">
+						<label class="switch"><input type="checkbox"><span class="slider round"></span></label>
+					</div>
+				</li>
+				<% } %>
+				<% for(Alert alert : list) { %>
+				<li>
+					<div class="col-sm">
+						오전 <span>6:30</span>
+					</div>
+					<div class="col-au col-week">
+						<%=alert.getWeek()%>
+					</div>
+					<div class="col-xs">
+						<label class="switch"><input type="checkbox"><span class="slider round"></span></label>
+					</div>
+				</li>
+				<% } %>
+				<% for(Alert alert : list) { %>
+				<li>
+					<div class="col-sm">
+						오전 <span>6:30</span>
+					</div>
+					<div class="col-au col-week">
+						<%=alert.getWeek()%>
+					</div>
+					<div class="col-xs">
+						<label class="switch"><input type="checkbox"><span class="slider round"></span></label>
+					</div>
+				</li>
+				<% } %>
+				<% for(Alert alert : list) { %>
+				<li>
+					<div class="col-sm">
+						오전 <span>6:30</span>
+					</div>
+					<div class="col-au col-week">
+						<%=alert.getWeek()%>
+					</div>
+					<div class="col-xs">
+						<label class="switch"><input type="checkbox"><span class="slider round"></span></label>
+					</div>
+				</li>
+				<% } %>
+				<% for(Alert alert : list) { %>
+				<li>
+					<div class="col-sm">
+						오전 <span>6:30</span>
+					</div>
+					<div class="col-au col-week">
+						<%=alert.getWeek()%>
+					</div>
+					<div class="col-xs">
+						<label class="switch"><input type="checkbox"><span class="slider round"></span></label>
+					</div>
+				</li>
+				<% } %>																												
+			</ul>
 		</section>
 	</main>
 	<jsp:include page="../../inc/bottom_menu.jsp"></jsp:include>
