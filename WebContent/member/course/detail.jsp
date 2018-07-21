@@ -3,22 +3,6 @@
 <%@page import="com.libo.web.service.member.CourseService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
-	
-<%
-
-	long courseId = 1L;
-	String courseId_ = request.getParameter("courseId");
-	
-	if(courseId_ != null && !courseId_.equals("")){
-		courseId = Long.parseLong(courseId_);
-	}
-
-	CourseService courseService = new CourseService();
-	Course course = courseService.getCourse(courseId);
-
-%>
-	
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,8 +23,8 @@
 #time-setting{
 	height: 200px;
 	box-sizing: border-box;
-	margin-top : 20px; 
-	background:rgba(255,255,255,0.6);
+	padding-top : 20px; 
+	/* background:rgba(255,255,255,0.6); */
 }
 
 	#time-setting > div{
@@ -51,9 +35,9 @@
 	#time-info {
 		border-top: 2px solid gray;	 
 		display: flex;
-		justify-content: center; 
+		justify-content: center;
 	}
-	
+	 
 	#time-info > div{
 		box-sizing : border-box;
 		width: 33%; 
@@ -72,12 +56,19 @@
 		align-items:center;
 		width: 100%;
 		justify-content: center;
-		margin-top : 10px;
+		margin : 10px 0px;
+		
 	}
 	
-	#time-info span:nth-child(2){
+	.info-md{
 		font-size: 2em; 
-		font-weight: bolder; 
+		font-weight: bolder;
+	}
+	
+	.info-sm{
+		font-size: 1.3em; 
+		font-weight: bolder;
+		
 	}
 	
 	#time-info div img{
@@ -93,7 +84,7 @@
 
 	#course-setting{
 		margin-top : 20px; 
-		background:rgba(255,255,255,0.6);
+		/* background:rgba(255,255,255,0.6); */
 		height: 300px;
 		box-sizing: border-box;
 	}
@@ -101,6 +92,7 @@
 		#course-setting>div{
 			box-sizing : border-box;
 			padding: 15px; 
+			margin-top: 50px;
 		} 
 		
 		#course-setting table{
@@ -113,8 +105,7 @@
 </style>
 </head>
 <body>	
-<div id="body" class="full-screen">
-
+<div id="body" class="full-screen bg-morning">
 	<!-- header 영역 -->
 	<header id="header">
 		<div class="content-container">
@@ -142,7 +133,7 @@
 							<span><img alt="" src="../../images/yellow-sun.gif"></span>
 							<span>출근</span>
 						</div>
-						<span><%=course.getStartingTime() %></span>
+						<span class="info-md">${c.startingTime}</span>
 					</div>
 					
 					<div>
@@ -150,15 +141,14 @@
 							<span><img alt="" src="../../images/blue-mon.png"></span>
 							<span>퇴근</span>
 						</div>
-						<span><%=course.getEndingTime() %></span>
+						<span class="info-md">${c.endingTime}</span>
 					</div>
-					
 					<div>
 						<div>
 							<span><img alt="" src="../../images/cal.png"></span>
-							<span>출근</span>
+							<span>출근</span> 
 						</div>
-						<span>월-금</span><!-- ?? -->
+						<span class="info-sm">${c.week}</span>
 					</div>
 				</div>
 			</section>
@@ -169,11 +159,11 @@
 					<table>
 						<tr>
 							<th>출근</th>
-							<td><%=course.getWorkplace() %></td>
+							<td>${c.workplace}</td>
 						</tr>
 						<tr>
 							<th>퇴근</th>
-							<td><%=course.getHomeAddress() %></td>
+							<td>${c.homeAddress}</td>
 						</tr>
 					</table>
 				</div> 

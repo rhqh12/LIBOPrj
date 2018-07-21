@@ -7,106 +7,48 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <title>회원 메인 페이지</title>
-<link rel="stylesheet" type="text/css" href="../../css/style.css"">
+<link rel="stylesheet" type="text/css" href="../../css/style.css">
 <style>
 
-body {margin:0px;}
-ul {margin:0px; padding:0px;}
-li {list-style: none;}
-h1, p, figure{margin:0px;}
-
-/*------------ reset -------------*/
-
-.hide{display:none}
-
-.content-container {
-	height: 100%;
-	margin-left: auto;
-	margin-right: auto;
-}  
-
 .full-container{
-	width:100%;
-	margin:0px auto;
-	padding-bottom:60px;
+	background: none;
 }
 
-#body{
-    overflow-y: auto;
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	background:url(../../images/bg.jpg) no-repeat;
-	background-size:cover;	
-}
-
-	#header {
-		height: 60px; 
-		box-sizing: content-box; 
-		background: #dddddf;  
-		font-size: 0.9em;
-	}
-
-		#header .content-container {
-			display: flex;
-		}  
-	
-			#header section:nth-child(1){
-				width : 95%;
-				padding: 15px;  
-			}
-			#header section:nth-child(2){
-				padding: 15px;   
-			}
-	
-				#header section:nth-child(2) div{  
-					width : 29px; 
-					height : 29px;
-					background: url("../../images/menu.png") no-repeat center;
-					background-size: cover; 
-				}
-	
-	#main{
-		border:1px solid #ccc; 
-		background:rgba(255,255,255,0.6);
-	}
-	
-	#search-form{  
-		box-sizing : border-box;
-		padding : 15px 20px;
-		height: 80px;
-		display: flex;
-	}  
+#search-form{  
+	box-sizing : border-box;
+	padding : 25px 20px;
+	height: 80px;
+}  
 	 
 	#search-form form{  
-		width: 100%;
+		display: flex;	
 	}
 	  
 	#search-form input[type=text]{
-		width : 80%;
+		width : 85%;
 		border: 1px solid #cccccc;
-		height: 25px;
 		border-radius: 2px;
-		padding: 5px;
+		 padding: 5px; 
+		margin-right : 10px; 
 	}
 	
-	#search-form input[type=button]{
-		box-sizing : content-box;
-		border: 1px solid #cccccc;
-		height: 25px;
+	#search-form form div{
+ 		height: 30px;  
+		width : 30px;
+		flex-grow : 1;
 		border-radius: 2px;
-		padding: 5px;
-		display: inline-flex; 
+		background: url("../../images/zoom.png") no-repeat center;
+		background-size : contain;
+		cursor: pointer;
 	}
-
-
+	
 </style>
 </head>
 <body>	
-<div id="body">
-	<!-- header 영역 -->
+<div id="body" class="full-screen bg-morning">
+	<!-- 페이지 공통 header -->
 	<header id="header">
-		<div class="content-container clearfix">
+		<div class="content-container">
 			<section>
 				<h1>&lt; 경로 알림 설정</h1>
 			</section>
@@ -114,33 +56,35 @@ h1, p, figure{margin:0px;}
 				<div></div>
 			</section>
 		</div>
-	</header>	
+	</header>
+	<!-- 페이지 공통 header -->
 	
 	<div class="full-container">
-		<main id="main">
-			<h1 class="hide">검색</h1>
-			<section id="search-form">
-				<h1 class="hide">검색폼</h1>
-				<form action="" method="get">
-					<input type="text" placeholder="내용을 입력해주세요" />
-					<input type="button" />
-				</form>
-			</section>
-			<section>
-				<h1 class="hide">검색 결과</h1>
-				<div></div>			
-			</section>
-		</main>	
-		<aside id="bottom-menu">
-			<h1 class="hide">하단 메뉴</h1>
-			<ul>
-				<li><a href="1">홈</a></li>
-				<li><a href="2">위치</a></li>
-				<li><a href="3">알람</a></li>
-				<li><a href="4">설정</a></li>
-			</ul>
+		<aside id="search-form" class="container">
+			<h1 class="hide">검색폼</h1>
+			<form action="" method="get">
+				<input type="text" placeholder="내용을 입력해주세요">
+				<div></div>
+			</form>
 		</aside>
+		
+		<main id="main" class="container cont-scroll">
+			<aside id="list-article">
+				<h1 class="hide">주소 목록</h1>
+				<div class="wrapper">
+					<article>
+						<a href="">
+							<h1>귀는 생의 찬미를 듣는다</h1>
+							<p>구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는 이구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는 이</p>
+						</a>
+					</article>
+				</div>	
+			</aside>
+		</main>
+		
 	</div>
+	<!-- menu -->
+	<jsp:include page="../../inc/bottom_menu.jsp" />
 </div>
 </body>
 </html>

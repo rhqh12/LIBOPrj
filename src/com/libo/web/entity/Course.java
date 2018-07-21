@@ -2,7 +2,7 @@ package com.libo.web.entity;
 
 public class Course {
 
-	private int id;
+	private long id;
 	private String startingTime;
 	private String startingAlarm;
 	private String workplace;
@@ -17,8 +17,14 @@ public class Course {
 
 	public Course() {
 	}
+	
+	public Course(long id, String startingAlarm, String endingAlarm) {
+		this.id = id;
+		this.startingAlarm = startingAlarm;
+		this.endingAlarm = endingAlarm;
+	}
 
-	public Course(int id, String startingTime, String startingAlarm, String workplace, String workplaceAddress,
+	public Course(long id, String startingTime, String startingAlarm, String workplace, String workplaceAddress,
 			String endingTime, String endingAlarm, String home, String homeAddress, String week, String writerId,
 			String dueDate) {
 		this.id = id;
@@ -35,11 +41,11 @@ public class Course {
 		this.dueDate = dueDate;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

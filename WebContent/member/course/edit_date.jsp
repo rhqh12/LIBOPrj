@@ -105,7 +105,7 @@
 </style>
 </head>
 <body>	
-<div id="body" class="full-screen">
+<div id="body" class="full-screen bg-morning">
 	<!-- header 영역 -->
 	<header id="header">
 		<div class="content-container">
@@ -115,7 +115,7 @@
 		</div>
 	</header>	
 	
-	<div class="full-container">
+	<div class="full-container bg-white">
 		<main id="main">
 			<h1 class="hide">설정</h1>
 			<section id="alert-setting" class="setting-box">

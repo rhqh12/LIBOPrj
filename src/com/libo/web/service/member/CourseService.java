@@ -134,7 +134,7 @@ public class CourseService {
 		try {
 			conn = DBConn.getConnection();
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, course.getId()); // 매개변수 (순번, 넣을 값)
+			ps.setLong(1, course.getId()); // 매개변수 (순번, 넣을 값)
 			ps.setString(2, course.getStartingTime());
 			ps.setString(3, course.getStartingAlarm());
 			ps.setString(4, course.getWorkplace());
@@ -177,7 +177,7 @@ public class CourseService {
 			ps.setString(7, course.getHome());
 			ps.setString(8, course.getHomeAddress());
 			ps.setString(9, course.getWeek());
-			ps.setInt(10, course.getId());
+			ps.setLong(10, course.getId());
 			int cnt = ps.executeUpdate();
 			if (cnt == 1)
 				System.out.println("성공");
@@ -186,13 +186,13 @@ public class CourseService {
 		} finally {
 			DBConn.close(conn, ps);
 		}
-
 	}
 
-	public void updateCourseAlarm(Course course) {
+	public int updateCourseAlarm(Course course) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		String sql = "";
+		int cnt = 0;
 		sql += "UPDATE COURSE SET \n";
 		sql += "STARTING_ALARM = ?,ENDING_ALARM = ? \n";
 		sql += "WHERE ID = ?";
@@ -201,32 +201,31 @@ public class CourseService {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, course.getStartingAlarm());
 			ps.setString(2, course.getEndingAlarm());
-			ps.setInt(3, course.getId());
-			int cnt = ps.executeUpdate();
-			if (cnt == 1)
-				System.out.println("성공");
+			ps.setLong(3, course.getId());
+			cnt = ps.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		} finally {
 			DBConn.close(conn, ps);
 		}
-
+		return cnt;
 	}
 
 	public void deleteCourse(long[] id) {
+		
 		Connection conn = null;
 		PreparedStatement ps = null;
+		
 		String sql = "";
 		sql += "DELETE FROM COURSE \n";
 		sql += "WHERE ID = ? \n";
+		
 		try {
 			conn = DBConn.getConnection();
 			ps = conn.prepareStatement(sql);
 			for (int i = 0; i < id.length; i++) {
 				ps.setLong(1, id[i]);
-				int cnt = ps.executeUpdate();
-				if (cnt == 1)
-					System.out.println("성공");
+				ps.executeUpdate();
 			}
 		} catch (Exception e) {
 			System.out.println(e.toString());
