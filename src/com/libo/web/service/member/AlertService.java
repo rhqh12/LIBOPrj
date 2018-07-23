@@ -12,7 +12,7 @@ import com.libo.web.util.DBConn;
 
 public class AlertService {
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		AlertService alertService = new AlertService();
 		// insert
 		Alert alert = new Alert();
@@ -43,7 +43,7 @@ public class AlertService {
 		//1개만 select
 		alertService.getAlert(1);
 
-	}
+	}*/
 
 	// 목록
 	public List<Alert> getAlertList(String memberId) {
@@ -104,7 +104,7 @@ public class AlertService {
 						  rs.getString("WRITER_ID")
 						);				
 			}
-			System.out.println(alert.toString());
+			//System.out.println(alert.toString());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -118,17 +118,16 @@ public class AlertService {
 		Connection conn = null;
 		PreparedStatement ps = null;
 
-		String sql = "INSERT INTO ALERT(ID, WEEK, TIME, SPECIFIC_DATE, DUE_DATE, WRITER_ID) VALUES(?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO ALERT(ID, WEEK, TIME, SPECIFIC_DATE, DUE_DATE, WRITER_ID) VALUES(NO_SEQ.NEXTVAL, ?, ?, ?, ?, ?)";
 
 		try {
 			conn = DBConn.getConnection();
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, alert.getId()); // 매개변수 (순번, 넣을 값)
-			ps.setString(2, alert.getWeek());
-			ps.setString(3, alert.getTime());
-			ps.setString(4, alert.getSpecificDate());
-			ps.setString(5, alert.getDueDate());
-			ps.setString(6, alert.getWriterId());
+			ps.setString(1, alert.getWeek());
+			ps.setString(2, alert.getTime());
+			ps.setString(3, alert.getSpecificDate());
+			ps.setString(4, alert.getDueDate());
+			ps.setString(5, alert.getWriterId());
 			int cnt = ps.executeUpdate();
 
 			if (cnt == 1)
