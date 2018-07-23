@@ -148,6 +148,11 @@ $(document).ready(function(){
 		updateAlram(this);
 	});
 	
+	$(".delete-check").on("click", function(event){
+		deleteCheck(this);
+		event.stopPropagation();
+	});
+	
 });
 
 function moveDetail(element){
@@ -233,13 +238,10 @@ function deleteCheck(element){
 	//element의 check박스를 빼던가 하자.
 	if(element != undefined){
 		var checkbox = $(element).children("div").eq(0).children('input');
-		if($(checkbox).is(":checked")){
+		if($(checkbox).is(":checked"))
 			$(checkbox).prop('checked', false);
-			alert('해제');
-		} else{
+		else
 			$(checkbox).prop('checked', true);
-			alert('선택');
-		}
 	}
 	
 	if($(".delete-check").is(":checked")){
