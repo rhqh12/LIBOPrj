@@ -112,6 +112,7 @@
 	width: 20px;
 	height: 20px;
 	display: none;
+	margin-right : 20px;
 }
 
 </style>
@@ -166,19 +167,23 @@ function showDelete(){
 	$("#sub-menu").show(200);//속성 바꿔라
 	$("#sub-box").hide();
 	
+	$(".switch-item").hide(200); // 스위치 버튼 숨기기 //23
+	
 	// 이벤트를 바꿔준다.
 	$(".list-item").off();
-	$(".list-item").bind("click", function(){
+	$(".list-record").on("click", function(){
 		deleteCheck(this);
+		
+		///####
 	});
 	
 	$("#delete-menu").off();
-	$("#delete-menu").bind("click", function(){
+	$("#delete-menu").on("click", function(){
 		deleteCourse();		
 	});
 	
 	$("#cancel-menu").off();
-	$("#cancel-menu").bind("click", function(){
+	$("#cancel-menu").on("click", function(){
 		//모두 되돌리기
 		rollback();
 	});
@@ -189,7 +194,6 @@ function deleteCourse(){
 	if($(".delete-check").is(":checked")){
 		$("#delete-form").submit();
 	} 
-	
 }
 
 function rollback(){
@@ -201,19 +205,21 @@ function rollback(){
 	//지금 추가
 	$("#delete-menu").show(); //삭제 버튼
 	$("#delete-menu").css({"display" : "block"}); //삭제 버튼
+	
+	$(".switch-item").show(200); // 스위치 버튼 보이기 //23
 	 
 	
 	$("#delete-menu").off();
-	$("#delete-menu").bind("click", function(){
+	$("#delete-menu").on("click", function(){
 		showDelete();
 	});
 	
 	$("#cancel-menu").off();
-	$("#cancel-menu").bind("click", function(){
+	$("#cancel-menu").on("click", function(){
 		$("#sub-menu").hide();
 	});
 	
-	$(".list-item").off();
+	$(".list-record").off();
 	$(".list-item").on("click", function(){
 		moveDetail(this);
 	});
@@ -226,12 +232,16 @@ function rollback(){
 function deleteCheck(element){
 	//element의 check박스를 빼던가 하자.
 	if(element != undefined){
-		var checkbox = $(element).siblings("div").eq(0).children('input');
-		if($(checkbox).is(":checked"))
-			$(checkbox).prop('checked', false);	
-		else
+		var checkbox = $(element).children("div").eq(0).children('input');
+		if($(checkbox).is(":checked")){
+			$(checkbox).prop('checked', false);
+			alert('해제');
+		} else{
 			$(checkbox).prop('checked', true);
+			alert('선택');
+		}
 	}
+	
 	if($(".delete-check").is(":checked")){
 		$("#delete-menu").show(); //삭제 버튼
 		$("#delete-menu").css({"display" : "inline-block"}); //삭제 버튼
@@ -255,9 +265,8 @@ function updateAlram(element){
         url:"updateAlarm",      
         data:params,      
         success:function(s){
-        	alert(s);
         },   
-        error:function(e){alert(e);}  
+        error:function(e){}  
     });  
 }
 
@@ -317,7 +326,7 @@ function updateAlram(element){
 			<form id="delete-form" action="delete" method="post">
 				<ul class="list set">
 				<c:forEach items="${list }" var="c">
-					<li id="${c.id }">
+					<li class="list-record" id="${c.id }"><!-- ### -->
 						<div>
 							<input type='checkbox' class='delete-check' name='delete-id' value="${c.id }">
 						</div>
@@ -332,7 +341,7 @@ function updateAlram(element){
 							${c.week }
 						</div>
 						
-						<div class="col-sm">
+						<div class="col-sm switch-item">
 						<c:choose>
 						    <c:when test="${c.startingAlarm eq 'Y' or c.endingAlarm eq 'Y'}">
 						   		<label class="switch"><input value="${c.id }" class="alarm" type="checkbox" checked><span class="slider round"></span></label>
