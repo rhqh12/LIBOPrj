@@ -10,50 +10,8 @@
 <meta charset="UTF-8">
 <title>알람</title>
 <link href="../../css/style.css" type="text/css" rel="stylesheet"/>
-<script src="//code.jquery.com/jquery-1.11.3.js"></script>
-<script>
-function showDeleteSelectBox(){
-	$(".del-chk").show();
-}
-function deleteAlert(){
-	const checkedLength = $("input[name=id]:checked").length;
-	const list = {};
-	
-	for (var i = 0; i < checkedLength; i++) {
-		list.add($("input[name=id]:checked").eq(i).val());
-	}
-	console.log(list);
-	/* $.ajax({
-		type : 'POST',
-		url : 'delete',
-		data : list,
-		success : function(data) {
-			// 공백 제거
-			data = data.replace(/(^\s*)|(\s*$)/gi, "");
-			alert(data);
-		}
-	}); */
-}
-$(function(){
-	$(".btn-del").click(function(){
-		showDeleteSelectBox();
-		deleteAlert();
-	});
-	/* $(elem).on({
-	    click: function() {
-	    },
-	    mousemove: function() {
-	    },
-	    mouseup: function() {
-	    },
-	    mousedown: function() {
-	    }
-	}, "selector" ); */	
-});
-</script>
 <style>
-#alert-list h1,
-.del-chk {
+#alert-list h1 {
 	display:none;
 }
 #main {
@@ -82,7 +40,7 @@ $(function(){
 				<h1>&lt; 알람설정</h1>
 			</section>
 			<section>
-				<span class="btn-del">삭제</span>
+				<span>삭제 버튼</span>
 			</section>
 		</div>
 	</header>		
@@ -91,20 +49,21 @@ $(function(){
 		<section id="alert-list" class="cont-scroll">
 			<h1>알람 표</h1>
 			<ul class="list set">
-				<c:forEach var="a" items="${list }">
+				<% for(Alert alert : (List<Alert>)request.getAttribute("list")) { %>
 				<li>
-					<input type="checkbox" name="id" value="${a.id}" class="del-chk" />
-					<a href="detail.jsp?id=${a.id}">
+					<a href="detail.jsp?id=<%=alert.getId()%>">
 						<div class="col-sm">
 							오전 <span>6:30</span>
 						</div>
-						<div class="col-au col-week">${a.week}</div>
+						<div class="col-au col-week">
+							<%=alert.getWeek() %>
+						</div>
 						<div class="col-xs">
 							<label class="switch"><input type="checkbox"><span class="slider round"></span></label>
 						</div>
 					</a>
 				</li>
-				</c:forEach>																									
+				<% } %>																											
 			</ul>
 		</section>
 		<aside class="btn-add">

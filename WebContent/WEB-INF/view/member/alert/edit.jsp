@@ -3,11 +3,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	AlertService service = new AlertService();
-	long id =  Long.parseLong(request.getParameter("id"));
-	Alert alert = service.getAlert(id);
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -114,51 +110,61 @@
 		</div>
 	</header>		
 	<!-- main 영역 -->
+	
+	
+	
 	<main id="main" class="full-container bg-white">
-		<aside class="set-date">
-			<h1>날짜 설정</h1>
-			<span>내일 - 6월 22일 (금)</span>
-			<span class="select">날짜 선택</span>
-		</aside>
-		<section class="set-time">
-			<h1>시간 설정</h1>
+		<form action="./edit" method="post">
+			<aside class="set-date">
+				<h1>날짜 설정</h1>
+				<span>내일 - 6월 22일 (금)</span>
+				<span class="select">날짜 선택</span>
+				<input type="hidden" name="week" value="월,화,수,목,금" />
+				<input type="hidden" name="sDate" value="18/06/27" />
+				<input type="hidden" name="dDate" value ="18/06/27" />
+				<input type="hidden" name="time" value="18/06/27" />
+				<input type="hidden" name="id" value="test" />
+			</aside>
+			<section class="set-time">
+				<h1>시간 설정</h1>
+				<div>
+					<span>오전</span>
+					<span>오후</span>
+				</div>
+				<div>
+					<ul>
+						<% for(int i=1; i<=12; i++) { %>
+						<li><%= i%></li>
+						<% } %>
+					</ul>
+				</div>
+				<div>
+					<ul>
+						<% for(int i=1; i<=59; i++) { %>
+						<li><%= i%></li>
+						<% } %>
+					</ul>
+				</div>
+			</section>
+			<section class="set-week">
+				<h1>요일 반복</h1>
+				<ul class="menu-week">
+					<li>일</li>
+					<li>월</li>
+					<li>화</li>
+					<li>수</li>
+					<li>목</li>
+					<li>금</li>
+					<li>토</li>
+				</ul>
+			</section>
 			<div>
-				<span>오전</span>
-				<span>오후</span>
-			</div>
-			<div>
-				<ul>
-					<% for(int i=1; i<=12; i++) { %>
-					<li><%= i%></li>
-					<% } %>
+				<ul class="menu-btn">
+					<li><a href="list">취소</a></li>
+					<li><input type="submit" value="저장하기" /></li>
 				</ul>
 			</div>
-			<div>
-				<ul>
-					<% for(int i=1; i<=59; i++) { %>
-					<li><%= i%></li>
-					<% } %>
-				</ul>
-			</div>
-		</section>
-		<section class="set-week">
-			<h1>요일 반복</h1>
-			<ul class="menu-week">
-				<li>일</li>
-				<li>월</li>
-				<li>화</li>
-				<li>수</li>
-				<li>목</li>
-				<li>금</li>
-				<li>토</li>
-			</ul>
-		</section>
-		<div>
-			<ul class="menu-btn">
-				<li><a href="list">취소</a></li>
-				<li><a href="">수정하기</a></li>
-			</ul>
-		</div>
+		</form>
 	</main>
 	<jsp:include page="../../inc/bottom_menu.jsp"></jsp:include>
 </div>	
