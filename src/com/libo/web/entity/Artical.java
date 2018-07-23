@@ -4,17 +4,20 @@ public class Artical {
 	int id;
 	String subject;
 	String link;
+	String content;
+	String imgSrc;
 	int clicks;
 	int keywordId;
-
-	
-	
-	
-	public Artical(int id, String subject, String link, int clicks, int keywordId) {
+	public Artical() {
+		
+	}
+	public Artical(int id, String subject, String link, String content, String imgSrc, int clicks, int keywordId) {
 		super();
 		this.id = id;
 		this.subject = subject;
 		this.link = link;
+		this.content = content;
+		this.imgSrc = imgSrc;
 		this.clicks = clicks;
 		this.keywordId = keywordId;
 	}
@@ -49,7 +52,19 @@ public class Artical {
 	public void setKeywordId(int keywordId) {
 		this.keywordId = keywordId;
 	}
-
+	
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getImgSrc() {
+		return imgSrc;
+	}
+	public void setImgSrc(String imgSrc) {
+		this.imgSrc = imgSrc;
+	}
 	@Override
 	public String toString() {
 		return "Artical [id=" + id + ", subject=" + subject + ", link=" + link + ", clicks=" + clicks + ", keywordId="
