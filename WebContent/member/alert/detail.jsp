@@ -11,9 +11,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>알람</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <link href="../../css/style.css" type="text/css" rel="stylesheet"/>
+<link href="../../css/timedropper.min.css" type="text/css" rel="stylesheet" />
+<script src="//code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous" ></script>
+<script src="../../js/timedropper.min.js"></script>
+<script>
+//https://felicegattuso.com/projects/timedropper/
+$(document).ready(function(){
+	$( "#time-dropper" ).timeDropper({
+		setCurrentTime:false,
+		meridians:true
+	});
+});
+</script>
 <style>
 #main {
 	position: relative;
@@ -42,28 +55,23 @@
 	border-width:2px 0px;
 	padding:20px 40px;
 }
-	.set-time{
-		display:flex;
-	}
-	.set-time > div{
-		margin:0px 40px;
-		text-align:center;
-	}
-	.set-time > div+div {
-		overflow:hidden;
-		height:92px;
-		margin:0px 20px;
-	}
-	.set-time ul > li{
-		height:30px;
-		line-height:30px;
-		padding:0px 10px;
-		color:#666;
-	}
-	.set-time ul > li:nth-child(2) {
-		border:solid #1c1c1c;
-		border-width:1px 0px;
-		color:#000;
+	.set-time .td-input {
+	    border: 0;
+	    -webkit-appearance: none;
+	    outline: none;
+	    text-align: center;
+	    font-size: 1em;
+	    display: inline-block;
+	    position: relative;
+	    z-index: 2;
+	    font-weight: 700;
+	    padding: 14px;
+	    border-radius: 2px;
+	    box-shadow: 0 0px 0 1px rgb(25, 119, 204);
+	    width: 100%;
+	    background: #FFF;
+	    color: #1977cc;	
+	    cursor: pointer;
 	}
 /*---set-week----------*/
 .set-week{
@@ -122,24 +130,7 @@
 		</aside>
 		<section class="set-time">
 			<h1>시간 설정</h1>
-			<div>
-				<span>오전</span>
-				<span>오후</span>
-			</div>
-			<div>
-				<ul>
-					<% for(int i=1; i<=12; i++) { %>
-					<li><%= i%></li>
-					<% } %>
-				</ul>
-			</div>
-			<div>
-				<ul>
-					<% for(int i=1; i<=59; i++) { %>
-					<li><%= i%></li>
-					<% } %>
-				</ul>
-			</div>
+			<input type="text" class="td-input" id="time-dropper" value="12:00 pm" readonly />
 		</section>
 		<section class="set-week">
 			<h1>요일 반복</h1>

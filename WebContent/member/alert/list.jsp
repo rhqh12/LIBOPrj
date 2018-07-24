@@ -10,46 +10,12 @@
 <meta charset="UTF-8">
 <title>알람</title>
 <link href="../../css/style.css" type="text/css" rel="stylesheet"/>
+<link href="../../css/anypicker.css" type="text/css" rel="stylesheet" />
 <script src="//code.jquery.com/jquery-1.11.3.js"></script>
+<script src="../../js/anypicker.js"></script>
+
 <script>
-function showDeleteSelectBox(){
-	$(".del-chk").show();
-}
-function deleteAlert(){
-	const checkedLength = $("input[name=id]:checked").length;
-	const list = {};
-	
-	for (var i = 0; i < checkedLength; i++) {
-		list.add($("input[name=id]:checked").eq(i).val());
-	}
-	console.log(list);
-	/* $.ajax({
-		type : 'POST',
-		url : 'delete',
-		data : list,
-		success : function(data) {
-			// 공백 제거
-			data = data.replace(/(^\s*)|(\s*$)/gi, "");
-			alert(data);
-		}
-	}); */
-}
-$(function(){
-	$(".btn-del").click(function(){
-		showDeleteSelectBox();
-		deleteAlert();
-	});
-	/* $(elem).on({
-	    click: function() {
-	    },
-	    mousemove: function() {
-	    },
-	    mouseup: function() {
-	    },
-	    mousedown: function() {
-	    }
-	}, "selector" ); */	
-});
+
 </script>
 <style>
 #alert-list h1,

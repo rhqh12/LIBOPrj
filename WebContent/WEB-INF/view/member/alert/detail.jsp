@@ -14,6 +14,9 @@
 <meta charset="UTF-8">
 <title>알람</title>
 <link href="../../css/style.css" type="text/css" rel="stylesheet"/>
+<script src="//code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous" ></script>
+<link href="../../css/timedropper.min.css" type="text/css" rel="stylesheet" />
+<script src="../../js/timedropper.min.js"></script>
 <style>
 #main {
 	position: relative;
