@@ -37,6 +37,7 @@ public class CourseUpdateAlarm extends HttpServlet {
 		
 		int cnt = service.updateCourseAlarm(new Course(id, flag, flag));
 		PrintWriter out = response.getWriter();
+		
 		if(cnt!=0) {
 			out.print("success");
 		} else {
