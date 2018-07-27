@@ -106,12 +106,11 @@ window.addEventListener("load", function(){
 		}
 	);
 	
-	document.querySelector("#plus").onclick = ()=>{ moveDetail(); };
 	sel.subBox.onclick = () => { $(sel.subMenu).show(200); };
-	sel.cancelMenu.onclick = () => { $(sel.subMenu).hide(); };
+	sel.cancelMenu.onclick = () => { hideDelete(); };
 	sel.deleteMenu.onclick = () => { showDelete() };
 	sel.deleteCheck.onclick = (e) => { deleteCheck(this); };
-	
+
 	var alarms = document.querySelectorAll(".alarm");
 	multiOnclicks(alarms, ()=>{ updateAlram(event.target); } ); 
 	
