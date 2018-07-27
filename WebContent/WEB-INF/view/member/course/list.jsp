@@ -8,8 +8,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <title>회원 메인 페이지</title>
 <link rel="stylesheet" type="text/css" href="../../css/style.css">
-<link rel="stylesheet" type="text/css" href="../../css/course.css">
+<link rel="stylesheet" type="text/css" href="../../css/member/course.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous" ></script>
+<script src="../../js/dataMulti.js"></script>
 <style>
 
 #course-list{
@@ -116,163 +117,33 @@
 	margin-right : 20px;
 }
 
+
+
 </style>
-
 <script type="text/javascript">
+window.addEventListener("load", function(){ 
 
-// 스크립트로 이벤트 걸기
-// 페이지 이동 함수 만들기
+	var sel = AlarmSelector();
+	var listRecord = document.querySelectorAll(".list-record");
+	multiOnclicks(listRecord, ()=>{
+			if(getDisplay(sel.subMenu.style.display)) {
+				deleteCheck();
+			} else {
+				if( event.target.classList[0] == "slider" ) return;
+				moveDetail(event.currentTarget);
+			}
+		}
+	);
+	
+	sel.subBox.onclick = () => { $(sel.subMenu).show(200); };
+	sel.cancelMenu.onclick = () => { hideDelete(); };
+	sel.deleteMenu.onclick = () => { showDelete() };
+	sel.deleteCheck.onclick = (e) => { deleteCheck(this); };
 
-$(document).ready(function(){
-	
-	$("#plus").on("click", function(){
-		moveDetail();
-	});
-	
-	$(".list-item").on("click", function(){
-		moveDetail(this);
-	});
-	
-	$("#sub-box").on("click", function(){
-		$("#sub-menu").show(200);
-	});
-	
-	$("#cancel-menu").on("click", function(){
-		$("#sub-menu").hide();
-	});
-	
-	$("#delete-menu").on("click", function(){
-		showDelete();
-	});
-	
-	$(".alarm").on("click", function(){
-		updateAlram(this);
-	});
-	
-	$(".delete-check").on("click", function(event){
-		deleteCheck(this);
-		event.stopPropagation();
-	});
+	var alarms = document.querySelectorAll(".alarm");
+	multiOnclicks(alarms, ()=>{ updateAlram(event.target); } ); 
 	
 });
-
-function moveDetail(element){
-	if(element != undefined){
-		var id = $(element).parents("li").attr('id');
-		$("#update-form input[name=id]").attr("value" , id);
-	}
-	$("#update-form").attr({action:"detail", method:'post'}).submit();
-} 
-
-function showDelete(){
-	// show delete 버튼을 누르면 onclick 속성을 바꿔야 한다.
-	$(".delete-check").show(200);
-	$("#sub-menu").hide();//속성 바꿔라
-	$("#delete-menu").hide();// 지금 추가
-	$("#sub-menu").attr('class','tr-menu');
-	$("#sub-menu").show(200);//속성 바꿔라
-	$("#sub-box").hide();
-	
-	$(".switch-item").hide(200); // 스위치 버튼 숨기기 //23
-	
-	// 이벤트를 바꿔준다.
-	$(".list-item").off();
-	$(".list-record").on("click", function(){
-		deleteCheck(this);
-		
-		///####
-	});
-	
-	$("#delete-menu").off();
-	$("#delete-menu").on("click", function(){
-		deleteCourse();		
-	});
-	
-	$("#cancel-menu").off();
-	$("#cancel-menu").on("click", function(){
-		//모두 되돌리기
-		rollback();
-	});
-}
-
-function deleteCourse(){
-	// 만약 체크값이 하나도 있다면
-	if($(".delete-check").is(":checked")){
-		$("#delete-form").submit();
-	} 
-}
-
-function rollback(){
-	$(".delete-check").hide(200);
-	$("#sub-menu").hide();//속성 바꿔라
-	$("#sub-menu").attr('class','df-menu');
-	$("#sub-box").show(200);
-	
-	//지금 추가
-	$("#delete-menu").show(); //삭제 버튼
-	$("#delete-menu").css({"display" : "block"}); //삭제 버튼
-	
-	$(".switch-item").show(200); // 스위치 버튼 보이기 //23
-	 
-	
-	$("#delete-menu").off();
-	$("#delete-menu").on("click", function(){
-		showDelete();
-	});
-	
-	$("#cancel-menu").off();
-	$("#cancel-menu").on("click", function(){
-		$("#sub-menu").hide();
-	});
-	
-	$(".list-record").off();
-	$(".list-item").on("click", function(){
-		moveDetail(this);
-	});
-	
-	$(".delete-check").prop("checked", false);
-	
-}
-
-// delete 체크하는 함수
-function deleteCheck(element){
-	//element의 check박스를 빼던가 하자.
-	if(element != undefined){
-		var checkbox = $(element).children("div").eq(0).children('input');
-		if($(checkbox).is(":checked"))
-			$(checkbox).prop('checked', false);
-		else
-			$(checkbox).prop('checked', true);
-	}
-	
-	if($(".delete-check").is(":checked")){
-		$("#delete-menu").show(); //삭제 버튼
-		$("#delete-menu").css({"display" : "inline-block"}); //삭제 버튼
-	} else{
-		$("#delete-menu").hide(); //삭제 버튼
-	}
-}
-
-
-function updateAlram(element){
-	// 이 element의 부모 요소의 id를 알아내야 한다.
-	var id = $(element).val();
-	var flag = "N";
-	if($(element).is(":checked"))
-		flag = "Y";
-	var params = "id=" + id + "&flag=" + flag;
-     $.ajax({      
-        type:"POST",
-        dataType: "text",
-        async: false,
-        url:"updateAlarm",      
-        data:params,      
-        success:function(s){
-        },   
-        error:function(e){}  
-    });  
-}
-
 </script>
 </head>
 <body>	
@@ -283,27 +154,23 @@ function updateAlram(element){
 	<input type="hidden" name="id" value="0" />
 	<input type="hidden" name="type" value="list" />
 </form>
-
-<!-- fix 메뉴 -->
-<!-- df-menu와 tr-menu  -->
-<div class="df-menu" id="sub-menu">
-	<ul>
-		<li id="delete-menu">삭제</li>
-		<li id="cancel-menu">취소</li>
-	</ul>
-</div>
-
 	<!-- header 영역 -->
 	<header id="header">
-		<div class="content-container">
-			<section> 
+		<div class="content-container clearfix">
+			<section>
 				<h1>&lt; 경로 목록</h1>
 			</section>
-			<section id="sub-box">
+			<section id="sub-box" style="display: block;">
 				<div></div>
-			</section>
+			</section>			
 		</div>
-	</header>
+		<div class="df-menu" id="sub-menu">
+			<ul>
+				<li id="delete-menu">삭제</li>
+				<li id="cancel-menu">취소</li>
+			</ul>
+		</div>
+	</header>	
 	
 	<aside id="list-head" class="bg-white">
 		<ul class="list set">
@@ -359,7 +226,8 @@ function updateAlram(element){
 				</c:forEach>
 				</ul>
 			</form>
-			<div id="plus"></div>
+			<div><a href="detail?id=0&type=list" class="btn-add" id="plus"></a></div>
+		
 		</section>
 	</main>
 	
