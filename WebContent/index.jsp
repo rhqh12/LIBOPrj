@@ -34,6 +34,14 @@
 	
 }
 </style>
+<script type="text/javascript">
+window.addEventListener("load", function(){
+	setTimeout(() => {
+		location.href = "./member/login";
+	}, 2000);
+})
+
+</script>
 </head>
 <body>
 <div id="body" class="full-screen">
