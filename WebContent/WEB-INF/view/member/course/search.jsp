@@ -13,8 +13,9 @@
 
 .full-container{
 	background: none;
+	 height: calc(100% - 110px);
 }
-
+ 
 /*--search-form---------------------------------------*/
 
 #search-form{  

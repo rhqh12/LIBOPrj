@@ -128,6 +128,12 @@ $(document).ready(function(){
 		$(location).attr("href", "list");
 	})
 	
+	$(".save-menu").on("click", function(){
+		$("#update-form").attr({action:"update", method:'post'}).submit();
+	})
+	
+	
+	
 });
 </script>
 </head>
