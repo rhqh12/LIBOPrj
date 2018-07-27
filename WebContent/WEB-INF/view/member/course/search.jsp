@@ -15,6 +15,8 @@
 	background: none;
 }
 
+/*--search-form---------------------------------------*/
+
 #search-form{  
 	box-sizing : border-box;
 	padding : 25px 20px;
@@ -43,39 +45,41 @@
 		cursor: pointer;
 	}
 
-/*====address-item===============================*/
+/*====address-list===============================*/
 
-.address-item {
-	box-sizing : content-box; 
-	margin-bottom: 20px; 
-	padding-bottom : 20px;
-	border-bottom: 1px solid #979797;
-}
 
-.address-item:first-child {
-	margin-top: 20px; 
-}
- 
-.ad-title{
-	font-weight: bold;
-	font-size: 1.1em;
-} 
-.ad-sm{
-	color: #4C4C4C; 
-}
-.ad-tel{
-	color: #0054FF;
-}
 
-#search-info{
-	position: absolute;
-	width : 200px; 
-	text-align : center;
-	left: 50%;  
-	top: 50%;
-	margin-left: -100px;
-	color: #4C4C4C; 
-}
+	#address-list .address-item {
+		box-sizing : content-box; 
+		margin-bottom: 20px; 
+		padding-bottom : 20px;
+		border-bottom: 1px solid #979797;
+	}
+	
+	#address-list .address-item:first-child {
+		margin-top: 20px; 
+	}
+	 
+	#address-list .ad-title{
+		font-weight: bold;
+		font-size: 1.1em;
+	} 
+	#address-list .ad-sm{
+		color: #4C4C4C; 
+	}
+	#address-list .ad-tel{
+		color: #0054FF;
+	}
+	
+	#address-list .search-info{
+		position: absolute;
+		width : 200px; 
+		text-align : center;
+		left: 50%;  
+		top: 50%;
+		margin-left: -100px;
+		color: #4C4C4C; 
+	}
 
 	
 </style>
@@ -85,9 +89,9 @@ $(document).ready(function(){
 	
 	var type = $("#update-form input[name=type]").val();
 	if(type == "workplace"){
-		$("#title").text("출근지 설정");
+		$(".title span").text("출근지 설정");
 	} else{
-		$("#title").text("퇴근지 설정");
+		$(".title span").text("퇴근지 설정");
 	}
 		
 	
@@ -104,8 +108,8 @@ $(document).ready(function(){
 		$("#update-form").submit();
 	}) 
 	
-	$("#btn-address").on("click", function(){
-		var address = $("#text-address").val();
+	$(".search-btn").on("click", function(){
+		var address = $(".text-address").val();
 		if(address == ""){
 			alert('주소를 입력해주세요');
 			return;
@@ -126,6 +130,10 @@ $(document).ready(function(){
 	    }); 
 	});
 	
+	$(".title").on("click", function(){
+		console.log('dfds');
+		$("#update-form").submit();
+	})
 	
 })
 
@@ -143,15 +151,17 @@ function createAddress(args){
 			template += "	</ul>";
 			template += "</section>";
 		})
-		$("#search-info").hide();
+		$(".search-info").hide();
 	} else{
-		$("#search-info").text("검색 결과가 없습니다");
-		$("#search-info").show();
+		$(".search-info").text("검색 결과가 없습니다");
+		$(".search-info").show();
 	}
 	$("#address-box").html(template);
 }
-</script>
 
+
+</script>
+ 
 </head>
 <body>
 <div id="body" class="full-screen bg-morning">
@@ -175,8 +185,8 @@ function createAddress(args){
 	<!-- 페이지 공통 header -->
 	<header id="header">
 		<div class="content-container">
-			<section>
-				<h1>&lt; <span id="title">경로 알림 설정</span></h1>
+			<section class="title">
+				<h1>&lt; <span>경로 알림 설정</span></h1>
 			</section>
 			<section>
 				<div></div>
@@ -189,19 +199,18 @@ function createAddress(args){
 		<aside id="search-form" class="container">
 			<h1 class="hide">검색폼</h1>
 			<form action="" method="get" onsubmit="return false;">
-				<input type="text" id="text-address" placeholder="내용을 입력해주세요">
-				<div id="btn-address"></div><!-- 찾기 버튼 -->
+				<input type="text" class="text-address" placeholder="내용을 입력해주세요">
+				<div class="search-btn"></div><!-- 찾기 버튼 -->
 			</form>
 		</aside>
 		
 		<main id="main" class="container cont-scroll">
-			<aside id="list-article">
+			<aside id="address-list">
 				<h1 class = "hide">장소</h1>
-				<div class="wrapper" id="address-box">
-				</div>	
-				<div id="search-info">주소를 입력해주세요</div>
+				<div class="wrapper" id="address-box"></div>	
+				<div class="search-info">주소를 입력해주세요</div>
 			</aside>
-		</main>
+		</main> 
 		
 	</div>
 	<!-- menu -->
