@@ -71,7 +71,7 @@ function AlarmSelector(){
 var ele = null;
 function moveDetail(element){
 	if(element.id == undefined) return;
-	location.href = "detail?id="+element.id;
+	location.href = "detail?id="+element.id+"&type=list";
 }
 
 function updateAlram(element){
@@ -135,7 +135,7 @@ function hideDelete(){
 	$(".switch-item").show(200);
 	$(ele.subBox).show(200);
 
-	ele.deleteMenu.css.display = "block";
+	$(ele.deleteMenu).show();
 	$(ele.deleteCheck).prop("checked", false);
 }
 

@@ -130,7 +130,7 @@ public class CourseService {
 		sql += "INSERT INTO COURSE \n";
 		sql += "(ID,STARTING_TIME,STARTING_ALARM,WORKPLACE,WORKPLACE_ADDRESS, \n";
 		sql += "ENDING_TIME,ENDING_ALARM,HOME,HOME_ADDRESS,WEEK,WRITER_ID, DUE_DATE) \n";
-		sql += "VALUES(?, TO_DATE(?,'HH24:MI'), ?, ?, ?, TO_DATE(?,'HH24:MI'), ?, ?, ?, ?, ?, sysdate)";
+		sql += "VALUES((SELECT MAX(ID)+1 FROM COURSE), TO_DATE(?,'HH24:MI'), ?, ?, ?, TO_DATE(?,'HH24:MI'), ?, ?, ?, ?, ?, sysdate)";
 		try {
 			conn = DBConn.getConnection();
 			ps = conn.prepareStatement(sql);
