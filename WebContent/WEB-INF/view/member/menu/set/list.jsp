@@ -88,7 +88,7 @@ padding-left: 30px;
 }
 
 </style>
-<link href="../../css/style.css" type="text/css" rel="stylesheet" />
+<link href="../../../css/style.css" type="text/css" rel="stylesheet"/>
 </head>
 
 <body id="body">

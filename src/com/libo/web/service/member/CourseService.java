@@ -124,35 +124,34 @@ public class CourseService {
 	}
 
 	public void insertCourse(Course course) {
-		Connection conn = null;
-		PreparedStatement ps = null;
-		String sql = "";
-		sql += "INSERT INTO COURSE \n";
-		sql += "(ID,STARTING_TIME,STARTING_ALARM,WORKPLACE,WORKPLACE_ADDRESS, \n";
-		sql += "ENDING_TIME,ENDING_ALARM,HOME,HOME_ADDRESS,WEEK,WRITER_ID, DUE_DATE) \n";
-		sql += "VALUES((SELECT MAX(ID)+1 FROM COURSE), TO_DATE(?,'HH24:MI'), ?, ?, ?, TO_DATE(?,'HH24:MI'), ?, ?, ?, ?, sysdate)";
-		try {
-			conn = DBConn.getConnection();
-			ps = conn.prepareStatement(sql);
-			ps.setLong(1, course.getId()); // 매개변수 (순번, 넣을 값)
-			ps.setString(2, course.getStartingTime());
-			ps.setString(3, course.getStartingAlarm());
-			ps.setString(4, course.getWorkplace());
-			ps.setString(5, course.getWorkplaceAddress());
-			ps.setString(6, course.getEndingTime());
-			ps.setString(7, course.getEndingAlarm());
-			ps.setString(8, course.getHome());
-			ps.setString(9, course.getHomeAddress());
-			ps.setString(10, course.getWeek());
-			ps.setString(11, course.getWriterId());
-			int cnt = ps.executeUpdate();
-			if (cnt == 1)
-				System.out.println("성공");
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		} finally {
-			DBConn.close(conn, ps);
-		}
+	      Connection conn = null;
+	      PreparedStatement ps = null;
+	      String sql = "";
+	      sql += "INSERT INTO COURSE \n";
+	      sql += "(ID,STARTING_TIME,STARTING_ALARM,WORKPLACE,WORKPLACE_ADDRESS, \n";
+	      sql += "ENDING_TIME,ENDING_ALARM,HOME,HOME_ADDRESS,WEEK,WRITER_ID, DUE_DATE) \n";
+	      sql += "VALUES((SELECT MAX(ID)+1 FROM COURSE), TO_DATE(?,'HH24:MI'), ?, ?, ?, TO_DATE(?,'HH24:MI'), ?, ?, ?, ?, ?, sysdate)";
+	      try {
+	         conn = DBConn.getConnection();
+	         ps = conn.prepareStatement(sql);
+	         ps.setString(1, course.getStartingTime());
+	         ps.setString(2, course.getStartingAlarm());
+	         ps.setString(3, course.getWorkplace());
+	         ps.setString(4, course.getWorkplaceAddress());
+	         ps.setString(5, course.getEndingTime());
+	         ps.setString(6, course.getEndingAlarm());
+	         ps.setString(7, course.getHome());
+	         ps.setString(8, course.getHomeAddress());
+	         ps.setString(9, course.getWeek());
+	         ps.setString(10, course.getWriterId());
+	         int cnt = ps.executeUpdate();
+	         if (cnt == 1)
+	            System.out.println("성공");
+	      } catch (Exception e) {
+	         System.out.println(e.toString());
+	      } finally {
+	         DBConn.close(conn, ps);
+	      }
 
 	}
 
