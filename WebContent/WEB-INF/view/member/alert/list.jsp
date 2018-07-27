@@ -111,7 +111,9 @@ window.addEventListener("load", function(){
 	sel.cancelMenu.onclick = () => { $(sel.subMenu).hide(); };
 	sel.deleteMenu.onclick = () => { showDelete() };
 	sel.deleteCheck.onclick = (e) => { deleteCheck(this); };
-	document.querySelector(".alarm").onclick = () => { updateAlram(event.target); };
+	
+	var alarms = document.querySelectorAll(".alarm");
+	multiOnclicks(alarms, ()=>{ updateAlram(event.target); } ); 
 	
 });
 </script>
