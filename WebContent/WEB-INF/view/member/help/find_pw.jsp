@@ -4,12 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메뉴 > 공지사항</title>
+<title>Insert title here</title>
 </head>
 <body>
 <ul>
-<li><a href="../">메뉴로</a></li>
+<li><a href="../../">홈으로</a></li>
+<li><a href="../login.html">뒤로</a></li>
 </ul>
-<h1>공지사항</h1>
+<h1>비밀번호 찾기</h1>
 </body>
 </html>

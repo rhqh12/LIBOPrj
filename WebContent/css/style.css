@@ -78,6 +78,7 @@ a {
 		height:50px;
 		line-height:50px;
 		vertical-align: middle;
+		cursor: pointer;
 	}
 		.list.set .col-week {
 			padding-right:10px;

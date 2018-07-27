@@ -10,19 +10,29 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.libo.web.entity.Alert;
 import com.libo.web.service.member.AlertService;
 
-@WebServlet("/member/alert/list")
-public class AlertList extends HttpServlet {
+
+@WebServlet("/member/alert/detail")
+public class AlertDetail extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		AlertService service = new AlertService();
-		List<Alert> list = service.getAlertList("test");
-		request.setAttribute("list", list);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/member/alert/list.jsp");
+		long id =  Long.parseLong(request.getParameter("id"));
+		
+		AlertService service = new AlertService();
+		Alert alert = service.getAlert(id);
+		
+		String[] week = {"일","월","화","수","목","금","토"};
+		
+		
+		request.setAttribute("alert", alert);
+		request.setAttribute("week", week);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/member/alert/detail.jsp");
 		dispatcher.forward(request, response);
 	}
+
 }
+

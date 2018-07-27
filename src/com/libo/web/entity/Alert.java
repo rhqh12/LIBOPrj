@@ -1,29 +1,34 @@
 package com.libo.web.entity;
 
 public class Alert {
-	private int id;
+	private long id;
 	private String week;
 	private String time;
 	private String specificDate;
 	private String dueDate;
 	private String writerId;
+	private String alarm;
 	
 	public Alert() {
 		
 	}
+	public Alert(long id, String alarm) {
+		this.id = id;
+		this.alarm = alarm;
+	}
 	
 	//select
-	public Alert(String week, String time, String specificDate, String dueDate, String writerId) {
+	public Alert(String week, String time, String specificDate, String dueDate, String writerId, String alarm) {
 		super();
 		this.week = week;
 		this.time = time;
 		this.specificDate = specificDate;
 		this.dueDate = dueDate;
 		this.writerId = writerId;
+		this.alarm = alarm;
 	}
 	
-	//insert
-	public Alert(int id, String week, String time, String specificDate, String dueDate, String writerId) {
+	public Alert(long id, String week, String time, String specificDate, String dueDate, String writerId, String alarm) {
 		super();
 		this.id = id;
 		this.week = week;
@@ -31,16 +36,17 @@ public class Alert {
 		this.specificDate = specificDate;
 		this.dueDate = dueDate;
 		this.writerId = writerId;
+		this.alarm = alarm;
 	}
 	
 	
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -84,6 +90,12 @@ public class Alert {
 		this.writerId = writerId;
 	}
 
+	public String getAlarm() {
+		return alarm;
+	}
+	public void setAlarm(String alarm) {
+		this.alarm = alarm;
+	}
 	@Override
 	public String toString() {
 		return "Alert [id=" + id + ", week=" + week + ", time=" + time + ", specificDate=" + specificDate

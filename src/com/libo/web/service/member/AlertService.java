@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.libo.web.entity.Alert;
+import com.libo.web.entity.Course;
 import com.libo.web.util.DBConn;
 
 public class AlertService {
@@ -65,7 +66,8 @@ public class AlertService {
 						  rs.getString("TIME"),
 						  rs.getString("SPECIFIC_DATE"),
 						  rs.getString("DUE_DATE"),
-						  rs.getString("WRITER_ID")
+						  rs.getString("WRITER_ID"),
+						  rs.getString("ALARM")
 						);
 				list.add(alert);
 			}
@@ -101,7 +103,8 @@ public class AlertService {
 						  rs.getString("TIME"),
 						  rs.getString("SPECIFIC_DATE"),
 						  rs.getString("DUE_DATE"),
-						  rs.getString("WRITER_ID")
+						  rs.getString("WRITER_ID"),
+						  rs.getString("ALARM")
 						);				
 			}
 			//System.out.println(alert.toString());
@@ -158,7 +161,7 @@ public class AlertService {
 			ps.setString(2, alert.getTime());
 			ps.setString(3, alert.getSpecificDate());
 			ps.setString(4, alert.getDueDate());
-			ps.setInt(5, alert.getId());
+			ps.setLong(5, alert.getId());
 			int cnt = ps.executeUpdate();
 			if (cnt == 1)
 				System.out.println("성공");
@@ -191,6 +194,27 @@ public class AlertService {
 		} finally {
 			DBConn.close(conn, ps);
 		}
+	}
+	
+	public int updateAlertAlarm(Alert alert) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		String sql = "";
+		int cnt = 0;
+		sql += "UPDATE ALERT SET \n";
+		sql += "ALARM = ? WHERE ID = ?";
+		try {
+			conn = DBConn.getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, alert.getAlarm());
+			ps.setLong(2, alert.getId());
+			cnt = ps.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		} finally {
+			DBConn.close(conn, ps);
+		}
+		return cnt;
 	}
 
 }

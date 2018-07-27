@@ -120,36 +120,23 @@ function showDelete(){
 	$(ele.switchItem).hide(200); // 스위치 버튼 숨기기 //23
 	
 	// 이벤트를 바꿔준다.list-record
-	$(".list-item").off();
-
-	//$(".list-record").on("click", (()=> { deleteCheck(this); }));
+//	$(".list-item").off();
+//
+//	//$(".list-record").on("click", (()=> { deleteCheck(this); }));
+//	
+//	$(ele.deleteMenu).off().on("click", (()=> { deleteCourse(); }));
+//
+//	$(ele.cancelMenu).off().on("click",(()=>{ rollback(); }));
 	
-	$(ele.deleteMenu).off().on("click", (()=> { deleteCourse(); }));
-
-	$(ele.cancelMenu).off().on("click",(()=>{ rollback(); }));
 }
 
-
-function rollback(){
-	if(ele == null) return;
+function hideDelete(){
 	$(ele.deleteCheck).hide(200);
-	$(ele.subMenu).hide().attr('class','df-menu');
+	$(".switch-item").show(200);
 	$(ele.subBox).show(200);
-	
-	//지금 추가
-	$(ele.deleteMenu).show().css({"display" : "block"}); //삭제 버튼
-	
-	$(".switch-item").show(200); // 스위치 버튼 보이기 //23
-	
-	$(ele.deleteMenu).off().on("click", (()=> { showDelete(); }));
 
-	$(ele.cancelMenu).off().on("click", (()=> { $(ele.subMenu).hide(); } ));
-	
-	//$(".list-record").off();
-	//$(".list-item").on("click", (()=> { moveDetail(this); }));
-
+	ele.deleteMenu.css.display = "block";
 	$(ele.deleteCheck).prop("checked", false);
-	
 }
 
 // delete 체크하는 함수

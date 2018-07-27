@@ -1,0 +1,88 @@
+#main {
+	position: relative;
+}
+#alert-list h1 {
+	display:none;
+}
+.set-date h1, .set-time h1 {
+	display:none;
+}
+/*---set-date-------*/
+.set-date {
+	position:relative;
+	padding:20px;
+}
+	.set-date .select{
+		position: absolute;
+		top:20px;
+		right:20px;
+	}
+	.set-date .select spaxn {
+		text-align:right;
+	}
+	
+
+/*---set-time-------*/
+.set-time {
+	border:solid #070707;
+	border-width:2px 0px;
+	padding:20px 40px;
+}
+	.set-time .td-input {
+	    border: 0;
+	    -webkit-appearance: none;
+	    outline: none;
+	    text-align: center;
+	    font-size: 1em;
+	    display: inline-block;
+	    position: relative;
+	    z-index: 2;
+	    font-weight: 700;
+	    padding: 14px;
+	    border-radius: 2px;
+	    box-shadow: 0 0px 0 1px rgb(25, 119, 204);
+	    width: 100%;
+	    background: #FFF;
+	    color: #1977cc;	
+	    cursor: pointer;
+	}
+/*---set-week----------*/
+.set-week{
+	padding:20px;
+}
+	.set-week h1 {
+		font-size:15px;
+	}
+	.set-week ul {
+		display:flex;
+		padding:20px;
+	}
+	.set-week li {
+		flex-grow: 1;
+		text-align:center;
+		cursor: pointer;
+	}
+	.set-week .on {
+		color:#1977cc;
+		font-weight:bold;
+	}
+/*---menu-btn------------*/
+.menu-btn {
+	display:flex;
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	width: calc(100% - 20px);
+	margin:0px 10px;
+}
+	.menu-btn li {
+		flex-grow:1;
+		margin:20px 10px;
+		text-align: center;
+		height:30px;
+		line-height:30px;
+		background:#a9a9a9;
+	}
+	.menu-btn li a {
+		text-decoration: none;
+	}
