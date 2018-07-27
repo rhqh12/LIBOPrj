@@ -11,60 +11,67 @@
 <link rel="stylesheet" type="text/css" href="../../css/style.css">
 <style> 
 
-		#alert-setting{
-			height: 200px;
-		}
-		
-		#time-setting{
-			height: 450px;
-		}
-		  
-		.setting-box{ 
-			box-sizing: border-box;
-			padding: 20px 10px;  
-		}  
-		
-			.setting-box > div{
-   				border-top: 1px solid gray;
-   				background : rgba(255,255,255, 0.6);
-   				height: 42px;
-   				display: flex; 
-   				align-items:center;
-   				padding: 30px 15px 30px 20px;	
-				font-size: 0.8em;   
-			} 
-			 
-			.setting-box > div:nth-child(2){
-				background : rgba(211,211,224, 0.9);
-			}
-			
-			.setting-box > div:nth-child(2) > h1{
-				font-size: 1.4em; 
-			}  
-			
-			.setting-box div:nth-child(3)>div:first-child, 
-						 div:nth-child(4)>div:first-child,
-						 div:nth-child(5)>div:first-child{
-   				width: 95%; 
-   				font-size: 1.8em;
-   				color : #848484; 
-   				font-weight: bold;  
-			}
-			
-			#time-setting div div:nth-child(1){
-				width : 60%;
-			} 
-			
-			#time-setting div div:nth-child(2){
-				text-align : right;
-				width: 40%;
-			}
-			
-			#time-setting div div:nth-child(2) span{
-				font-size: 1.3em;
-				font-weight: bold;
-			}
-					
+
+/*--alert-setting-------------------------------------*/
+#alert-setting{
+	height: 200px;
+}
+
+/*--time-setting-------------------------------------*/
+
+#time-setting{
+	height: 450px;
+}
+
+	#time-setting div div:nth-child(1){
+		width : 60%;
+	} 
+	
+	#time-setting div div:nth-child(2){
+		text-align : right;
+		width: 40%;
+	}
+	
+	#time-setting div div:nth-child(2) span{
+		font-size: 1.3em;
+		font-weight: bold;
+	}
+
+/*--.setting-box-------------------------------------*/
+.setting-box{ 
+	box-sizing: border-box;
+	padding: 20px 10px;  
+}  
+
+	.setting-box > div{
+		border-top: 1px solid gray;
+		background : rgba(255,255,255, 0.6);
+		height: 42px;
+		display: flex; 
+		align-items:center;
+		padding: 30px 15px 30px 20px;	
+		font-size: 0.8em;   
+	} 
+	 
+	.setting-box > div:nth-child(2){
+		background : rgba(211,211,224, 0.9);
+	}
+	
+	.setting-box > div:nth-child(2) > h1{
+		font-size: 1.4em; 
+	}  
+	
+	.setting-box div:nth-child(3)>div:first-child, 
+				 div:nth-child(4)>div:first-child,
+				 div:nth-child(5)>div:first-child{
+		width: 95%; 
+		font-size: 1.8em;
+		color : #848484; 
+		font-weight: bold;  
+	}
+	
+
+/*--button-box-----------------------------------------------*/			
 #button-box{
 	background: none;  
 	border: none;
@@ -86,11 +93,11 @@
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#btn-cancel").on("click", function(){
+	$(".btn-cancel, .title").on("click", function(){
 		$("#update-form").submit();
 	});
 	
-	$("#btn-check").on("click", function(){
+	$(".btn-check").on("click", function(){
 		setValue();
 		$("#update-form").submit();
 	});
@@ -98,15 +105,15 @@ $(document).ready(function(){
 
 function setValue(){
 	
-	var startingTime = $("#startingTime").text();
-	var endingTime = $("#endingTime").text();
-	var week = $("#week").text();
+	var startingTime = $(".startingTime").text();
+	var endingTime = $(".endingTime").text();
+	var week = $(".week").text();
 	var startingAlarm = "N";
 	var endingAlarm = "N"
-	if($("#startingAlarm").is(":checked")){
+	if($(".startingAlarm").is(":checked")){
 		startingAlarm = "Y"
 	}
-	if($("#endingAlarm").is(":checked")){
+	if($(".endingAlarm").is(":checked")){
 		var endingAlarm = "Y"
 	}
 
@@ -140,7 +147,7 @@ function setValue(){
 	<!-- header 영역 -->
 	<header id="header">
 		<div class="content-container">
-			<section>
+			<section class="title">
 				<h1>&lt; 출/퇴근 알림 설정</h1>
 			</section>
 		</div>
@@ -160,10 +167,10 @@ function setValue(){
 						<label class="switch">
 						<c:choose>
 						    <c:when test="${c.startingAlarm eq 'Y'}">
-						   		<input id="startingAlarm" class="alarm" type="checkbox" checked>
+						   		<input class="startingAlarm" type="checkbox" checked>
 						    </c:when>
 						    <c:otherwise>
-						      <input id="startingAlarm" class="alarm" type="checkbox">
+						      <input class="startingAlarm" type="checkbox">
 						    </c:otherwise>
 						</c:choose>
 						<span class="slider round"></span>
@@ -176,10 +183,10 @@ function setValue(){
 					<label class="switch">
 						<c:choose>
 						    <c:when test="${c.endingAlarm eq 'Y'}">
-						   		<input id="endingAlarm" class="alarm" type="checkbox" checked>
+						   		<input class="endingAlarm" type="checkbox" checked>
 						    </c:when>
 						    <c:otherwise>
-						      <input id="endingAlarm" class="alarm" type="checkbox">
+						      <input class="endingAlarm" type="checkbox">
 						    </c:otherwise>
 						</c:choose>
 						<span class="slider round"></span></label>
@@ -194,19 +201,19 @@ function setValue(){
 				</div>
 				<div>
 					<div><span>출근시간</span></div>
-					<div><span id="startingTime">${c.startingTime}</span> ></div>
+					<div><span class="startingTime">${c.startingTime}</span> ></div>
 				</div>
 				<div>
 					<div><span>퇴근시간</span></div>
-					<div><span id="endingTime">${c.endingTime}</span> ></div>
+					<div><span class="endingTime">${c.endingTime}</span> ></div>
 				</div>
 				<div>
 					<div><span>근무하는 날</span></div>
-					<div><span id="week">${c.week}</span> ></div>
+					<div><span class="week">${c.week}</span> ></div>
 				</div>
 				<div id="button-box">
-					<input type="button" id="btn-cancel" value="취소" />
-					<input type="button" id="btn-check" value="확인" />
+					<input type="button" class="btn-cancel" value="취소" />
+					<input type="button" class="btn-check" value="확인" />
 				</div>
 			</section>
 		</div>

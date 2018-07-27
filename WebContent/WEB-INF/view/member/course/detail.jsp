@@ -10,13 +10,16 @@
 <link rel="stylesheet" type="text/css" href="../../css/style.css">
 <style>
 
-#save-menu input{
+/*--header----------------------------------------------*/
+#header .save-menu input{
 	border: none;
 	width: 50px; 
 	height: 30px;
 	background: #e0e0e0;
 	border-radius: 10px;
 }		
+
+/*--time-setting----------------------------------------------*/
 	
 #time-setting{
 	height: 200px;
@@ -58,12 +61,12 @@
 		
 	}
 	
-	.info-md{
+	#time-info .info-md{
 		font-size: 2em; 
 		font-weight: bolder;
 	}
 	
-	.info-sm{
+	#time-info .info-sm{
 		font-size: 1.3em; 
 		font-weight: bolder;
 		
@@ -79,26 +82,29 @@
 		font-weight: bold;  
 		margin-left: 10px;    
 	}
-
-	#course-setting{
-		margin-top : 20px; 
-		/* background:rgba(255,255,255,0.6); */
-		height: 300px;
-		box-sizing: border-box;
-	}
 	
-		#course-setting>div{
-			box-sizing : border-box;
-			padding: 15px; 
-			margin-top: 50px;
-		} 
-		
-		#course-setting table{
-			background:rgba(90,170,223,0.6);
-			width: 100%;
-			font-size: 1.1em;
-			height: 80px;
-		} 
+	
+/*--course-setting----------------------------------------------*/
+
+#course-setting{
+	margin-top : 20px; 
+	/* background:rgba(255,255,255,0.6); */
+	height: 300px;
+	box-sizing: border-box;
+}
+	
+	#course-setting>div{
+		box-sizing : border-box;
+		padding: 15px; 
+		margin-top: 50px;
+	} 
+	
+	#course-setting table{
+		background:rgba(90,170,223,0.6);
+		width: 100%;
+		font-size: 1.1em;
+		height: 80px;
+	} 
 
 </style>
 <script type="text/javascript">
@@ -108,8 +114,6 @@ $(document).ready(function(){
 		$("#update-form").attr({action:"updateDate", method:'post'}).submit();
 	});
 	
-	
-	
 	$("#course-setting tr:eq(0)").on("click", function(){
 		$("#update-form input[name=type]").val("workplace");
 		$("#update-form").attr({action:"address", method:'post'}).submit();
@@ -118,8 +122,11 @@ $(document).ready(function(){
 	$("#course-setting tr:eq(1)").on("click", function(){
 		$("#update-form input[name=type]").val("home");
 		$("#update-form").attr({action:"address", method:'post'}).submit();
-		
 	});
+	
+	$(".title").on("click", function(){
+		$(location).attr("href", "list");
+	})
 	
 });
 </script>
@@ -145,10 +152,10 @@ $(document).ready(function(){
 	<!-- header 영역 -->
 	<header id="header">
 		<div class="content-container">
-			<section>
+			<section class="title">
 				<h1>&lt; 경로 알림 설정</h1>
 			</section>
-			<section id="save-menu">
+			<section class="save-menu">
 				<input type="button" value="저장" />
 			</section>
 		</div>
