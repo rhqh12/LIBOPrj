@@ -130,7 +130,7 @@ public class CourseService {
 		sql += "INSERT INTO COURSE \n";
 		sql += "(ID,STARTING_TIME,STARTING_ALARM,WORKPLACE,WORKPLACE_ADDRESS, \n";
 		sql += "ENDING_TIME,ENDING_ALARM,HOME,HOME_ADDRESS,WEEK,WRITER_ID, DUE_DATE) \n";
-		sql += "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		sql += "VALUES(?, TO_DATE(?,'HH24:MI'), ?, ?, ?, TO_DATE(?,'HH24:MI'), ?, ?, ?, ?, ?, sysdate)";
 		try {
 			conn = DBConn.getConnection();
 			ps = conn.prepareStatement(sql);
@@ -145,7 +145,6 @@ public class CourseService {
 			ps.setString(9, course.getHomeAddress());
 			ps.setString(10, course.getWeek());
 			ps.setString(11, course.getWriterId());
-			ps.setString(12, course.getDueDate());
 			int cnt = ps.executeUpdate();
 			if (cnt == 1)
 				System.out.println("성공");
@@ -162,13 +161,13 @@ public class CourseService {
 		PreparedStatement ps = null;
 		String sql = "";
 		sql += "UPDATE COURSE SET \n";
-		sql += "STARTING_TIME = ?,STARTING_ALARM = ?,WORKPLACE = ?,WORKPLACE_ADDRESS = ?, \n";
-		sql += "ENDING_TIME = ?, ENDING_ALARM = ?, HOME = ?, HOME_ADDRESS = ?, WEEK = ? \n";
+		sql += "STARTING_TIME = TO_DATE(?,'HH24:MI'),STARTING_ALARM = ?,WORKPLACE = ?,WORKPLACE_ADDRESS = ?, \n";
+		sql += "ENDING_TIME = TO_DATE(?,'HH24:MI'), ENDING_ALARM = ?, HOME = ?, HOME_ADDRESS = ?, WEEK = ? \n";
 		sql += "WHERE ID = ?";
 		try {
 			conn = DBConn.getConnection();
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, course.getStartingTime());
+			ps.setString(1,course.getStartingTime());
 			ps.setString(2, course.getStartingAlarm());
 			ps.setString(3, course.getWorkplace());
 			ps.setString(4, course.getWorkplaceAddress());
