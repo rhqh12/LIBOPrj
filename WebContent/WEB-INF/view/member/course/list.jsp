@@ -135,10 +135,10 @@ window.addEventListener("load", function(){
 		}
 	);
 	
-	sel.subBox.onclick = () => { $(sel.subMenu).show(200); };
+	sel.subBox.onclick = () => { showDelete(); };
 	sel.cancelMenu.onclick = () => { hideDelete(); };
-	sel.deleteMenu.onclick = () => { showDelete() };
-	sel.deleteCheck.onclick = (e) => { deleteCheck(this); };
+	sel.deleteMenu.onclick = () => { deletData() };
+	multiOnclicks(sel.deleteCheck, ()=>{ deleteCheck(event.target); } ); 
 
 	var alarms = document.querySelectorAll(".alarm");
 	multiOnclicks(alarms, ()=>{ updateAlram(event.target); } ); 

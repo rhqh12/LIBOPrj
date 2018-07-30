@@ -21,7 +21,7 @@ function _filter(list, predi){
 
 function isType(list, type){
 	for ( var counter = 0; counter < list.length; counter++ ) {
-		return list[counter][type];
+		if(list[counter][type] == true) return true;
 	};
 	return false;
 }
@@ -34,12 +34,18 @@ function returnChange(rtn){
 function getDisplay(ele) {
 	if( ele == "block") return true;
 }
+
 function multiOnclicks(ele, fuc) {
 	for(i=0; i<ele.length; i++){
 		ele[i].onclick = () =>{
 			fuc();
 		};
 	}
+}
+
+function menuShowChk(list,menu) {
+	if( isType(list, "checked") ) $(menu).show();
+	else $(menu).hide();
 }
 // class Alarm {
 // 	constructor() {
@@ -51,7 +57,6 @@ function multiOnclicks(ele, fuc) {
 // 		this.switchItem = document.querySelector(".switch-item");
 // 	}
 // }
-
 
 function AlarmSelector(){
 	var element = {
@@ -71,7 +76,7 @@ function AlarmSelector(){
 var ele = null;
 function moveDetail(element){
 	if(element.id == undefined) return;
-	location.href = "detail?id="+element.id+"&type=list";
+	location.href = "detail?id="+element.id
 }
 
 function updateAlram(element){
@@ -98,7 +103,7 @@ function updateAlram(element){
 	event.stopPropagation();
 }
 
-function deleteCourse(){
+function deletData(){
 	if(ele == null) return;
 	
 	// 만약 체크값이 하나도 있다면
@@ -118,20 +123,12 @@ function showDelete(){
 	$(ele.subBox).hide();
 	
 	$(ele.switchItem).hide(200); // 스위치 버튼 숨기기 //23
-	
-	// 이벤트를 바꿔준다.list-record
-//	$(".list-item").off();
-//
-//	//$(".list-record").on("click", (()=> { deleteCheck(this); }));
-//	
-//	$(ele.deleteMenu).off().on("click", (()=> { deleteCourse(); }));
-//
-//	$(ele.cancelMenu).off().on("click",(()=>{ rollback(); }));
-	
 }
 
 function hideDelete(){
+	
 	$(ele.deleteCheck).hide(200);
+	$(ele.subMenu).hide(200);
 	$(".switch-item").show(200);
 	$(ele.subBox).show(200);
 
@@ -146,17 +143,10 @@ function deleteCheck(){
 	var currentTarget = event.currentTarget;
 	if( currentTarget.tagName == "INPUT" && currentTarget.type == "checkbox") {
 		input = event.target;
+		event.stopPropagation();
 	} else {
 		input = currentTarget.querySelector("input[type=checkbox]");
 		input.checked = returnChange(input.checked);
 	}
-
-	if(input == null) return;
-	
-	var list  = ele.deleteCheck;
-	if( isType(list, "checked") ) {
-		$(ele.deleteMenu).show().css({"display" : "inline-block"})
-	} else {
-		$(ele.deleteMenu).hide(); //삭제 버튼
-	}
+	menuShowChk(ele.deleteCheck, ele.deleteMenu);
 }
