@@ -17,6 +17,10 @@ import com.libo.web.service.member.MemberService;
 @WebServlet("/member/login")
 public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String flag = request.getParameter("flag");
+		request.setAttribute("flag", flag);
+		
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/member/login.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -25,7 +29,9 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		String id = request.getParameter("id");
-		String password = request.getParameter("password");
+		String password = request.getParameter("pw");
+		System.out.println(id);
+		System.out.println(password);
 //		String passwordCheck = request.getParameter("passwordCheck");
 //		String nickname = request.getParameter("nickname");
 //		String gender = request.getParameter("gender");
@@ -36,12 +42,16 @@ public class Login extends HttpServlet {
 		member.setPassword(password);
 		
 		MemberService memberService = new MemberService();
-		memberService.loginMember(member);
-		
+		boolean FLAG = memberService.loginMember(member);
+		if(FLAG) {
 		HttpSession session = request.getSession();
-		session.setAttribute("id", member.getId());
+		session.setAttribute("member", member);
 		
 		response.sendRedirect("./");
+		}else {
+			response.sendRedirect("?flag=fail");
+		}
+		
 	}
 
 }

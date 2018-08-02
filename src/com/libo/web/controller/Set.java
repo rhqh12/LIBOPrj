@@ -15,6 +15,8 @@ public class Set extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/member/menu/set/list.jsp");
+		String referer = (String)request.getHeader("Referer");
+		request.setAttribute("referer", referer);
 		dispatcher.forward(request, response);
 	}
 }

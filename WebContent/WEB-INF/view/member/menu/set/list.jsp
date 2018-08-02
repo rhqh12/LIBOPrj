@@ -9,6 +9,9 @@
 
 <title>메뉴</title>
 <style>
+
+#title{
+display: none;}
 body {
 	margin: 0px;
 	background: url("../../images/dawn.jpg") repeat-x center;
@@ -96,7 +99,7 @@ padding-left: 30px;
 		<header id="header">
 		<div class="content-container clearfix">
 			<section>
-				<h1>&lt; 설정</h1>
+				<h1><a href="">&lt; 설정</a></h1>
 			</section>
 			<section>
 				<div></div>
@@ -106,20 +109,13 @@ padding-left: 30px;
 	<main class="full-container">
 		<nav id="menu-list">
 			<ul>
+				<li><a href="../notice/list">공지사항</a></li>
 				<li><a href="../../update.jsp">회원정보 수정</a></li>
-				<li><a href="./notice/list.html">출/퇴근 알람 설정</a></li>
 			</ul>
 		</nav>
-		<aside id="bottom-menu">
-			<h1>하단메뉴</h1>
-			<ul>
-				<li><a href="../index.jsp">홈</a></li>
-				<li><a href="../course/list.jsp">경로</a></li>
-				<li><a href="../alert/list.jsp">알람</a></li>
-				<li><a href="set/list.jsp">설정</a></li>
-			</ul>
-		</aside>
 		</main>
+		<jsp:include page="../../../inc/bottom_menu.jsp"/>
+		<h1 id="title">관리자 페이지</h1>
 	</div>
 </body>
 </html>

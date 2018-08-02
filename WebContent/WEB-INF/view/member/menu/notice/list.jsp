@@ -61,7 +61,7 @@ color: #aaa;
 <header id="header">
 		<div class="content-container clearfix">
 			<section>
-				<h1>&lt; 공지 사항</h1>
+				<h1><a href="../set/list">&lt; 공지 사항</a></h1>
 			</section>
 		</div>
 	</header>

@@ -93,7 +93,7 @@ public class MemberService {
 		ResultSet rs = null;
 		boolean chk = false;
 		
-		String sql = "SELECT count(ID) MEMBER WHERE ID = ? AND PASSWORD = ?";		
+		String sql = "SELECT count(ID) from MEMBER WHERE ID = ? AND PASSWORD = ?";		
 		
 		try {
 			conn = DBConn.getConnection();
