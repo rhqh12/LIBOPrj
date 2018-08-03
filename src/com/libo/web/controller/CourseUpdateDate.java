@@ -38,6 +38,7 @@ public class CourseUpdateDate extends HttpServlet {
 		Course course = new Course(id, startingTime, startingAlarm, workplace, workplaceAddress, endingTime,
 				endingAlarm, home, homeAddress, week, writerId, null);
 
+		request.setAttribute("week", new String[] {"일","월","화","수","목","금","토"});
 		request.setAttribute("c", course);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/member/course/edit_date.jsp");

@@ -26,6 +26,11 @@ public class PlaceFav {
 		this.dueDate = dueDate;
 	}
 
+	// select문
+	public PlaceFav(String location, String address) {
+		this.location = location;
+		this.address = address;
+	}
 
 	public int getId() {
 		return id;

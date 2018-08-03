@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+/*--alert-setting-------------------------------------*/
+#alert-setting{
+	height: 200px; 
+} 
+
+/*--time-setting-------------------------------------*/
+ 
+#time-setting{
+	height: 400px;
+}
+	
+	#time-setting div div:nth-child(2){
+		text-align : right;
+		width: 40%;
+	}  
+	
+	#time-setting div div:nth-child(2) span{
+		font-size: 1.3em; 
+		font-weight: bold;
+	}
+	
+	#time-setting .td-input{
+	    border: 0;
+	    -webkit-appearance: none;
+	    outline: none;
+	    text-align: center;
+	    font-size: 1em;
+	    display: inline-block;
+	    position: relative;
+	    z-index: 2;
+	    font-weight: 700;
+	    padding: 14px;
+	    border-radius: 2px;
+	    box-shadow: 0 0px 0 1px rgb(25, 119, 204);
+	    width: 100%;
+	    background: #FFF;
+	    color: #1977cc;	
+	    cursor: pointer;
+	}
+	
+
+/*--.setting-box-------------------------------------*/
+.setting-box{ 
+	box-sizing: border-box;
+	padding: 15px 10px;  
+}
+
+	.setting-box > div{
+		border-top: 1px solid gray; 
+		background : rgba(255,255,255, 0.6);
+		height: 40px;     
+		display: flex;  
+		align-items:center;
+		padding: 30px 15px 30px 20px;	
+		font-size: 0.8em;    
+	} 
+	 
+	.setting-box > div:nth-child(2){
+		background : rgba(211,211,224, 0.9);
+	}
+	
+	.setting-box > div:nth-child(2) > h1{
+		font-size: 1.6em; 
+	}  
+	
+	.setting-box div:nth-child(3)>div:first-child, 
+				 div:nth-child(4)>div:first-child{
+		width: 95%; 
+		font-size: 1.5em;
+		color : #848484; 
+		font-weight: bold;  
+	}
+
+/*---set-week----------*/
+
+	#week-box{    
+		height: 100px; 
+	}
+
+	.set-week{   
+		 width: 100%; 
+	} 
+	 
+	.set-week h1 { 
+		font-size:1.5em;  
+		color: #848484;     
+	}
+	  
+	.set-week ul {
+		/* padding:20px; */ 
+		text-align:center;   
+		margin-top: 10px;
+	}
+	
+	.set-week li { 
+		display : inline;
+		padding-right : 15px;  
+		cursor: pointer;
+		font-size: 1.6em; 
+	}
+	
+	.set-week .on {
+		color:#1977cc;
+		font-weight:bold;
+	}
+	
+/*--button-box-----------------------------------------------*/			
+#button-box{
+	background: none;
+	border: none;
+	width: 300px; 
+	margin: 0 auto;
+	text-align: center;  
+	display: block;  
+	box-sizing: content-box; 
+}
+	 
+	#button-box input{  
+		border: none;
+		width : 120px; 
+		height: 50px;
+		border-radius: 15px;
+		font-size: 1.6em; 
+	}
+	
+	#button-box input:first-child{
+		margin-right : 15px; 
+	}

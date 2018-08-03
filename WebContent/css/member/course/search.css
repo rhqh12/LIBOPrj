@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+.full-container{
+	 background: none;
+	 height: calc(100% - 160px);
+}
+ 
+/*--#header------------------------------*/
+#header .fav-menu input{
+	border: none; 
+	width: 70px;  
+	height: 30px;
+	background: #e0e0e0;
+	border-radius: 10px;
+}
+ 
+/*--search-form---------------------------------------*/
+
+#search-form{  
+	box-sizing : border-box;
+	padding : 25px 20px;
+	height: 80px;
+}  
+	 
+	#search-form form{  
+		display: flex;	
+	}
+	  
+	#search-form input[type=text]{
+		width : 85%;
+		border: 1px solid #cccccc;
+		border-radius: 2px;
+		 padding: 5px; 
+		margin-right : 10px; 
+	}
+	
+	#search-form form div{
+ 		height: 30px;  
+		width : 30px;
+		flex-grow : 1;
+		border-radius: 2px;
+		background: url("../../../images/zoom.png") no-repeat center;
+		background-size : contain;
+		cursor: pointer;
+	}
+
+/*====address-list===============================*/
+
+	#address-list .address-item {
+		box-sizing : content-box; 
+		margin-bottom: 20px; 
+		padding-bottom : 20px;
+		border-bottom: 1px solid #979797;
+		display: flex;
+	}
+	
+	#address-list .address-item ul{
+		width : 85%;
+	}
+	
+	#address-list .fav-item {
+		height: 40px;  
+		width : 40px;
+		margin-top : 10px;       
+	}
+	   
+	.empty-star {
+		background: url("../../../images/empty-star.png") no-repeat center;
+		background-size : cover;          
+	}  
+	
+	.fill-star {
+		background: url("../../../images/fill-star.png") no-repeat center;
+		background-size : cover;           
+	}   
+	  
+	#address-list .address-item:first-child {
+		margin-top: 20px; 
+	}  
+	 
+	#address-list .ad-title{
+		font-weight: bold;
+		font-size: 1.1em;
+	}
+	 
+	#address-list .ad-sm{
+		color: #4C4C4C; 
+	}
+	
+	#address-list .ad-tel{
+		color: #0054FF;
+	}
+	
+	#address-list .search-info {
+		position: absolute;
+		width : 200px; 
+		text-align : center;
+		left: 50%;  
+		top: 50%;
+		margin-left: -100px;
+		color: #4C4C4C; 
+	}
