@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,27 +96,34 @@
 window.addEventListener("load", function(){ 
 
 	var sel = AlarmSelector();
-	var listRecord = document.querySelectorAll(".list-record");
-	multiOnclicks(listRecord, ()=>{
-			if(getDisplay(sel.subMenu.style.display)) {
+	var list = document.querySelector(".sel-list");
+	list.onclick = function(e){
+		//LI찾기
+		var el = e.target;
+		for(; el.nodeName != "LI"; el = el.parentElement);
+		if(e.target.nodeName == "INPUT" && e.target.classList.contains("alarm")) return;
+
+		if(e.target.classList.contains("slider") && e.target.nodeName == "SPAN" ) {
+			var input = el.querySelector("input.alarm");
+			updateAlram(input);
+			return;
+		};
+
+		//LI변경
+		if( el.classList.contains("list-record") ){
+			if(sel.subMenu.style.display == "block") {
 				deleteCheck();
 			} else {
-				if( event.target.classList[0] == "slider" ) return;
-				moveDetail(event.currentTarget);
+				moveDetail(el);
 			}
-		}
-	);
+		} 
+	}
 	
 	
 	//menuShowChk
-	
-	sel.subBox.onclick = () => { showDelete(); };
-	sel.cancelMenu.onclick = () => { hideDelete(); };
-	sel.deleteMenu.onclick = () => { deletData() };
-	multiOnclicks(sel.deleteCheck, ()=>{ deleteCheck(event.target); } ); 
-
-	var alarms = document.querySelectorAll(".alarm");
-	multiOnclicks(alarms, ()=>{ updateAlram(event.target); } ); 
+	sel.subBox.onclick = function() { showDelete(); };
+	sel.cancelMenu.onclick = function() { hideDelete(); };
+	sel.deleteMenu.onclick = function() { deletData() };
 	
 });
 </script>
@@ -141,18 +149,21 @@ window.addEventListener("load", function(){
 	</header>		
 	<!-- main 영역 -->
 	<main id="main" class="full-container bg-white">
-		<section id="alert-list" class="cont-scroll">
+		<section id="alert-list" class="sel-list cont-scroll">
 			<h1>알람 표</h1>
 			<form id="delete-form" action="delete" method="post">
 			<ul class="list set">
 				<c:forEach var="a" items="${list }">
-				<li class="list-record" id="${a.id}">
+				<li class="list-record" data-id="${a.id}">
 					<input type="checkbox" name="delete-id" value="${a.id}" class="delete-check" />
 					<%-- <a href="detail?id=${a.id}"> --%>
 						<div class="col-sm">
-							오전 <span>6:30</span>
+							<span>${a.time }</span>
 						</div>
-						<div class="col-au col-week">${a.week}</div>
+						<div class="col-au col-week">
+							<c:if test="${!empty a.week}">${a.week}</c:if>
+							<c:if test="${empty a.week}">${a.specificDate}</c:if>
+						</div>
 						<div class="col-xs switch-item">
 						<c:choose>
 						    <c:when test="${a.alarm eq 'Y'}">
@@ -166,7 +177,7 @@ window.addEventListener("load", function(){
 				</li>
 				</c:forEach>																									
 			</ul>
-			</form>			
+ 			</form>			
 		</section>
 		<div>
 			<a href="reg" class="btn-add" id="plus"><span>+</span></a>

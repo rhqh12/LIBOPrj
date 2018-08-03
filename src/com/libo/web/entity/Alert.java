@@ -17,6 +17,15 @@ public class Alert {
 		this.alarm = alarm;
 	}
 	
+	//insert
+	public Alert(String week, String time, String specificDate, String writerId) {
+		super();
+		this.week = week;
+		this.time = time;
+		this.specificDate = specificDate;
+		this.writerId = writerId;	
+	}
+	
 	//select
 	public Alert(String week, String time, String specificDate, String dueDate, String writerId, String alarm) {
 		super();
@@ -27,6 +36,15 @@ public class Alert {
 		this.writerId = writerId;
 		this.alarm = alarm;
 	}
+	//update
+	public Alert(long id, String week, String time, String specificDate, String writerId) {
+		super();
+		this.id = id;
+		this.week = week;
+		this.time = time;
+		this.specificDate = specificDate;
+		this.writerId = writerId;	
+	}	
 	
 	public Alert(long id, String week, String time, String specificDate, String dueDate, String writerId, String alarm) {
 		super();

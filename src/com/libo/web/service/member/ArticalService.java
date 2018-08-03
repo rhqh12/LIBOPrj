@@ -17,18 +17,31 @@ import com.libo.web.util.DBConn;
 public class ArticalService {
 	// 목록
 	public List<Artical> getArticalList() {
+		return getArticalList(1);
+	
+	}
+	
+	public List<Artical> getArticalList(int page) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Artical> list = new ArrayList<>();
 		DateFormat formatter = new SimpleDateFormat("yy/MM/dd");
 		
+		//String sql = "select * from artical order by DBMS_RANDOM.RANDOM ";
+		String sql = "SELECT * FROM (\r\n" + 
+				"    SELECT rownum num, N.* FROM ( \r\n" + 
+				"        SELECT  * FROM ARTICAL ORDER BY ID DESC \r\n" + 
+				"    ) N\r\n" + 
+				")\r\n" + 
+				"WHERE num between ? and ?";
 		
-		String sql = "select * from artical order by DBMS_RANDOM.RANDOM ";
 		
 		try {
 			conn = DBConn.getConnection();
 			ps = conn.prepareStatement(sql);
+			ps.setInt(1, (page-1)*10+1); 
+			ps.setInt(2, page*10);
 			//due_date
 			
 			//ps.setDate(1, "YY/MM/DD");// 매개변수 (순번, 넣을 값)

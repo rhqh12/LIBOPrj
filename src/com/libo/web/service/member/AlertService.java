@@ -52,7 +52,12 @@ public class AlertService {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Alert> list = new ArrayList<Alert>();
-		String sql = "select * from alert where writer_id = ? order by id";
+		String sql = "";
+	    sql += "SELECT ID, WEEK, TO_CHAR(TIME, 'HH24:MI') TIME, TO_CHAR(SPECIFIC_DATE,'YYYY-MM-DD') SPECIFIC_DATE, DUE_DATE, WRITER_ID, ALARM\n";
+	    sql += "FROM ALERT WHERE WRITER_ID = ? \n";
+	    sql += "ORDER BY ID DESC";
+	    
+		
 		try {
 			conn = DBConn.getConnection();
 			ps = conn.prepareStatement(sql);
@@ -84,13 +89,16 @@ public class AlertService {
 		return list;
 	}
 
-	// 목록
+	// 보기
 	public Alert getAlert(long alertId) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		Alert alert = new Alert();
-		String sql = "select * from alert where id = ?";
+		String sql = "";
+	    sql += "SELECT ID, WEEK, TO_CHAR(TIME, 'HH24:MI') TIME, TO_CHAR(SPECIFIC_DATE,'YYYY-MM-DD') SPECIFIC_DATE, DUE_DATE, WRITER_ID, ALARM\n";
+	    sql += "FROM ALERT WHERE ID = ?";
+		
 		try {
 			conn = DBConn.getConnection();
 			ps = conn.prepareStatement(sql);
@@ -120,8 +128,13 @@ public class AlertService {
 
 		Connection conn = null;
 		PreparedStatement ps = null;
-
-		String sql = "INSERT INTO ALERT(ID, WEEK, TIME, SPECIFIC_DATE, DUE_DATE, WRITER_ID) VALUES(NO_SEQ.NEXTVAL, ?, ?, ?, ?, ?)";
+		
+		
+	    String sql = "";
+	    sql += "INSERT INTO ALERT \n";
+	    sql += "(ID, WEEK, TIME, SPECIFIC_DATE, WRITER_ID) \n";
+	    sql += "VALUES((SELECT NVL((MAX(ID)+1),1) FROM ALERT), ?, TO_DATE(?,'HH24:MI"
+	    		+ "'), TO_DATE(?,'YY/MM/DD HH24:MI'), ?)";	
 
 		try {
 			conn = DBConn.getConnection();
@@ -129,10 +142,11 @@ public class AlertService {
 			ps.setString(1, alert.getWeek());
 			ps.setString(2, alert.getTime());
 			ps.setString(3, alert.getSpecificDate());
-			ps.setString(4, alert.getDueDate());
-			ps.setString(5, alert.getWriterId());
+			ps.setString(4, alert.getWriterId());
 			int cnt = ps.executeUpdate();
-
+			
+			alert.toString();
+				
 			if (cnt == 1)
 				System.out.println("성공");
 		} catch (Exception e) {
@@ -151,8 +165,8 @@ public class AlertService {
 
 		String sql = "";
 		sql += "UPDATE ALERT SET \n";
-		sql += "WEEK = ? ,TIME = ? ,SPECIFIC_DATE = ? ,DUE_DATE = ? \n";
-		sql += "WHERE ID = ? \n";
+		sql += "WEEK = ? ,TIME = TO_DATE(?,'HH24:MI'), SPECIFIC_DATE = TO_DATE(?,'YY/MM/DD HH24:MI') \n";
+		sql += "WHERE ID = ? AND WRITER_ID = ? \n";
 
 		try {
 			conn = DBConn.getConnection();
@@ -160,8 +174,8 @@ public class AlertService {
 			ps.setString(1, alert.getWeek());
 			ps.setString(2, alert.getTime());
 			ps.setString(3, alert.getSpecificDate());
-			ps.setString(4, alert.getDueDate());
-			ps.setLong(5, alert.getId());
+			ps.setLong(4, alert.getId());
+			ps.setString(5, alert.getWriterId());
 			int cnt = ps.executeUpdate();
 			if (cnt == 1)
 				System.out.println("성공");

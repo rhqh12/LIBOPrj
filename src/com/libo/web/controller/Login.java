@@ -1,6 +1,7 @@
 package com.libo.web.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,8 +25,7 @@ public class Login extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/member/login.jsp");
 		dispatcher.forward(request, response);
 	}
-
-	
+		
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		String id = request.getParameter("id");
@@ -44,12 +44,15 @@ public class Login extends HttpServlet {
 		MemberService memberService = new MemberService();
 		boolean FLAG = memberService.loginMember(member);
 		if(FLAG) {
-		HttpSession session = request.getSession();
-		session.setAttribute("member", member);
-		
-		response.sendRedirect("./");
+			HttpSession session = request.getSession();
+			session.setAttribute("member", member);
+			response.sendRedirect("./");
 		}else {
-			response.sendRedirect("?flag=fail");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.print("alert('X');");
+			out.print("location.href='';");
+			out.print("</script>");
 		}
 		
 	}

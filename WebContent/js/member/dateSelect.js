@@ -18,9 +18,10 @@ $(function() {
 		input.value = input.value.substring(1);
 	};
 	
-	$( "#time-dropper" ).timeDropper({
+	$( ".time-dropper" ).timeDropper({
 		setCurrentTime:false,
-		meridians:true
+		meridians:true,
+		format:'HH:mm'
 	});
 	
 	$("#week-select li").click(function(){
@@ -53,7 +54,9 @@ $(function() {
 	datepicker.datepicker({
 	    dateFormat: 'yy-mm-dd',
     	onSelect: function(dateText) {
-            $('.date-txt').text(dateText);
+            $(".date-txt").text(dateText);
+            $("#week-select li").removeClass("on");
+            $("#week-input").val("");
         },
         beforeShow: function (event) {
             setTimeout(function () {  }, 5);               

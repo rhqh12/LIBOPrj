@@ -93,7 +93,7 @@ public class MemberService {
 		ResultSet rs = null;
 		boolean chk = false;
 		
-		String sql = "SELECT count(ID) from MEMBER WHERE ID = ? AND PASSWORD = ?";		
+		String sql = "SELECT COUNT(ID) COUNT FROM MEMBER WHERE ID = ? AND PASSWORD = ?";		
 		
 		try {
 			conn = DBConn.getConnection();
@@ -101,9 +101,10 @@ public class MemberService {
 			ps.setString(1, member.getId());
 			ps.setString(2, member.getPassword());
 			
-			int cnt = ps.executeUpdate();			
-			if(cnt == 1)
-				chk = true;
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				if(rs.getInt("COUNT") > 0) chk = true;
+			}
 			
 		} catch (Exception e) {
 			System.out.println(e.toString());

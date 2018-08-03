@@ -57,12 +57,12 @@
 	</aside>
 	
 	<main id="main" class="full-container bg-white">
-		<section id="course-list" class="cont-scroll">
+		<section id="course-list" class="cont-scroll sel-list">
 			<h1>경로 표</h1>
 			<form id="delete-form" action="delete" method="post">
 				<ul class="list set">
 				<c:forEach items="${list }" var="c">
-					<li class="list-record" id="${c.id }"><!-- ### -->
+					<li class="list-record" data-id="${c.id }"><!-- ### -->
 						<div>
 							<input type='checkbox' class='delete-check' name='delete-id' value="${c.id }">
 						</div>

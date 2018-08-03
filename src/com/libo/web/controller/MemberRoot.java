@@ -16,11 +16,17 @@ import com.libo.web.service.member.ArticalService;
 @WebServlet("/member/")
 public class MemberRoot extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int pageNo = 1;
+		
+		String pageNo_ = request.getParameter("page");
+		
+		if(pageNo_!= null && !pageNo_.equals(""))
+			pageNo = Integer.parseInt(pageNo_);
 		
 		
 		ArticalService service = new ArticalService();
 		
-		List<Artical> list = service.getArticalList();
+		List<Artical> list = service.getArticalList(pageNo);
 		request.setAttribute("list", list);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/member/index.jsp");

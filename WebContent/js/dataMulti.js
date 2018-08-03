@@ -74,18 +74,19 @@ function AlarmSelector(){
 }
 
 var ele = null;
-function moveDetail(element){
-	if(element.id == undefined) return;
-	location.href = "detail?id="+element.id
+function moveDetail(el){
+	var id = el.dataset["id"];
+	if(id == undefined) return;
+	location.href = "detail?id="+id
 }
 
 function updateAlram(element){
 	var id = element.value;
 	if(id == undefined) return;
 
-	var flag = "N";
+	var flag = "Y";
 
-	if( element.checked ) flag = "Y";
+	if( element.checked ) flag = "N";
 
 	var params = "id=" + id + "&flag=" + flag;
 
@@ -99,8 +100,6 @@ function updateAlram(element){
         },   
         error:function(e){}  
 	});  
-	
-	event.stopPropagation();
 }
 
 function deletData(){
@@ -139,13 +138,13 @@ function hideDelete(){
 // delete 체크하는 함수
 function deleteCheck(){
 	//element의 check박스를 빼던가 하자.
-	var input = null;
-	var currentTarget = event.currentTarget;
-	if( currentTarget.tagName == "INPUT" && currentTarget.type == "checkbox") {
-		input = event.target;
-		event.stopPropagation();
-	} else {
-		input = currentTarget.querySelector("input[type=checkbox]");
+	var el = event.target;
+	for(; el.nodeName != "LI"; el = el.parentElement);
+	if(event.target.nodeName != "INPUT" && el.nodeName != "LI") return;
+
+	//LI
+	if(event.target.nodeName != "INPUT") {
+		var input = el.querySelector("input[name=delete-id]");
 		input.checked = returnChange(input.checked);
 	}
 	menuShowChk(ele.deleteCheck, ele.deleteMenu);
