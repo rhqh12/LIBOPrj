@@ -7,6 +7,7 @@
 	height: 30px;
 	background: #e0e0e0;
 	border-radius: 10px;
+	cursor: pointer;
 }		
 
 /*--time-setting----------------------------------------------*/
@@ -32,10 +33,11 @@
 	#time-info > div{
 		box-sizing : border-box;
 		width: 33%; 
-		height: 110px;
+		height: 120px;
 		text-align: center;
 		padding: 5px;
 		border-right: 1px solid gray;
+		cursor: pointer;
 	}
 	
 	#time-info > div:last-child{
@@ -59,7 +61,8 @@
 	#time-info .info-sm{
 		font-size: 1.3em; 
 		font-weight: bolder;
-		
+		display: block;
+		margin-top : 15px;
 	}
 	
 	#time-info div img{
@@ -97,6 +100,7 @@
 	}
 	
 	#course-setting table tr{
+		cursor : pointer;
 		width: 15%;
 	}
 	
@@ -106,5 +110,6 @@
 	
 	#course-setting table td{
 		width: 85%;
+		padding : 0px 5px;
 	}
 	

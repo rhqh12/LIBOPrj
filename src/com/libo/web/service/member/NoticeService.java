@@ -1,6 +1,6 @@
 package com.libo.web.service.member;
+
 import com.libo.web.entity.Notice;
-import com.libo.web.entity.PlaceFav;
 import com.libo.web.util.DBConn;
 
 import java.sql.Connection;
@@ -10,13 +10,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class NoticeService {
 	public Notice getNotice(long id) {
 		Notice notice = new Notice();
 		Connection conn = null;
 		PreparedStatement ps = null;
-		
+
 		String sql = "SELECT * FROM NOTICE_BOARD WHERE = ?";
 		ResultSet rs = null;
 		try {
@@ -24,50 +23,46 @@ public class NoticeService {
 			ps = conn.prepareStatement(sql);
 			ps.setLong(1, id);
 			rs = ps.executeQuery();
-			if(rs.next()) {
-				notice = new Notice(
-								rs.getInt("ID"),
-								rs.getString("SUBJECT"),
-								rs.getString("CONSTANT"),
-								rs.getString("WRITER_ID"),
-								rs.getString("DUE_DATE")
-							);
+			if (rs.next()) {
+				notice = new Notice(rs.getInt("ID"), rs.getString("SUBJECT"), rs.getString("CONSTANT"),
+						rs.getString("WRITER_ID"), rs.getString("DUE_DATE"));
 			}
-	}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-	}finally {
-		DBConn.close(conn, rs, ps);
+		} finally {
+			DBConn.close(conn, rs, ps);
+		}
+		return notice;
 	}
-	return notice;
-}
+
 	public List<Notice> getNoticeList(int page) {
 		List<Notice> list = new ArrayList<Notice>();
-		
+
 		Connection conn = null;
-		PreparedStatement ps =null;
+		PreparedStatement ps = null;
 		ResultSet rs = null;
-		
-		String sql = "select * from \n" + "(select rownum num, n.* from \n"+
-		"(select * from notice_board order by due_date desc) n) \n"+"where num between ? and ?";
-		System.out.println(sql);
+		String sql = "select * from \n" + "(select rownum num, n.* from \n"
+				+ "(select ID, SUBJECT, CONSTANT, WRITER_ID, TO_CHAR(DUE_DATE, 'YYYY-MM-DD') DUE_DATE from notice_board order by due_date desc) n) \n"
+				+ "where num between ? and ?";
 		try {
-			
-			conn = DBConn.getConnection();			
+
+			conn = DBConn.getConnection();
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, (page-1)*10+1);
-			ps.setInt(2, page*10);
+			ps.setInt(1, (page - 1) * 10 + 1);
+			ps.setInt(2, page * 10);
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				Notice notice = new Notice(rs.getInt("ID"), rs.getString("SUBJECT"), rs.getString("CONSTANT"),rs.getString("WRITER_ID"),rs.getString("DUE_DATE"));				 
-				list.add(notice);			 
-			}			
+				Notice notice = new Notice(rs.getInt("ID"), rs.getString("SUBJECT"), rs.getString("CONSTANT"),
+						rs.getString("WRITER_ID"), rs.getString("DUE_DATE"));
+				list.add(notice);
+			}
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		} finally {
 			DBConn.close(conn, rs, ps);
 		}
-		
+
 		return list;
 	}
 }

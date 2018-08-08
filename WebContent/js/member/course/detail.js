@@ -17,7 +17,8 @@ window.addEventListener("load", function(){
     var homeTr = courseSetting.querySelector("table tr:first-child");
     var workTr = courseSetting.querySelector("table tr:last-child");
     var updateForm = document.querySelector("#update-form");
-    homeTr.onclick = function(){ 
+    
+    homeTr.onclick = function(){
         updateForm.action = "address";
         updateForm.querySelector("input[name=type]").value="workplace";
         updateForm.submit();

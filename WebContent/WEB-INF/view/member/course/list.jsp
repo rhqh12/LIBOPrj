@@ -66,12 +66,11 @@
 						<div>
 							<input type='checkbox' class='delete-check' name='delete-id' value="${c.id }">
 						</div>
-					
 						<div class="col-xs col-time list-item"> 
-							${c.home }${c.startingTime }
+							${c.home }<br />${c.startingTime }
 						</div>
 						<div class="col-xs col-time list-item">
-							${c.workplace }${c.endingTime }
+							${c.workplace }<br />${c.endingTime }
 						</div>
 						<div class="col-au list-item"> 
 							${c.week }

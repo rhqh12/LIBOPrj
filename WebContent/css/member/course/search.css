@@ -13,6 +13,10 @@
 	background: #e0e0e0;
 	border-radius: 10px;
 }
+
+	#header .title span{
+		cursor: pointer;
+	}
  
 /*--search-form---------------------------------------*/
 
@@ -56,12 +60,14 @@
 	
 	#address-list .address-item ul{
 		width : 85%;
+		cursor: pointer;
 	}
 	
 	#address-list .fav-item {
 		height: 40px;  
 		width : 40px;
-		margin-top : 10px;       
+		margin-top : 10px;
+		cursor: pointer;       
 	}
 	   
 	.empty-star {
@@ -75,9 +81,9 @@
 	}   
 	  
 	#address-list .address-item:first-child {
-		margin-top: 20px; 
-	}  
-	 
+		margin-top: 20px;
+	}
+
 	#address-list .ad-title{
 		font-weight: bold;
 		font-size: 1.1em;

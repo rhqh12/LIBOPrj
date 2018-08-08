@@ -22,10 +22,10 @@ window.addEventListener("load", function(){
 			var ul = el.previousElementSibling;
 			var title = ul.querySelector(".ad-title").textContent;
 			var address = ul.querySelector(".ad-address").textContent;
-			var type = "insert";
+			var flag = "insert";
 			if(clsn.contains("fill-star"))
 				type = "delete";
-			var params = "address=" + address+"&title="+title+"&type="+type;
+			var params = "address=" + address+"&title="+title+"&flag="+flag;
 			$.ajax({
 				type:"POST",
 				dataType: "text",
@@ -33,7 +33,7 @@ window.addEventListener("load", function(){
 				data:params,      
 				success:function(args){
 					 if(args == "success"){
-						 if(type == "insert")
+						 if(flag == "insert")
 							el.classList.replace("empty-star","fill-star");
 						 else
 							el.classList.replace("fill-star","empty-star");

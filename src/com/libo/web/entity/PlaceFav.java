@@ -11,10 +11,10 @@ public class PlaceFav {
 	public PlaceFav() {		
 	}
 
-	public PlaceFav(String location, String address, String dueDate) {
+	public PlaceFav(String location, String address, String writerId) {
 		this.location = location;
 		this.address = address;
-		this.dueDate = dueDate;
+		this.writerId = writerId;
 	}
 	
 	

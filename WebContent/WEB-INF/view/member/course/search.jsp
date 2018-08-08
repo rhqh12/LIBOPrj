@@ -10,9 +10,6 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous" ></script>
 <script src="../../js/member/course/search.js" type="text/javascript"></script>
 <title>회원 메인 페이지</title>
-<script type="text/javascript">
-</script>
- 
 </head>
 <body>
 <div id="body" class="full-screen bg-morning">
