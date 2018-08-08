@@ -41,7 +41,7 @@ public class MemberService {
 		PreparedStatement ps = null;
 		
 		String sql = "UPDATE MEMBER SET \n";
-			  sql += "PASSWORD = ?, NICKNAME = ?, BIRTHDAY = ?, GENDER = ? \n";
+			  sql += "PASSWORD = ?, NICKNAME = ? \n";
 			  sql += "WHERE ID = ? \n";
 		
 		try {
@@ -49,9 +49,7 @@ public class MemberService {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, member.getPassword());
 			ps.setString(2, member.getNickname());
-			ps.setString(3, member.getBirthday());
-			ps.setString(4, member.getGender());
-			ps.setString(5, member.getId());
+			ps.setString(3, member.getId());
 			
 			int cnt = ps.executeUpdate();
 			

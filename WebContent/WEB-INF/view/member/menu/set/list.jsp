@@ -17,7 +17,7 @@ body {
 	background: url("../../images/dawn.jpg") repeat-x center;
 	width: 100%;
 	height: 100%;
-	border: 5px solid #00000;
+	border: 5px solid #0000;
 }
 
 #menu-list {
@@ -95,11 +95,11 @@ padding-left: 30px;
 </head>
 
 <body id="body">
-	<div class="full-screen">
+	<div class="full-screen bg-morning">
 		<header id="header">
 		<div class="content-container clearfix">
 			<section>
-				<h1><a href="">&lt; 설정</a></h1>
+				<h1><a href="#" onClick="history.go(-1)">&lt; 설정</a></h1>
 			</section>
 			<section>
 				<div></div>
@@ -110,7 +110,7 @@ padding-left: 30px;
 		<nav id="menu-list">
 			<ul>
 				<li><a href="../notice/list">공지사항</a></li>
-				<li><a href="../../update.jsp">회원정보 수정</a></li>
+				<li><a href="../../update">회원정보 수정</a></li>
 			</ul>
 		</nav>
 		</main>
