@@ -33,10 +33,15 @@ font-size: 35px;
 font-weight: bold;
 font-family: 돋움, Arial, sans-serif;
 }
+.joinButton{
+	text-align: center;
+	padding: 10px;
+	border: 2px solid #000;
+}
 </style>
 </head>
 <body>
-<div id="body" class="full-screen">
+<div id="body" class="full-screen bg-morning">
 	<header id="header">
 	<section>
 		<h1>리보</h1>
@@ -72,16 +77,16 @@ font-family: 돋움, Arial, sans-serif;
 			</tr>
 			<tr>
 				<th>성별</th>
-				<td><input type="radio" name="gender"><label>남성</label>
-					<input type="radio" name="gender"><label>여성</label></td>
+				<td><input type="radio" name="gender" value="male"><label>남성</label>
+					<input type="radio" name="gender" value="female"><label>여성</label></td>
 			</tr>
 			<tr>
 				<th>생년월일</th>
-				<td><input type="date"><input type="radio" name="birthday"><label>양력</label>
-					<input type="radio" name="birthday"><label>음력</label></td>
+				<td><input type="date" name="birthday"></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit"></td>
+				<td colspan="2" class="joinButton"><input type="submit" value="회원 가입">
+				</td>
 		</table>
 		</section>
 	</form>

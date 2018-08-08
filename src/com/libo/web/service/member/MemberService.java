@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.libo.web.entity.Member;
+import com.libo.web.entity.Notice;
 import com.libo.web.util.DBConn;
 
 public class MemberService {
@@ -40,7 +41,7 @@ public class MemberService {
 		PreparedStatement ps = null;
 		
 		String sql = "UPDATE MEMBER SET \n";
-			  sql += "PASSWORD = ?, NICKNAME = ?, BIRTHDAY = ?, GENDER = ? \n";
+			  sql += "PASSWORD = ?, NICKNAME = ? \n";
 			  sql += "WHERE ID = ? \n";
 		
 		try {
@@ -48,9 +49,7 @@ public class MemberService {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, member.getPassword());
 			ps.setString(2, member.getNickname());
-			ps.setString(3, member.getBirthday());
-			ps.setString(4, member.getGender());
-			ps.setString(5, member.getId());
+			ps.setString(3, member.getId());
 			
 			int cnt = ps.executeUpdate();
 			
@@ -118,6 +117,43 @@ public class MemberService {
 	
 	//로그아웃
 	public void logoutMember(Member member) {
+		
+	}
+	
+	//회원정보 가져오기
+	public Member getMember(String id) {
+		
+		Member member = new Member();
+		
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT id, password, nickname,  to_char(birthday,'YYYY-MM-DD') birthday, gender FROM MEMBER WHERE ID = ?";		
+		
+		try {
+			conn = DBConn.getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				member = new Member(
+						rs.getString("id"),
+						rs.getString("password"),
+						rs.getString("nickname"),
+						rs.getString("birthday"),
+						rs.getString("gender")
+					);
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		} finally {
+			DBConn.close(conn, rs, ps);
+		}
+		
+		return member;
 		
 	}
 	

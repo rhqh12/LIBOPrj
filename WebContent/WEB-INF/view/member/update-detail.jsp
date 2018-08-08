@@ -4,27 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-		<meta name="viewport"
-		content="width-device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalavble=no">
 <meta charset="UTF-8">
 <link href="../css/style.css" type="text/css" rel="stylesheet" />
 <title>회원 정보 수정</title>
 <style>
-#main>h1{
-	display: none;
-}
-table{
-	border-collapse: collapse;
-}
-td{
-	padding: 0px;
-}
-.table{
-	width: 100%;
-	border-top: 2px solid #000;
-	table-layout: fixed;
-	background: #fff;
-}
 </style>
 </head>
 <body>
@@ -39,20 +22,38 @@ td{
 		<div class="flex-container">
 		<main id="main">
 	<h1>회원 정보 수정 폼</h1>
-	<form action="update" method="post">
+	<form action="update-detail" method="post">
 	<section id="update-table">
 		<table border="1" class="table">
 		<tr>
 		<th>아이디</th>
-		<td>${member.id }</td>
+		<td>${member.id}</td>
 		</tr>
 		<tr>
 			<th>비밀번호</th>
-		<td><input type="password" required="required" name="password"/>
+		<td><input type="password" required="required" name="password"
+			placeholder="변경할 비밀번호"/></td>
+		</tr>
+		<tr>
+			<th>비밀번호 확인</th>
+			<td><input type="password" required="required" name="passwordCheck"
+			placeholder="변경할 비밀번호 확인"/></td>
+		</tr>
+		<tr>
+			<th>닉네임</th>
+			<td><input value="${member.nickname}" type="text" required="required" name="nickname" placeholder="닉네임을 입력해주세요."></td>
+		</tr>
+		<tr>
+			<th>성별</th>
+			<td>${member.gender}</td>
+		</tr>
+		<tr>
+			<th>생년월일</th>
+			<td>${member.birthday}</td>
 		</tr>
 		<tr>
 			<td colspan = "2"><input type="submit"></td>
-		</tr>
+		
 		</table>
 		</section>
 		</form>
