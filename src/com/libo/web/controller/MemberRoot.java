@@ -9,9 +9,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import com.libo.web.entity.Artical;
+import com.libo.web.entity.Course;
+import com.libo.web.entity.Member;
 import com.libo.web.service.member.ArticalService;
+import com.libo.web.service.member.CourseService;
 
 @WebServlet("/member/")
 public class MemberRoot extends HttpServlet {
@@ -25,12 +30,26 @@ public class MemberRoot extends HttpServlet {
 		
 		
 		ArticalService service = new ArticalService();
+		CourseService courseService = new CourseService();
 		
 		List<Artical> list = service.getArticalList(pageNo);
-		request.setAttribute("list", list);
+		HttpSession session=request.getSession();
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/member/index.jsp");
-		dispatcher.forward(request, response);
+		Member member = (Member)session.getAttribute("member");
+		System.out.println(member);
+		if(member == null) {
+			response.sendRedirect("login");
+		} else {
+			List<Course> course = courseService.getCourseList(member.getId());
+			
+			request.setAttribute("list", list);
+			request.setAttribute("course", course);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/member/index.jsp");
+			dispatcher.forward(request, response);
+			
+		}
+			
 	}
 
 	

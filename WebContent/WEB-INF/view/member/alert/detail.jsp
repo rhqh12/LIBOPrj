@@ -30,7 +30,7 @@
 	<header id="header">
 		<div class="content-container clearfix">
 			<section>
-				<h1>&lt; 알람설정</h1>
+				<h1><a href="./list">&lt; 알람 목록</a></h1>
 			</section>
 		</div>
 	</header>		

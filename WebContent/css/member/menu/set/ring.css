@@ -34,17 +34,22 @@
 		color : #848484; 
 		font-weight: bold;
 	}
+.full-container {
+	position: relative;
+}
+
 
 /*---button-box--------------------------------------*/			
 #button-box{
+	position:absolute;
+	bottom:30px;
 	background: none;
 	border: none;
-	width: 300px; 
+	width: 100%; 
 	margin: 0 auto;
 	text-align: center;  
 	display: block;
 	box-sizing: content-box;
-	padding-top : 100px; 
 }
 	 
 	#button-box input{  
@@ -53,6 +58,7 @@
 		height: 50px;
 		border-radius: 15px;
 		font-size: 1.6em; 
+		cursor: pointer;
 	}
 	
 	#button-box input:first-child{

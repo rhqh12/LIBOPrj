@@ -44,7 +44,7 @@ function multiOnclicks(ele, fuc) {
 }
 
 function menuShowChk(list,menu) {
-	if( isType(list, "checked") ) $(menu).show();
+	if( isType(list, "checked") ) menu.style.display = "inline-block";
 	else $(menu).hide();
 }
 // class Alarm {
@@ -131,7 +131,8 @@ function hideDelete(){
 	$(".switch-item").show(200);
 	$(ele.subBox).show(200);
 
-	$(ele.deleteMenu).show();
+	//$(ele.deleteMenu).show();
+	ele.deleteMenu.style.display = "inline-block";
 	$(ele.deleteCheck).prop("checked", false);
 }
 

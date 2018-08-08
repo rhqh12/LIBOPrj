@@ -36,15 +36,15 @@
 		<form method="post">
 			<aside class="set-date">
 				<h1>날짜 설정</h1>
-				<span class="date-txt">-</span>
+				<span class="date-txt">${alert.specificDate}</span>
 				<div class="select">
-					<input type="hidden" name="datepicker" id="datepicker" />
+					<input type="hidden" name="datepicker" id="datepicker" value="${alert.specificDate}" />
 					<span id="datepicker-button">날짜선택</span>
 				</div>
 			</aside>
 			<section class="set-time">
 				<h1>시간 설정</h1>
-				<input type="text" name="time" class="td-input" id="time-dropper" value="12:00 pm" readonly />
+				<input type="text" name="time" class="td-input time-dropper" value="12:00" readonly />
 			</section>
 			<section class="set-week">
 				<h1>요일 반복</h1>
@@ -58,7 +58,7 @@
 			<div>
 				<ul class="menu-btn">
 					<li><a href="list">취소</a></li>
-					<li><input type="submit" value="저장하기" /></li>
+					<li><input type="submit" value="저장하기" class="submit-btn" /></li>
 				</ul>
 			</div>
 		</form>

@@ -16,18 +16,18 @@
 
 #menu-list>ul>li {
 	display: block;
-	padding: 25px 0px;
-	padding-left: 15px;
-	border-bottom: 2px solid #aaa;
+	padding: 15px 0px 15px 25px;
+	border-bottom: 1px solid #aaa;
+	font-size:14px;
 }
 
 #menu-list>ul>li>a {
-	font-family: "맑은 고딕", 고딕, arial, sans-serif;
-	font-size: 1.5em;
+	/* font-family: "맑은 고딕", 고딕, arial, sans-serif;
+	font-size: 1.5em; */
+	font-size:1em;
 	font-weight: bold;
 	color: #454e57;
 	text-decoration: none;
-	padding-left: 15px;
 }
 </style>
 </head>

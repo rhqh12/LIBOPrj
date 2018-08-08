@@ -31,23 +31,17 @@ window.addEventListener("load", function(){
 	display: none;
 }
 
-#notice-list {
-	font-family: 돋움, Arial, sans-serif;
-	font-size: 15px; 
-	font-weight: bold;
-	padding-top : 10px;
-}
-
 #notice-list .content {
 	height: 0px;
 	overflow: hidden;
 	transition : 400ms height ease;
 	margin-top : 10px;
 	line-height: 25px;
+	font-size:0.9em;
 }  
 
 #notice-list .show {
-	height : 150px;
+	height : 100px;
 }
 
 #notice-list>h1 {
@@ -55,21 +49,18 @@ window.addEventListener("load", function(){
 }
 
 #notice-list>article {
-	border-bottom: 2px solid #aaa;
-	padding: 10px;
-	padding-top : 20px;
+	border-bottom: 1px solid #aaa;
+	padding: 20px 25px 10px 25px;
 	cursor: pointer;
 }
 
 #notice-list>article>h1 {
-	font-family: 돋움, Arial, sans-serif;
-	font-size: 20px;
+	font-size: 14px;
 	font-weight: bold;
 	color: #555;
 }
 
 #notice-list .due-date {
-	font-family: 돋움, Arial, sans-serif;
 	font-size: 12px;
 	font-weight: lighter;
 	color: #aaa;

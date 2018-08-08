@@ -37,6 +37,7 @@ public class Login extends HttpServlet {
 //		String gender = request.getParameter("gender");
 //		String birthday = request.getParameter("birthday");
 		
+	
 		Member member = new Member();
 		member.setId(id);
 		member.setPassword(password);
@@ -44,16 +45,14 @@ public class Login extends HttpServlet {
 		MemberService memberService = new MemberService();
 		boolean FLAG = memberService.loginMember(member);
 		if(FLAG) {
+			System.out.println(FLAG);
 			HttpSession session = request.getSession();
 			session.setAttribute("member", member);
+			response.setContentType("true");
 			response.sendRedirect("./");
-		}else {
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.print("alert('X');");
-			out.print("location.href='';");
-			out.print("</script>");
 		}
+		PrintWriter out = response.getWriter();
+		out.print(FLAG);
 		
 	}
 

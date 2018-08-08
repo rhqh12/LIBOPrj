@@ -3,14 +3,23 @@ window.addEventListener("load", function(){
     var aside = articeMain.querySelector("#list-article");
     var el, scrollEvent = null;
     var pageNo = 1;
+    var articeIframeWrapper = document.querySelector(".artice-iframe-wrapper");
+    var iframeCloseBtn = document.querySelector(".iframe-close-btn");
     aside.onclick = function(e){
         //el = event.target;
         var el = e.target;
         for(; el.nodeName != "ARTICLE"; el = el.parentElement) ;
         if(el.nodeName != "ARTICLE") return;
         var url = el.dataset["url"];
-        
-        
+        var iframe = document.createElement("iframe");
+        iframe.src = url;
+        iframe.className = "artice-iframe";
+        articeIframeWrapper.appendChild(iframe);
+        articeIframeWrapper.style.display = "block";
+    }
+    iframeCloseBtn.onclick = function(e){
+    	articeIframeWrapper.style.display = "none";
+    	articeIframeWrapper.querySelector("iframe").remove();
     }
     articeMain.onscroll = function() {
         el = event.target;

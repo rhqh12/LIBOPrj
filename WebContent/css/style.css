@@ -37,10 +37,10 @@ a {
     object-fit: contain;	
     overflow-x:hidden;
     overflow-y:auto;
-    padding-bottom:60px;
+    padding-bottom:40px;
 }
 .full-container {
-	height: calc(100% - 60px);	
+	height: calc(100% - 55px);	
 	background: rgba(255,255,255,0.7);
 }
 
@@ -119,22 +119,29 @@ a {
 }
 /* ------------------ header ----------------- */
 #header {
-	height: 60px; 
+	height: 40px; 
 	box-sizing: content-box; 
-	background: #dddddf;  
-	font-size: 0.9em;
+	background: #00adc1;  
+	font-size: 0.7em;
+	color:#fff;
 }
-
-	#header .content-container {
+#header a {
+	color:inherit;
+}
+	/* #header .content-container {
 		display: flex;
-	}  
+	}   */
 
 		#header section:nth-child(1){
-			width : 95%;
-			padding: 15px;  
+			
+			height:40px;
+			line-height:40px;
+			margin-left:15px;
 		}
 		#header section:nth-child(2){
-			padding: 15px;   
+			position:absolute;
+			top:5px;
+			right:10px;
 		}				
 /* ----------------- 토글 스위치  ----------------- */
 .switch {
@@ -240,3 +247,39 @@ input:checked + .slider:before {
 				height:inherit;
 				text-indent:-9999px;
 			}
+/* artice-iframe http://loadinggif.com/*/
+.artice-iframe-wrapper {
+	display:none;
+	position: fixed;
+	top:  calc(2.5% + 50px);
+	left: 2.5%;
+	width: 95%;
+	height: calc(95% - 50px);
+	background:#fff url("../images/loading-icon.gif") no-repeat 50%;
+}
+	.artice-iframe-wrapper .iframe-close-btn {
+		position:absolute;
+		width:50px;
+		height:50px;
+		top:-50px;
+		right:0px;
+		background:url("../images/cancel-icon.jpg") no-repeat;
+		z-index: 999;
+    	background-size: contain;
+    	cursor: pointer;
+    
+	}
+	.artice-iframe{
+		position: absolute;
+		top:0px;
+		left: 0px;
+		width: 100%;
+		height:100%;
+		top: 0%;
+		left: 0%;
+		border: 2px solid #1c1c1c;
+	}
+	
+#datepicker-button {
+	cursor: pointer;
+}	

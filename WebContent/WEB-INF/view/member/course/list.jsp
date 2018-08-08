@@ -12,6 +12,15 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous" ></script>
 <script src="../../js/dataMulti.js"></script>
 <script src="../../js/member/course/list.js"></script>
+<style>
+.full-container{
+    height: calc(100% - 105px);
+}
+.col-week{
+	line-height: 30px;
+}
+
+</style>
 </head>
 <body>	
 <div id="body" class="full-screen bg-morning">
@@ -23,7 +32,7 @@
 	<header id="header">
 		<div class="content-container clearfix">
 			<section>
-				<h1>&lt; 경로 목록</h1>
+				<h1><a href="#" onclick="history.go(-1)">&lt; 경로 목록</a></h1>
 			</section>
 			<section id="sub-box" style="display: block;">
 				<div></div>

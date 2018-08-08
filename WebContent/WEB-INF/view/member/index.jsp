@@ -11,9 +11,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <title>회원 메인 페이지</title>
 <link href="../css/style.css" type="text/css" rel="stylesheet"/>
+<script src="//code.jquery.com/jquery-1.11.3.js"></script>
+<script src="../js/main.js"></script>
 <style>
 #main {
-	height: calc(100% - 115px)
+	height: calc(100% - 125px)
 }
 #info-weather{
 	position:relative;
@@ -36,6 +38,7 @@
 }
 #list-article article {
 	position: relative;
+	cursor: pointer;
 }
 	#list-article article figure{
 		position: absolute;
@@ -54,10 +57,6 @@
 		padding-left:80px;
 		min-height:67px;
 	}
-		#list-article article a {
-			color:#000;
-			text-decoration:none;
-		}
 		#list-article article a:hover{
 			color:#2449b5;
 		}
@@ -101,8 +100,14 @@
 	</aside>
 	<aside id="info-transport" class="container">
 		<h1 class="hide">버스/지하철 안내</h1>
-		<span>버스 이미지</span>
-		<span>버스 도착 </span>
+		<c:if test="${empty course }">
+			<span>버스 </span>
+			<span>버스 도착 </span>
+		</c:if>
+		<c:if test="${!empty course }">
+			<span>버스 있</span>
+			<span>버스 도착 </span>		
+		</c:if>
 	</aside>
 	<main id="main" class="container cont-scroll">
 		<h1 class="hide">리보 회원 메인 페이지</h1>
@@ -117,19 +122,20 @@
 				<c:if test="${!empty n.imgSrc}">
 					<c:set var="imgSrc" value="${n.imgSrc }" />
 				</c:if>
-				<article class="wrapper">
+				<article class="wrapper" data-url="${n.link}">
 					<figure><img src="${imgSrc }"></figure>
 					<div>
-						<a href="${n.link}" tartget="_blank">
-							<span class="title">${n.subject }</span>
-							<span class="content">${n.content }</span>
-						</a>
+						<span class="title">${n.subject }</span>
+						<span class="content">${n.content }</span>
 					</div>
 				</article>																		
 			</c:forEach>
 		</aside>
 	</main>	
 	<jsp:include page="../inc/bottom_menu.jsp"></jsp:include>
+</div>
+<div class="artice-iframe-wrapper">
+	<div class="iframe-close-btn"></div>
 </div>
 </body>
 </html>

@@ -78,11 +78,19 @@
 	.menu-btn li {
 		flex-grow:1;
 		margin:20px 10px;
-		text-align: center;
+	}
+	.menu-btn li a,
+	.menu-btn li input[type=submit] {
+		display:block;
+		width:100%;
 		height:30px;
 		line-height:30px;
-		background:#a9a9a9;
-	}
-	.menu-btn li a {
+		padding:0px;
+		border:0px;
+		background:#008898;		
+		text-align: center;
 		text-decoration: none;
+		cursor: pointer;
+		color:#fff;
+		font-size:13px;
 	}

@@ -1,16 +1,7 @@
 @charset "UTF-8";
-
-/*--alert-setting-------------------------------------*/
-#alert-setting{
-	height: 200px; 
-} 
-
-/*--time-setting-------------------------------------*/
- 
-#time-setting{
-	height: 400px;
-}
-	
+#main {
+	font-size:12px;
+}	
 	#time-setting div div:nth-child(2){
 		text-align : right;
 		width: 40%;
@@ -44,16 +35,15 @@
 /*--.setting-box-------------------------------------*/
 .setting-box{ 
 	box-sizing: border-box;
-	padding: 15px 10px;  
+	padding: 15px 10px 0px 10px;  
 }
 
 	.setting-box > div{
 		border-top: 1px solid gray; 
 		background : rgba(255,255,255, 0.6);
-		height: 40px;     
 		display: flex;  
 		align-items:center;
-		padding: 30px 15px 30px 20px;	
+		padding: 7px 15px 7px 20px;	
 		font-size: 0.8em;    
 	} 
 	 
@@ -111,7 +101,7 @@
 	background: none;
 	border: none;
 	width: 300px; 
-	margin: 0 auto;
+	margin: 10px auto 0px;
 	text-align: center;  
 	display: block;  
 	box-sizing: content-box; 
@@ -120,9 +110,11 @@
 	#button-box input{  
 		border: none;
 		width : 120px; 
-		height: 50px;
-		border-radius: 15px;
-		font-size: 1.6em; 
+		height: 30px;
+		font-size: 1.4em;
+		background:#008898; 
+		color:#fff;
+		cursor: pointer;
 	}
 	
 	#button-box input:first-child{
