@@ -9,8 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.catalina.Session;
 
 import com.libo.web.entity.Course;
+import com.libo.web.entity.Member;
 import com.libo.web.service.member.CourseService;
 
 @WebServlet("/member/course/list")
@@ -27,15 +31,17 @@ public class CourseList extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		
+		HttpSession session = request.getSession();
+		Member member = (Member) session.getAttribute("member");
+		String writerId = "test";
+		if(member != null)
+			writerId = member.getId();
+		
 
-		String writeId = "test"; // 초기값
-		String writeId_ = request.getParameter("writeId");
-
-		if (writeId_ != null && !writeId_.equals(""))
-			writeId = writeId_;
-
+	
 		CourseService courseService = new CourseService();
-		List<Course> list = courseService.getCourseList(writeId);
+		List<Course> list = courseService.getCourseList(writerId);
 
 		request.setAttribute("list", list);
 

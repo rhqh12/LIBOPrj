@@ -33,8 +33,6 @@ public class CourseService {
 						rs.getString("ENDING_ALARM"), rs.getString("HOME"), rs.getString("HOME_ADDRESS"),
 						rs.getString("WEEK"), rs.getString("WRITER_ID"), rs.getString("DUE_DATE"));
 			}
-			// 데이터테스트
-			System.out.println(course.toString());
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -64,10 +62,6 @@ public class CourseService {
 						rs.getString("ENDING_ALARM"), rs.getString("HOME"), rs.getString("HOME_ADDRESS"),
 						rs.getString("WEEK"), rs.getString("WRITER_ID"), rs.getString("DUE_DATE"));
 				list.add(course);
-			}
-			// 데이터테스트
-			for (Course course : list) {
-				System.out.println(course.toString());
 			}
 
 		} catch (SQLException e) {
@@ -99,9 +93,7 @@ public class CourseService {
 			ps.setString(8, course.getHomeAddress());
 			ps.setString(9, course.getWeek());
 			ps.setString(10, course.getWriterId());
-			int cnt = ps.executeUpdate();
-			if (cnt == 1)
-				System.out.println("성공");
+			ps.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		} finally {
@@ -187,7 +179,7 @@ public class CourseService {
 		}
 	}
 
-	public List<PlaceFav> getFavorite(String writerId) {
+/*	public List<PlaceFav> getFavorite(String writerId) {
 
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -218,11 +210,11 @@ public class CourseService {
 	public void insertFavorite(PlaceFav placeFav) {
 
 		
-/*		ID
+		ID
 		WRITER_ID
 		LOCATION
 		ADDRESS
-		DUE_DATE*/
+		DUE_DATE
 		
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -240,10 +232,10 @@ public class CourseService {
 		try { 
 			conn = DBConn.getConnection();
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, "test");
+			ps.setString(1, placeFav.getWriterId());
 			ps.setString(2, placeFav.getLocation());
 			ps.setString(3, placeFav.getAddress());
-			ps.setString(4, "test");
+			ps.setString(4, placeFav.getWriterId());
 			ps.setString(5, placeFav.getLocation());
 			ps.setString(6, placeFav.getAddress());
 			ps.executeUpdate();
@@ -264,7 +256,7 @@ public class CourseService {
 		try {
 			conn = DBConn.getConnection();
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, "test");
+			ps.setString(1, placeFav.getWriterId());
 			ps.setString(2, placeFav.getLocation());
 			ps.setString(3, placeFav.getAddress());
 			ps.executeUpdate();
@@ -273,5 +265,5 @@ public class CourseService {
 		} finally {
 			DBConn.close(conn, ps);
 		}
-	}
+	}*/
 }

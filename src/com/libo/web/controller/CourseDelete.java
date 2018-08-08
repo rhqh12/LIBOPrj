@@ -18,21 +18,19 @@ public class CourseDelete extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		
+
 		CourseService courseService = new CourseService();
 		String[] courseId_ = request.getParameterValues("delete-id");
-		
+
 		long[] courseId = new long[courseId_.length];
-		
-		if(courseId_!=null) {
+
+		if (courseId_ != null) {
 			for (int i = 0; i < courseId_.length; i++) {
 				courseId[i] = Long.parseLong(courseId_[i]);
 			}
 			courseService.deleteCourse(courseId);
 		}
-
 		response.sendRedirect("list");
-		
 	}
 
 }

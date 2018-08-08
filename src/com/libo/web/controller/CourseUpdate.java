@@ -7,8 +7,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.libo.web.entity.Course;
+import com.libo.web.entity.Member;
 import com.libo.web.service.member.CourseService;
 
 @WebServlet("/member/course/update")
@@ -31,13 +33,17 @@ public class CourseUpdate extends HttpServlet {
 		String home = request.getParameter("home");
 		String homeAddress = request.getParameter("homeAddress");
 		String week = request.getParameter("week");
-		String writerId = request.getParameter("writerId");
+		
+		HttpSession session = request.getSession();
+		Member member = (Member) session.getAttribute("member");
+		String writerId = "test";
+		if(member != null)
+			writerId = member.getId();
 
 		Course course = new Course(id, startingTime, startingAlarm, workplace, workplaceAddress, endingTime,
 				endingAlarm, home, homeAddress, week, writerId, null);
 		
 		CourseService service = new CourseService();
-		System.out.println(id);
 		if(id == 0) 
 			service.insertCourse(course);
 		else 

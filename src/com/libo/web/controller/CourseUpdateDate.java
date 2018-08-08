@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.libo.web.entity.Course;
-import com.libo.web.entity.Notice;
-import com.libo.web.service.member.CourseService;
 
 @WebServlet("/member/course/updateDate")
 public class CourseUpdateDate extends HttpServlet {
