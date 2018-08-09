@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <title>리보</title>
 <link href="./css/style.css"type="text/css"rel="stylesheet"/>
+<script src="/LiboPrj/js/speech.js" charset="utf-8"></script>
 <style>
 #body {
 	padding-bottom:0px;
