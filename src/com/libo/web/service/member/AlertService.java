@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.libo.web.entity.Alert;
@@ -122,6 +124,40 @@ public class AlertService {
 			DBConn.close(conn, rs, ps);
 		}
 		return alert;
+	}
+	
+	public String getPushAlert(String id) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Alert alert = new Alert();
+		String sql = "";
+	    sql += "SELECT count(ID) count \n";
+	    sql += "FROM ALERT WHERE WRITER_ID = ? AND TO_CHAR(TIME,'HH24:MI') = ?";
+	    
+		Date date = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+		
+		String userDate = format.format(date);
+		
+		String count = "0";
+		try {
+			conn = DBConn.getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id); // 매개변수 (순번, 넣을 값)
+			ps.setString(2, userDate);
+			//ps.setString(2, date);
+			rs = ps.executeQuery();
+			if (rs.next()) {	
+				count = rs.getString(count);			
+			}
+			//System.out.println(alert.toString());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConn.close(conn, rs, ps);
+		}
+		return count;
 	}
 
 	public void insertAlert(Alert alert) {

@@ -16,4 +16,17 @@
 			</li> -->
 		</ul>
 	</nav>
-	<!-- <script src="/LiboPrj/js/speech.js" charset="utf-8"></script> -->
+
+	<div class="alram-on">
+		<div class="flex-container align-items-center">
+			<div class="item">
+				<div class="box wrapper">
+				
+					<audio id="audio" src="<%=ctx%>/ending.mp3"></audio>
+					<img src="<%=ctx%>/images/clock-icon1.png" />
+					<div><span class="time">09시 00분</span><span style="font-size:15px;padding-left:5px;">알람</span></div>
+					<button class="close-btn">닫기</button>
+				</div>	
+			</div>
+		</div>		
+	</div>

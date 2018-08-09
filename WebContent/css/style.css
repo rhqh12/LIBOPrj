@@ -56,6 +56,7 @@ a {
 	height: 100%;	
 }
 .alram-on {
+	display:none;
     position: fixed;
     top: 0;
     left: 0;
@@ -67,10 +68,57 @@ a {
     object-fit: contain;	
     overflow-x:hidden;
     overflow-y:auto;
-    background:#001852;
+    padding:0px;
+    background:#778dc3;
 }
-.alram-on .box {
+.alram-on .box div {
+	color: #fff;
+    font-size: 25px;
+    margin-top: 20px;
+    line-height:30px;
+}
+.alram-on .close-btn {
 	
+}
+.alram-on .close-btn{
+  background:#272637;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:30px;
+  font-size:1em;
+  margin-top:10px;
+  padding:0 3em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+.alram-on .close-btn:hover{
+  background:#fff;
+  color:#272637;
+}
+.alram-on .close-btn:before,.alram-on .close-btn:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #272637;
+  transition:400ms ease all;
+}
+.alram-on .close-btn:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.alram-on .close-btn:hover:before,.alram-on .close-btn:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+.alram-on .box img {
+	width:200px;	
 }
 /*------- list -------------------------------*/
 .list {
