@@ -161,7 +161,7 @@ alert(flag);
 						<p class="login-msg"></p>
 						<form action="login" method="post" id="login-form">
 							<div class="login-box">
-								<div><input type="text" name="id" placeholder="아이디를 입력하세요." value="" required /></div>
+								<div><input type="text" name="id" placeholder="아이디를 입력하세요." value="" required autocomplete=off /></div>
 								<div><input type="password" name="pw" placeholder="비밀번호를 입력하세요." value="" required /></div>
 							</div>
 							<div><input type="submit" value="로그인" class="login-button" /></div>
