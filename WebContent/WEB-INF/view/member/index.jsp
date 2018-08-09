@@ -88,6 +88,54 @@
 	font-weight:bold;
 	font-size:0.8em;
 }
+#info-transport {
+	position: relative;
+}
+
+#info-transport a {
+	padding-left:20px;
+}
+.icon {
+	position: absolute;
+	width:16px;
+	height:16px;
+	top:10px;
+	left:10px;
+}
+.icon-plus {
+	background-color: #000;
+	border-radius:8px;
+	-webkit-border-radius:8px;
+	-moz-border-radius:8px;
+	width: 16px;
+	height: 16px;
+	top:10px;
+	left:10px;
+}
+.icon-plus:after {
+	background-color: #fff;
+	width: 8px;
+	height: 2px;
+	border-radius: 1px;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	position: absolute;
+	top:7px;
+	left: 4px;
+	content:"";
+}
+.icon-plus:before {
+	background-color: #fff;
+	width: 2px;
+	height: 8px;
+	border-radius: 1px;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	position: absolute;
+	top:4px;
+	left: 7px;
+	content:"";
+}
 </style>
 </head>
 <body>	
@@ -101,12 +149,15 @@
 	<aside id="info-transport" class="container">
 		<h1 class="hide">버스/지하철 안내</h1>
 		<c:if test="${empty course }">
-			<span>버스 </span>
-			<span>버스 도착 </span>
+			<a href="./course/list"><span class="icon icon-plus"></span>당신의 일상을 올려주세요</a>
 		</c:if>
 		<c:if test="${!empty course }">
-			<span>버스 있</span>
-			<span>버스 도착 </span>		
+			<c:forEach items="${course }" var="cos">		
+				<div>
+					<span>${cos.workplace }</span>
+					<span>${cos.startingTime } </span>									
+				</div>
+			</c:forEach>				
 		</c:if>
 	</aside>
 	<main id="main" class="container cont-scroll">
