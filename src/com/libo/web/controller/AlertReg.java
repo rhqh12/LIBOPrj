@@ -24,6 +24,7 @@ public class AlertReg extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Alert alert = null;
 		
+		
 		String memberId = "test";
 		String[] week = {"일","월","화","수","목","금","토"};
 		

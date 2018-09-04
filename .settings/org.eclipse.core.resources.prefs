@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/view/member/alert/detail.jsp=UTF-8
+encoding//WebContent/WEB-INF/view/member/alert/list.jsp=UTF-8
 encoding//WebContent/admin/index.jsp=UTF-8
 encoding//WebContent/admin/notice/edit.jsp=UTF-8
 encoding//WebContent/admin/notice/reg.jsp=UTF-8
-encoding//WebContent/member/alert/detail.jsp=UTF-8
-encoding//WebContent/member/alert/list.jsp=UTF-8
+encoding/WebContent=UTF-8
